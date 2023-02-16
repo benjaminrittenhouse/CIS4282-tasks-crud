@@ -16,6 +16,9 @@ function Insert(props) {
         }
     );
 
+
+
+
     // error object
     const [errorObj, setErrorObj] = useState(
         {
@@ -52,6 +55,41 @@ function Insert(props) {
 
             const objToStr = new URLSearchParams(taskData).toString();
             const str = `${process.env.REACT_APP_API_URL}/api/insertTask?${objToStr}`;
+
+            // console log the API fetch call
+            console.log("STR w/ Task OBJ: " + str);
+           
+            // await json response & grab json
+            const res = await fetch(str);
+            const data = await res.json();
+
+            // print data returned from API call
+            console.log("Data returned from API call: " + JSON.stringify(data));
+
+            // check if data is an eror objec
+            if(data.isError) {
+                setErrorObj(data);
+                console.log("setting error (task) data...");
+            } else {
+                console.log("setting task data...");
+                // clear the previous messages from errors when we successfully insert
+                setErrorObj(emptyData);
+                // setTaskData(data);
+            }
+
+            setInsertMessage(data.errorMsg);
+            
+        } catch (err) {
+            //error catching for when fetch fails
+            console.log("err (caught fetch):" + String(err));
+        }
+    }
+
+    async function handleSearch(inp) {
+        try {
+
+            // const objToStr = new URLSearchParams(inp).toString();
+            const str = `${process.env.REACT_APP_API_URL}/api/queryUsers?firstName=${inp}`;
 
             // console log the API fetch call
             console.log("STR w/ Task OBJ: " + str);
@@ -146,9 +184,12 @@ function Insert(props) {
                     <tr>
                         <td>Assigned User</td>
                         <td>
-                            <input placeholder ="$100.00"value={taskData.assignedWebUserID} onChange=
-                                {e => setTaskData({...taskData, assignedWebUserID: e.target.value})}
+                            <input type="text" list="data" placeholder ="Search..." value={taskData.assignedWebUserID} onChange=
+                                {e => setTaskData({...taskData, assignedWebUserID: e.target.value}, handleSearch(e.target.value))}
                             />
+                            <datalist id ="data">
+                                
+                            </datalist>
                         </td>
                         <td className="error">
                             {errorObj.assignedWebUserID}
