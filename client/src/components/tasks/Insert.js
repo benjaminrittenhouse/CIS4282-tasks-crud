@@ -8,7 +8,7 @@ function Insert(props) {
     
     const [taskData, setTaskData] = useState(
         {
-            "taskID": "",
+            // "taskID": "",
             "taskName": "",
             "taskDesc": "",
             "taskPoints": "",
@@ -59,6 +59,8 @@ function Insert(props) {
     async function insertTask() {
         try {
 
+            console.log("Task data:");
+            console.dir(taskData);
             const objToStr = new URLSearchParams(taskData).toString();
             const str = `${process.env.REACT_APP_API_URL}/api/insertTask?${objToStr}`;
 
