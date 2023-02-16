@@ -1,8 +1,10 @@
-import { React, useState } from 'react';
+import { React, useState, useEffect } from 'react';
 import RoleTypes from '../../components/webUser/RoleTypes'
 
 function Insert(props) {
     const [insertMessage, setInsertMessage] = useState("");
+
+    const [names, setNames] = useState("");
     
     const [taskData, setTaskData] = useState(
         {
@@ -50,6 +52,10 @@ function Insert(props) {
         return o;
     };
 
+    useEffect(() => {
+        handleSearch("");
+      }, []);
+
     async function insertTask() {
         try {
 
@@ -66,6 +72,7 @@ function Insert(props) {
             // print data returned from API call
             console.log("Data returned from API call: " + JSON.stringify(data));
 
+            setNames(data);
             // check if data is an eror objec
             if(data.isError) {
                 setErrorObj(data);
@@ -101,6 +108,8 @@ function Insert(props) {
             // print data returned from API call
             console.log("Data returned from API call: " + JSON.stringify(data));
 
+
+            setNames(data);
             // check if data is an eror objec
             if(data.isError) {
                 setErrorObj(data);
@@ -188,7 +197,19 @@ function Insert(props) {
                                 {e => setTaskData({...taskData, assignedWebUserID: e.target.value}, handleSearch(e.target.value))}
                             />
                             <datalist id ="data">
-                                
+                            
+                            
+                            
+                            {names.length > 0 ? 
+                            (names.map((ele, index) => (
+                                <option value={ele.first_name + " " + ele.last_name} />
+                            )))
+                            :
+                            (
+                                <option value="No names"/>
+                            )
+                            }
+
                             </datalist>
                         </td>
                         <td className="error">
