@@ -14,6 +14,8 @@ DbMods.formatWebUser = function(userObj){
 
     webUser.web_user_id = formatUtils.plainInteger(userObj.web_user_id);
     webUser.user_email = formatUtils.formatString(userObj.user_email);
+    webUser.first_name = formatUtils.formatString(userObj.first_name);
+    webUser.last_name = formatUtils.formatString(userObj.last_name);
     webUser.user_password = formatUtils.formatString(userObj.user_password);
     webUser.image = formatUtils.formatString(userObj.image);
     webUser.birthday = formatUtils.formatDate(userObj.birthday);

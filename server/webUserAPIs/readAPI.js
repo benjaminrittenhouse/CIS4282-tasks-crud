@@ -12,7 +12,7 @@ router.use(express.urlencoded({ extended: false }));
 // get all user api 
 router.get("/listAllUsers", (req, res) => {
     try {
-      const sqlGet = "SELECT web_user_id, user_email, user_password, image, membership_fee, room_number, birthday, web_user.user_role_id, role_type "
+      const sqlGet = "SELECT web_user_id, user_email, first_name, last_name, user_password, image, membership_fee, room_number, birthday, web_user.user_role_id, role_type "
       + " FROM web_user, user_role WHERE web_user.user_role_id = user_role.user_role_id ORDER BY web_user_id ASC";
       db.query(sqlGet, (req, result) => {
           var users = [];

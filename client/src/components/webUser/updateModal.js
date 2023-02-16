@@ -70,32 +70,17 @@ const UpdateModal = ({ props, setModalVisibility }) => {
 
     // set user data once
     useEffect(() => {
-        console.log("PROPS: " + JSON.stringify(props));
         setUserData(props);
-        console.log("User role ID: " + props.userRoleId);
     }, []);
 
-
-    //an asynchronous function that will either return the API data or an error
     async function updateUser() {
         try {
-            // TEST OBJECT URL
-            console.log("update user async");
-            // setUserData(tempObj);
-
 
             const objToStr = new URLSearchParams(userData).toString();
             const str = `${process.env.REACT_APP_API_URL}/api/updateUser?${objToStr}`;
 
-            // console log the API fetch call
-            console.log("STR w/ OBJ: " + str);
-
-            // await json response & grab json
             const res = await fetch(str);
             const data = await res.json();
-
-            // print data returned from API call
-            console.log("Data returned from API call: " + JSON.stringify(data));
 
             // check if data is an eror objec
             if (data.isError) {

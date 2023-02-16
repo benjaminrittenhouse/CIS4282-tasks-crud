@@ -4,7 +4,6 @@ import { React, useEffect, useState } from 'react';
 //This is the function that is being rendered by ReactDOM
 function RoleTypes({ getUserRoleId, value }) {
 
-    console.log("Got role type " + value + " from passed variable");
     var [roles, setRoles] = useState([]);
 
     var [role, setRole] = useState("Select a Role");

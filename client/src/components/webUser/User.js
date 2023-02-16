@@ -31,6 +31,8 @@ function User({ props }) {
   {
     "webUserId": props.web_user_id,
     "userEmail": props.user_email,
+    "firstName": props.first_name,
+    "lastName": props.last_name,
     "userPassword": props.user_password,
     "userPassword2": props.user_password,
     "image": props.image,
@@ -58,7 +60,7 @@ function User({ props }) {
               </div>
 
               <div className="expanded-grid-child-info">
-                <h2><u>User {props.web_user_id}</u></h2>
+                <h2>{props.first_name + " " + props.last_name}</h2>
                 <p>Email: {props.user_email}</p>
                 <p>Password: {props.user_password}</p>
                 <p>Membership Fee: {props.membership_fee}</p>
@@ -91,6 +93,7 @@ function User({ props }) {
 
               {/*information*/}
               <div className="collapsed-grid-child-email">
+                <p>{props.first_name + " " + props.last_name}</p>
                 <p>{props.user_email}</p>
               </div>
 
