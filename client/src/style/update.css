@@ -1,0 +1,54 @@
+.updateShow {
+    border: 3px solid black;
+    background-color: #FBE4C4;
+    position: fixed;
+    z-index: 2;
+    left: 33%;
+    top: 25%;
+    border-radius: 10%;
+}
+
+.updateHide {
+    position: fixed;
+    z-index: 2;
+    left: 5rem;
+    top: 6rem;
+    visibility: hidden;
+}
+
+.modal {
+    padding: 3rem;
+}
+
+.modalHide {
+    position: fixed;
+    z-index: 2;
+    left: 5rem;
+    top: 6rem;
+    visibility: hidden;
+}
+
+.modal .X {
+    position: relative;
+    color: black;
+    left: 0;
+    border: 1px solid black;
+    border-radius: 33px;
+    width: 30px;
+    margin-top: 0;
+    background-color: grey;
+}
+
+.cancelButton {
+    margin-bottom: 1rem;
+    margin-left: 1rem;
+}
+
+.buttons {
+    margin-top: 1rem;
+    width: 100%;
+}
+
+.xButton {
+    float: left;
+}

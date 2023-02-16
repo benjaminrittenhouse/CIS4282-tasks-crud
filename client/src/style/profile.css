@@ -1,0 +1,17 @@
+.info-col {
+    background-color: 'red';
+}
+
+.email {
+    background-color: 'red';
+}
+
+.please {
+    color: "red";
+}
+
+.user .grid-container .img-col  {
+    border-radius: 33px;
+    width: 100;
+    height: 100;
+}
