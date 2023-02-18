@@ -33,7 +33,7 @@ DbMods.validateTask = function(taskObj){
     errorObj.taskName = validateUtils.validateString(taskObj.taskName, true);
 
                                                         // password, min length for password
-    errorObj.taskDesc = validateUtils.validateString(taskObj.taskDesc, 10, true);
+    errorObj.taskDesc = validateUtils.validateString(taskObj.taskDesc, 5, true);
     errorObj.taskPoints = validateUtils.validateInteger(taskObj.taskPoints, true);
 
     errorObj.targetDate = validateUtils.validateDate(taskObj.targetDate, true);

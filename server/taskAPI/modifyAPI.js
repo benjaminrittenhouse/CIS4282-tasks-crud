@@ -13,7 +13,7 @@ router.use(express.urlencoded({ extended: false }));
 router.get("/insertTask", (req, res) => {
   var errors = false;
   // establish task object to take in URL query results
-// http://localhost:5001/api/insertTask?taskName=asdfasdf&taskDesc=asdfasdf&taskPoints=5&targetDate=2021-05-05&completionDate=2021-05-05&assignedWebUserID=4
+// http://localhost:5001/api/insertTask?taskID=&taskName=asdfasdf&taskDesc=asdfasdf&taskPoints=5&targetDate=2021-05-05&completionDate=2021-05-05&assignedWebUserID=4
   var task = {
     "taskID": req.query.taskID,
     "taskName": req.query.taskName,
@@ -37,7 +37,7 @@ router.get("/insertTask", (req, res) => {
   }
 
   // validate insert
-  var tempObj = DbMods.validateTask(webUser);
+  var tempObj = DbMods.validateTask(task);
 
   // check if object returned was a web user object or an error object, update accordingly
   if(tempObj.isError){
@@ -45,7 +45,7 @@ router.get("/insertTask", (req, res) => {
       errors = true;
   } else {
       // web user gets formatted, ready to insert into the database
-      task = DbMods.insertWebUser(tempObj);
+      task = DbMods.insertTask(tempObj);
   }
 
   if (!errors) {

@@ -24,10 +24,12 @@ const DbMods = require("./model/webUser/DbMods");
 const modifyWebUser = require("./webUserAPIs/modifyAPI");
 const readWebUser = require("./webUserAPIs/readAPI");
 const readTasks = require("./taskAPI/readAPI");
+const modifyTasks = require("./taskAPI/modifyAPI");
 
 app.use("/api", modifyWebUser);
 app.use("/api", readWebUser);
 app.use("/api", readTasks);
+app.use("/api", modifyTasks)
 
 app.get("/", (req, res) => {
   if(db.state === 'disconnected'){
