@@ -33,3 +33,7 @@ body {
 .heading {
     margin-top: 7rem;
 }
+
+#data .dlist {
+    color: red;
+}

@@ -5,8 +5,6 @@ function Insert(props) {
     const [insertMessage, setInsertMessage] = useState("");
 
     const [names, setNames] = useState("");
-
-    const [assignedName, setAssignedName] = useState("");
     
     const [taskData, setTaskData] = useState(
         {
@@ -137,11 +135,12 @@ function Insert(props) {
         }
     }
 
-    // set input to name, set id to web user
-    function handleWebUser(num, name) {
-        setTaskData({...taskData, assignedWebUserID: num})
-        setAssignedName(name)
-    }
+    function handleInputBlur(event) {
+        // Update the state with the web_user_id when the input field loses focus
+        const selectedOption = document.querySelector(`#data option[value="${event.target.value}"]`);
+          console.log("VALUE: " + selectedOption.dataset.value);
+        
+      }
 
     return (
         <div className="spaPage">
@@ -206,30 +205,27 @@ function Insert(props) {
                     <tr>
                         <td>Assigned User</td>
                         <td>
-                            <input type="text"  placeholder ="Search..." /*value={taskData.assignedWebUserID}*/ onChange=
+                            <input type="text" list="data" placeholder ="Search..." /*value={taskData.assignedWebUserID}*/ onChange=
                                 // {e => setTaskData({...taskData, assignedWebUserID: e.target.dataset.value},handleSearch(e.target.value), console.log("YO:" + e.target.dataset))}
                                 {e => handleSearch(e.target.value)}
-                                value = {assignedName}
-                                />
-                            <ul>
+                                onBlur={handleInputBlur}
+                            />
+                            <datalist id ="data">
+                
                             {names.length > 0 ? 
-                            (
-                                
-                                names.map((ele) => (
+                            (names.map((ele, index) => (
                                 <option 
-                                value={ele.web_user_id}
-                                onClick={() => handleWebUser(ele.web_user_id, ele.first_name + " " + ele.last_name)}
-
-                                >
-                                    {ele.first_name + " " + ele.last_name}
-                                </option>
-                                )
-                            
+                                data-value={ele.web_user_id}
+                                value={ele.first_name + " " + ele.last_name}
+                                />
+                            )))
+                            :
+                            (
+                                <option value="No names"/>
                             )
-                            ) 
-                            : 
-                            (<option value="No names"/>)}
-                            </ul>
+                            }
+
+                            </datalist>
                         </td>
                         <td className="error">
                             {errorObj.assignedWebUserID}
