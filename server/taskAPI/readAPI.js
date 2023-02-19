@@ -28,7 +28,7 @@ router.get("/listAllTasks", (req, res) => {
 
 router.get("/queryUsers", (req, res) => {
   var firstName = req.query.firstName;
-  console.log("FIRST NAME: " + req.query.firstName)
+  // console.log("FIRST NAME: " + req.query.firstName)
   try {
     const sqlGet = `SELECT web_user_id, first_name, last_name FROM web_user WHERE first_name LIKE \'${firstName}%\' ORDER BY first_name ASC LIMIT 10`;
     db.query(sqlGet,[req.query.firstName, req.query.lastName], (err, req2, result) => {

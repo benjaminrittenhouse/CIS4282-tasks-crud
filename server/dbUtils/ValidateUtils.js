@@ -1,5 +1,7 @@
+
 const validateUtils = {}
 
+const formatUtils = require("./FormatUtils")
 // error object if we need to send it back
 const errorObj = {
     "isError": "true",
@@ -16,19 +18,37 @@ const errorObj = {
 
 // determine if date is valid, otherwise send error
 validateUtils.validateDate = function (dateStr, reqd) {
-    console.log("doing date validation: " + dateStr);
+    // console.log("doing date validation: " + dateStr);
     if (!reqd && (dateStr === null || dateStr === "")) {
         return "";
     } else {
-        try {
-            var dateVal = new Date(dateStr).toISOString();
-            console.log("Date val after conversion: " + dateVal);
-            return "";
-        } catch (e) {
-            return "Please enter a valid date";
-        }
+            // Check format and convert to MM/DD/YYYY if needed
+            var dateRegex = /^(\d{1,2})\/(\d{1,2})\/(\d{4})$/;
+            var match = dateRegex.exec(dateStr);
+            if (!match) {
+              return false;
+            }
+
+            var month = match[1].padStart(2, '0');
+            var day = match[2].padStart(2, '0');
+            var year = match[3];
+            var formattedDate = `${month}/${day}/${year}`;
+          
+            // Check validity
+            var dateParts = formattedDate.split('/');
+            var year = parseInt(dateParts[2]);
+            var month = parseInt(dateParts[0]) - 1; // months are 0-indexed in Date
+            var day = parseInt(dateParts[1]);
+            var date = new Date(year, month, day);
+            
+            // dates good
+            if(date.getFullYear() === year && date.getMonth() === month && date.getDate() === day && day <= new Date(year, month + 1, 0).getDate()){
+                return "";
+            }
+          
     }
 
+    return "Please enter a valid date";
 }
 
 //Formatting membership fee before sending the result
