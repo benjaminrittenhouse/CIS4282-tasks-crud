@@ -37,3 +37,8 @@ body {
 #data .dlist {
     color: red;
 }
+
+#names {
+    background-color: white;
+    text-align: left;
+}

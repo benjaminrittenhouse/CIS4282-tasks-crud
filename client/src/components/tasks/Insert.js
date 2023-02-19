@@ -211,7 +211,17 @@ function Insert(props) {
                                 {e => handleSearch(e.target.value)}
                                 value = {assignedName}
                                 />
-                            <ul>
+                        </td>
+                        <td className="error">
+                            {errorObj.assignedWebUserID}
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                        </td>
+                        <td>
+                        <ul id = "names">
                             {names.length > 0 ? 
                             (
                                 
@@ -231,10 +241,8 @@ function Insert(props) {
                             (<option value="No names"/>)}
                             </ul>
                         </td>
-                        <td className="error">
-                            {errorObj.assignedWebUserID}
-                        </td>
                     </tr>
+
                     <tr>
                         <td>
                             <br />
