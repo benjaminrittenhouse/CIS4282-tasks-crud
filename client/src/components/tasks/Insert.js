@@ -178,7 +178,7 @@ function Insert(props) {
                             />
                         </td>
                         <td className="error">
-                            {errorObj.taskDesc}
+                            {errorObj.taskPoints}
                         </td>
                     </tr>
                     <tr>
