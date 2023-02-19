@@ -118,6 +118,7 @@ function Insert(props) {
 
 
             setNames(data);
+            setAssignedName(inp)
             // check if data is an eror objec
             if(data.isError) {
                 setErrorObj(data);
