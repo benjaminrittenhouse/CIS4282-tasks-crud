@@ -87,17 +87,7 @@ function Display(props) {
             {userList.length > 0 ? (
               userList.map((ele, index) => (
                 <div key={index} className="userBlock" onClick={()=>setExpandedUser(ele)}>
-                  <User props={ele} />
-                  {/*<button
-                      class="deleteButton"
-                      onClick={() => {
-                        setOpenModal(true);
-                        setClickedUser(ele);
-                        setClickIndex(index);
-                      }}
-                    >
-                      Delete
-                    </button>*/}
+                  <User props={ele} shouldShow={false} />
                 </div>
               ))
             ) : (
@@ -106,22 +96,10 @@ function Display(props) {
               </div>
             )}
           </div>
-          <DeleteModal
-            onOkClicked={() => {
-              setOkClicked(true);
-              processDelete(clickedUser.web_user_id, clickIndex);
-            }}
-            onClose={() => {
-              setOpenModal(false);
-              setOkClicked(false);
-            }}
-            open={openModal}
-            user={clickedUser}
-          />
         </div>
 
         <div className="expandedView">
-            <User props={expandedUser} />
+            <User props={expandedUser} shouldShow={true} />
         </div>
       </div>
 

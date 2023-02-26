@@ -6,9 +6,9 @@ import "../../style/update.css"
 
 //This is a React Component that will be used to display the information of a SINGLE user.
 //It will take in an propsect "props".
-function User({ props }) {
+function User({ props, shouldShow }) {
 
-  const [show, setShow] = useState(false)
+  const [show, setShow] = useState(shouldShow)
   const [modalVisibility, setModalVisibility] = useState("updateHide");
 
   function handleShow() {
@@ -67,8 +67,8 @@ function User({ props }) {
               </div>
 
               <div className="expanded-grid-child-buttons">
-                <button onClick={handleShow}>Collapse</button>
                 <button onClick={handleUpdate} className="editButton">Edit</button>
+                <button onClick={handleUpdate} className="editButton">Delete</button>
               </div>
             </div>
 
