@@ -55,11 +55,8 @@ function User({ props }) {
 
             <div className="expanded-grid-container">
 
-              <div className="expanded-grid-child-image">
-                <img className="imageThumb" src={props.image} alt="not found" />
-              </div>
-
               <div className="expanded-grid-child-info">
+                <img className="imageThumb" src={props.image} alt="not found" />
                 <h2>{props.first_name + " " + props.last_name}</h2>
                 <p>Email: {props.user_email}</p>
                 <p>Password: {props.user_password}</p>
@@ -87,20 +84,19 @@ function User({ props }) {
             </div>
             <div className="collapsed-grid-container">
               {/*image*/}
-              <div className="collapsed-grid-child-image">
-                <img className="imageThumb" src={props.image} alt="not found" />
-              </div>
+        
 
               {/*information*/}
               <div className="collapsed-grid-child-email">
+              <img className="imageThumb" src={props.image} alt="not found" />
                 <p>{props.first_name + " " + props.last_name}</p>
                 <p>{props.user_email}</p>
               </div>
 
               <div className="collapsed-grid-child-buttons">
-                <button onClick={handleShow}>View</button>
+                {/*<button onClick={handleShow}>View</button>*/}
                 {/*<button className="editButton"><Link to="/update" state={{ data: userObj }}>Edit</Link></button>*/}
-                <button onClick={handleUpdate} className="editButton">Edit</button>
+                {/*<button onClick={handleUpdate} className="editButton">Edit</button>*/}
               </div>
 
             </div>

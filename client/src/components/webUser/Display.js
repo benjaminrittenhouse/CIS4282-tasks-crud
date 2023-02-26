@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import User from "./User.js";
 import DeleteModal from "./DeleteModal.js";
 
@@ -22,6 +22,7 @@ function Display(props) {
   const [okClicked, setOkClicked] = useState(false);
   const [clickIndex, setClickIndex] = useState();
 
+  const [expandedUser, setExpandedUser] = useState({})
 
   async function fetchAllUsers() {
     try {
@@ -42,7 +43,7 @@ function Display(props) {
   useEffect(() => {
     fetchAllUsers();
   }, []);
-  
+
 
   const [userID, setUserID] = useState("");
   const handleChange = (event) => {
@@ -77,24 +78,26 @@ function Display(props) {
 
   return (
     <div className="view">
+      <h2 className="heading">Web User Display and Delete</h2>
       <div className="main">
-        <h2 className="heading">Web User Display and Delete</h2>
+        
+
         <div className="userTable">
           <div className="tableBody">
             {userList.length > 0 ? (
               userList.map((ele, index) => (
-                <div key={index} className="userBlock">
+                <div key={index} className="userBlock" onClick={()=>setExpandedUser(ele)}>
                   <User props={ele} />
-                  <button
-                    class="deleteButton"
-                    onClick={() => {
-                      setOpenModal(true);
-                      setClickedUser(ele);
-                      setClickIndex(index);
-                    }}
-                  >
-                    Delete
-                  </button>                  
+                  {/*<button
+                      class="deleteButton"
+                      onClick={() => {
+                        setOpenModal(true);
+                        setClickedUser(ele);
+                        setClickIndex(index);
+                      }}
+                    >
+                      Delete
+                    </button>*/}
                 </div>
               ))
             ) : (
@@ -102,8 +105,8 @@ function Display(props) {
                 <p>No Users Found</p>
               </div>
             )}
-            </div>
-            <DeleteModal
+          </div>
+          <DeleteModal
             onOkClicked={() => {
               setOkClicked(true);
               processDelete(clickedUser.web_user_id, clickIndex);
@@ -114,9 +117,14 @@ function Display(props) {
             }}
             open={openModal}
             user={clickedUser}
-          /> 
+          />
+        </div>
+
+        <div className="expandedView">
+            <User props={expandedUser} />
         </div>
       </div>
+
     </div>
   );
 } // end of Display() function

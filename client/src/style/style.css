@@ -28,6 +28,7 @@ body {
 
 .main {
     text-align: center;
+    display: flex;
 }
 
 .heading {
@@ -41,4 +42,19 @@ body {
 #names {
     background-color: white;
     text-align: left;
+    position: absolute;
+    top: 23rem;
+}
+
+
+.userTable, .expandedView {
+    display: inline-block;
+}
+
+.userTable {
+    width: 30%
+}
+
+.expandedView {
+    width: 70%;
 }
