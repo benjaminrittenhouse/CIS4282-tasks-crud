@@ -3,7 +3,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 
 import RoleTypes from '../webUser/RoleTypes';
 
-const UpdateModal = ({ props, setModalVisibility }) => {
+const UpdateModal = ({ props, setModalVisibility, assignedUser }) => {
 
     // hide / show modal
     // COOL: way to change state from a child component!!
@@ -17,7 +17,7 @@ const UpdateModal = ({ props, setModalVisibility }) => {
     const [assignedName, setAssignedName] = useState("");
 
 
-    const [inputVal, setInputVal] = useState("");
+    const [inputVal, setInputVal] = useState(assignedUser);
     const [buttonVal, setButtonVal] = useState(inputVal);
 
     const handleChange = (event) => {

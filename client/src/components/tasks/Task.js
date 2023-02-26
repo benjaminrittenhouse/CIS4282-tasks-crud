@@ -35,7 +35,7 @@ function Task({ props }) {
     "taskPoints": props.task_points,
     "targetDate": props.target_date,
     "completionDate": props.completion_date,
-    "assignedName": props.full_name
+    "assignedWebUserID": props.assigned_web_user_id
   }
 
   return (
@@ -45,7 +45,7 @@ function Task({ props }) {
           <div>
 
             <div className={modalVisibility}>
-              <UpdateModal props={taskObj} setModalVisibility={setModalVisibility} />
+              <UpdateModal props={taskObj} setModalVisibility={setModalVisibility} assignedUser={props.first_name + " " + props.last_name} />
             </div>
             <div className="expanded-grid-container">
 
@@ -57,7 +57,7 @@ function Task({ props }) {
                 <p>Points: {props.task_points}</p>
                 <p>Target Date: {props.target_date}</p>
                 <p>Completion Date: {props.completion_date}</p>
-                <h4>Assigned: {props.full_name}</h4>
+                <h4>Assigned: {props.first_name + " " + props.last_name}</h4>
               </div>
 
               <div className="expanded-grid-child-buttons">
@@ -74,7 +74,7 @@ function Task({ props }) {
           <div>
 
             <div className={modalVisibility}>
-              <UpdateModal props={taskObj} setModalVisibility={setModalVisibility} />
+              <UpdateModal props={taskObj} setModalVisibility={setModalVisibility} assignedUser={props.first_name + " " + props.last_name} />
             </div>
 
             <div className="expanded-grid-container">

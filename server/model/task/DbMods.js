@@ -19,6 +19,8 @@ DbMods.formatTask = function(taskObj){
     task.target_date = formatUtils.formatDate(taskObj.target_date);
     task.completion_date = formatUtils.formatDate(taskObj.completion_date);
     task.assigned_web_user_id = formatUtils.formatInteger(taskObj.assigned_web_user_id);
+    task.first_name = formatUtils.formatString(taskObj.first_name)
+    task.last_name = formatUtils.formatString(taskObj.last_name);
     
     return task;
 }
@@ -56,6 +58,7 @@ DbMods.validateTask = function(taskObj){
 DbMods.insertTask = function(taskObj){
     if(taskObj.targetDate === "") taskObj.targetDate = null;
     if(taskObj.completionDate === "") taskObj.completionDate = null;
+    if(taskObj.assigned_name === "") taskObj.assignedWebUserID = null;
 
     taskObj.targetDate = formatUtils.dateConversion(taskObj.targetDate);
     taskObj.completionDate = formatUtils.dateConversion(taskObj.completionDate);
