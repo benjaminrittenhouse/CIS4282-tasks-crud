@@ -40,8 +40,8 @@ function User({ props, shouldShow }) {
     "membershipFee": props.membership_fee,
     "roomNumber": props.room_number,
     "userRoleId": props.user_role_id,
-    "class": { modalVisibility }
   }
+
 
   return (
     <div className="userInfo">

@@ -21,6 +21,8 @@ const UpdateModal = ({ props, setModalVisibility }) => {
         {
             "webUserId": "",
             "userEmail": "",
+            "firstName": "",
+            "lastName": "",
             "userPassword": "",
             "userPassword2": "",
             "image": "",
@@ -28,7 +30,6 @@ const UpdateModal = ({ props, setModalVisibility }) => {
             "membershipFee": "",
             "roomNumber": "",
             "userRoleId": "",
-            "class": "",
         }
     );
 
@@ -38,6 +39,8 @@ const UpdateModal = ({ props, setModalVisibility }) => {
         {
             "webUserId": "",
             "userEmail": "",
+            "firstName": "",
+            "lastName" : "",
             "userPassword": "",
             "userPassword2": "",
             "image": "",
@@ -54,6 +57,8 @@ const UpdateModal = ({ props, setModalVisibility }) => {
         "userEmail": "",
         "userPassword": "",
         "userPassword2": "",
+        "firstName": "",
+        "lastName" : "",
         "image": "",
         "birthday": "",
         "membershipFee": "",
@@ -72,6 +77,9 @@ const UpdateModal = ({ props, setModalVisibility }) => {
     useEffect(() => {
         setUserData(props);
     }, []);
+
+    console.log("User Data:");
+    console.dir(userData)
 
     async function updateUser() {
         try {

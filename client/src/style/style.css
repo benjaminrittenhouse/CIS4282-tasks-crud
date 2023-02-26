@@ -1,6 +1,5 @@
 body, html {
     font-family: 'Courier New', Courier, monospace;
-    overflow: hidden;
 }
 
 .spaPage {
@@ -56,7 +55,7 @@ body {
 .userTable {
     overflow-y: auto;
     height: 50rem;
-    flex: 0 0 30%
+    flex: 0 0 30%;
 }
 
 .tableBody {
@@ -64,5 +63,8 @@ body {
 }
 
 .expandedView {
-    flex: 0 0 70%
+    flex: 0 0 70%;
+    padding-left: 1rem;
+    padding-top: 1rem;
+
 }

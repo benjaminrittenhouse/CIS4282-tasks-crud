@@ -99,7 +99,7 @@ function Display(props) {
         </div>
 
         <div className="expandedView">
-            <User props={expandedUser} shouldShow={true} />
+            <User props={expandedUser} expandedUser={expandedUser} shouldShow={true} />
         </div>
       </div>
 
