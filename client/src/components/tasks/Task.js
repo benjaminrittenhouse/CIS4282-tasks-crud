@@ -3,6 +3,8 @@ import { Link } from "react-router-dom"
 import { useState, useEffect } from "react";
 import "../../style/update.css"
 
+import UpdateModal from "./updateModal"
+
 function Task({ props }) {
 
   const [show, setShow] = useState(false)
@@ -38,10 +40,13 @@ function Task({ props }) {
 
   return (
     <div className="userInfo">
-        {show ?
-          (
-            <div>
+      {show ?
+        (
+          <div>
 
+            <div className={modalVisibility}>
+              <UpdateModal props={taskObj} setModalVisibility={setModalVisibility} />
+            </div>
             <div className="expanded-grid-container">
 
 
@@ -59,14 +64,18 @@ function Task({ props }) {
                 <button onClick={handleShow}>Collapse</button>
                 <button onClick={handleUpdate} className="editButton">Edit</button>
               </div>
-              
+
             </div>
 
           </div>
-          )
-          :
-          (
-            <div>
+        )
+        :
+        (
+          <div>
+
+            <div className={modalVisibility}>
+              <UpdateModal props={taskObj} setModalVisibility={setModalVisibility} />
+            </div>
 
             <div className="expanded-grid-container">
 
@@ -81,15 +90,15 @@ function Task({ props }) {
                 <button onClick={handleShow}>View</button>
                 <button onClick={handleUpdate} className="editButton">Edit</button>
               </div>
-              
+
             </div>
 
           </div>
-          )
-        }
-          
-          </div>
         )
-  }
+      }
+
+    </div>
+  )
+}
 
 export default Task;

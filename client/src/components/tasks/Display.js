@@ -51,7 +51,9 @@ function Display(props) {
   };
 
   async function processDelete(taskID, index) {
-
+    console.log("Clicked: ");
+    console.dir(clickedTask)
+    console.log("Task ID: " + taskID)
     try {
       const res = await fetch(
         process.env.REACT_APP_API_URL + "/api/deleteTask/" + taskID
@@ -113,7 +115,7 @@ function Display(props) {
               setOkClicked(false);
             }}
             open={openModal}
-            user={clickedTask}
+            task={clickedTask}
           /> 
         </div>
       </div>

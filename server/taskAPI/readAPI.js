@@ -3,7 +3,7 @@ const router = express.Router();
 const db = require("../dbUtils/DbConn");
 const cors = require("cors");
 
-const DbMods = require("../model/webUser/DbMods");
+const DbMods = require("../model/task/DbMods");
 
 router.use(cors());
 router.use(express.json());
@@ -15,7 +15,13 @@ router.get("/listAllTasks", (req, res) => {
       const sqlGet = "SELECT task_id, task_name, task_desc, task_points, target_date, completion_date, assigned_web_user_id, user_email FROM db.tasks, db.web_user "
       + "WHERE tasks.assigned_web_user_id = web_user.web_user_id";
       db.query(sqlGet, (req, result) => {
-          res.send(result);
+        var tasks = [];
+        for(var ele of result){
+            tasks.push(DbMods.formatTask(ele));
+            console.dir(DbMods.formatTask(ele))
+        }
+
+        res.send(tasks);
       });
     } catch (error) {
         console.log("ERROR DISPLAYING: " + error);

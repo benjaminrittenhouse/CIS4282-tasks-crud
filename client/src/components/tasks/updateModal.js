@@ -1,12 +1,21 @@
 import { React, useState, useEffect } from 'react';
-import RoleTypes from '../../components/webUser/RoleTypes'
+import { useLocation, useNavigate } from 'react-router-dom';
 
-function Insert(props) {
+import RoleTypes from '../webUser/RoleTypes';
+
+const UpdateModal = ({ props, setModalVisibility }) => {
+
+    // hide / show modal
+    // COOL: way to change state from a child component!!
+    function handleVisibility() {
+        setModalVisibility("updateHide");
+    }
+
     const [insertMessage, setInsertMessage] = useState("");
 
     const [names, setNames] = useState("");
-
     const [assignedName, setAssignedName] = useState("");
+
 
     const [inputVal, setInputVal] = useState("");
     const [buttonVal, setButtonVal] = useState(inputVal);
@@ -19,7 +28,13 @@ function Insert(props) {
         setButtonVal(inputVal)
         handleSearch(buttonVal)
     }
-    
+
+    //  const location = useLocation();
+    // const {from} = props;
+    const location = useLocation();
+    // state message variable to keep track of which was sent most recently... either error object or webUser object
+    const [updateMessage, setUpdateMessage] = useState("");
+
     const [taskData, setTaskData] = useState(
         {
             // "taskID": "",
@@ -33,13 +48,6 @@ function Insert(props) {
     );
 
 
-    function testData(e){
-        console.log("E: ");
-        console.dir(e);
-    }
-
-
-    // error object
     const [errorObj, setErrorObj] = useState(
         {
             "taskID": "",
@@ -50,8 +58,7 @@ function Insert(props) {
             "completionDate": "",
             "assignedWebUserID": "",
         }
-    )
-
+    );
 
     // used to set error object back to nothing
     const emptyData = {
@@ -62,6 +69,7 @@ function Insert(props) {
         "targetDate": "",
         "completionDate": "",
         "assignedWebUserID": "",
+
     }
 
     const setProp = (obj, propName, propValue) => {
@@ -70,47 +78,11 @@ function Insert(props) {
         return o;
     };
 
+
+    // set user data once
     useEffect(() => {
-        handleSearch("");
-      }, []);
-
-    async function insertTask() {
-        try {
-
-            console.log("Task data:");
-            console.dir(taskData);
-            const objToStr = new URLSearchParams(taskData).toString();
-            const str = `${process.env.REACT_APP_API_URL}/api/insertTask?${objToStr}`;
-
-            // console log the API fetch call
-            console.log("STR w/ Task OBJ: " + str);
-           
-            // await json response & grab json
-            const res = await fetch(str);
-            const data = await res.json();
-
-            // print data returned from API call
-            console.log("Data returned from API call: " + JSON.stringify(data));
-
-            setNames(data);
-            // check if data is an eror objec
-            if(data.isError) {
-                setErrorObj(data);
-                console.log("setting error (task) data...");
-            } else {
-                console.log("setting task data...");
-                // clear the previous messages from errors when we successfully insert
-                setErrorObj(emptyData);
-                // setTaskData(data);
-            }
-
-            setInsertMessage(data.errorMsg);
-            
-        } catch (err) {
-            //error catching for when fetch fails
-            console.log("err (caught fetch):" + String(err));
-        }
-    }
+        setTaskData(props);
+    }, []);
 
     async function handleSearch(inp) {
         try {
@@ -150,6 +122,34 @@ function Insert(props) {
         }
     }
 
+    async function updateTask() {
+        try {
+
+            const objToStr = new URLSearchParams(taskData).toString();
+            const str = `${process.env.REACT_APP_API_URL}/api/updateTask?${objToStr}`;
+
+            const res = await fetch(str);
+            const data = await res.json();
+
+            // check if data is an eror objec
+            if (data.isError) {
+                setErrorObj(data);
+                console.log("setting error data...");
+            } else {
+                console.log("setting user data...");
+                // clear the previous messages from errors when we successfully insert
+                setErrorObj(emptyData);
+            }
+
+            setUpdateMessage(data.errorMsg);
+
+            
+        } catch (err) {
+            //error catching for when fetch fails
+            console.log("err (caught fetch):" + String(err));
+        }
+    }
+
     // set input to name, set id to web user
     function handleWebUser(num, name) {
         setTaskData({...taskData, assignedWebUserID: num})
@@ -157,11 +157,12 @@ function Insert(props) {
     }
 
     return (
-        <div className="spaPage">
-            <h2 className="heading">Task Insert Page</h2>
+        <div className="modal">
+            <button type="button" className="xButton" onClick={handleVisibility}>X</button>
+            <h2>Update</h2>
             <table className="insertArea">
                 <tbody>
-                    <tr>
+                <tr>
                         <td>Name</td>
                         <td>
                             <input placeholder ="Take out trash..." value={taskData.taskName} onChange=
@@ -259,10 +260,7 @@ function Insert(props) {
                     </tr>
 
                     <tr>
-                        <td>
-                            <br />
-                            <button type="button" onClick={insertTask}>Save</button>
-                        </td>
+
                         <td className="error" colSpan="2">
                             <br />
                                 {/* TO DO : re-render this so we see record inserted, when we first get an error, and then insert again*/}
@@ -273,9 +271,17 @@ function Insert(props) {
                     </tr>
                 </tbody>
             </table>
+            <div className="buttons">
+                <button type="button" className="saveButton" onClick={updateTask}>Save</button>
+                <button type="button" className="cancelButton" onClick={handleVisibility}>Cancel</button>
+            </div>
+
+            <div>
+                {updateMessage}
+            </div>
 
         </div>
     )
 }
 
-export default Insert;
+export default UpdateModal;

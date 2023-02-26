@@ -12,12 +12,12 @@ var task = {}
 DbMods.formatTask = function(taskObj){
     task = {};
 
-    task.task_id = formatUtils.plainInteger(taskObj.web_user_id);
+    task.task_id = taskObj.task_id;
     task.task_name = formatUtils.formatString(taskObj.task_name);
     task.task_desc = formatUtils.formatString(taskObj.task_desc);
     task.task_points = formatUtils.formatString(taskObj.task_points);
-    task.target_date = formatUtils.formatDate(taskObj.target_Date);
-    task.completion_date = formatUtils.formatString(taskObj.completion_date);
+    task.target_date = formatUtils.formatDate(taskObj.target_date);
+    task.completion_date = formatUtils.formatDate(taskObj.completion_date);
     task.assigned_web_user_id = formatUtils.formatInteger(taskObj.assigned_web_user_id);
     
     return task;
@@ -26,6 +26,8 @@ DbMods.formatTask = function(taskObj){
 
 // validate web user 
 DbMods.validateTask = function(taskObj){
+    console.log("Validating taskObj:")
+    console.dir(taskObj);
     var errorObj = {};
     errorObj.isError = "true";
 
@@ -38,7 +40,7 @@ DbMods.validateTask = function(taskObj){
 
     errorObj.targetDate = validateUtils.validateDate(taskObj.targetDate, true);
     errorObj.completionDate = validateUtils.validateDate(taskObj.completionDate, false);
-    errorObj.assignedWebUserID = validateUtils.validateFloat(taskObj.assignedWebUserID, false);
+    errorObj.assignedWebUserID = validateUtils.validateInteger(taskObj.assignedWebUserID, false);
     
 
     var errs = checkErrors(errorObj)

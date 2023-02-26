@@ -19,14 +19,16 @@ const errorObj = {
 // determine if date is valid, otherwise send error
 validateUtils.validateDate = function (dateStr, reqd) {
     // console.log("doing date validation: " + dateStr);
+    console.log("Datestr: " + dateStr);
     if (!reqd && (dateStr === null || dateStr === "")) {
         return "";
     } else {
             // Check format and convert to MM/DD/YYYY if needed
             var dateRegex = /^(\d{1,2})\/(\d{1,2})\/(\d{4})$/;
             var match = dateRegex.exec(dateStr);
+            console.log("Match? " + match);
             if (!match) {
-              return false;
+              // return "";
             }
 
             var month = match[1].padStart(2, '0');
@@ -53,7 +55,6 @@ validateUtils.validateDate = function (dateStr, reqd) {
 
 //Formatting membership fee before sending the result
 validateUtils.validateFloat = function (float, reqd) {
-    console.log("parseInt(23.45) result: " + parseInt(23.45));
     if (reqd && float === null) {
         return "Please enter a float (required)";
     } else if ((float === "" || float === null) && !reqd) {
