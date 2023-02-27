@@ -4,7 +4,8 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import RoleTypes from '../webUser/RoleTypes';
 
 const UpdateModal = ({ props, setModalVisibility }) => {
-
+    console.log("PROPS UPDATE MODAL")
+    console.dir(props)
 
     // hide / show modal
     // COOL: way to change state from a child component!!
@@ -33,9 +34,6 @@ const UpdateModal = ({ props, setModalVisibility }) => {
             "userRoleId": props.user_role_id,
         }
     );
-
-    console.log("DATA BEFORE: ")
-    console.dir(userData);
 
     // error object
     const [errorObj, setErrorObj] = useState(

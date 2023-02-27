@@ -6,7 +6,7 @@ import "../../style/update.css"
 
 //This is a React Component that will be used to display the information of a SINGLE user.
 //It will take in an propsect "props".
-function User({ props, shouldShow }) {
+function User({ userData, shouldShow }) {
 
   const [show, setShow] = useState(shouldShow)
   const [modalVisibility, setModalVisibility] = useState("updateHide");
@@ -29,17 +29,17 @@ function User({ props, shouldShow }) {
 
   const userObj =
   {
-    "webUserId": props.web_user_id,
-    "userEmail": props.user_email,
-    "firstName": props.first_name,
-    "lastName": props.last_name,
-    "userPassword": props.user_password,
-    "userPassword2": props.user_password,
-    "image": props.image,
-    "birthday": props.birthday,
-    "membershipFee": props.membership_fee,
-    "roomNumber": props.room_number,
-    "userRoleId": props.user_role_id,
+    "webUserId": userData.web_user_id,
+    "userEmail": userData.user_email,
+    "firstName": userData.first_name,
+    "lastName": userData.last_name,
+    "userPassword": userData.user_password,
+    "userPassword2": userData.user_password,
+    "image": userData.image,
+    "birthday": userData.birthday,
+    "membershipFee": userData.membership_fee,
+    "roomNumber": userData.room_number,
+    "userRoleId": userData.user_role_id,
   }
 
 
@@ -47,23 +47,25 @@ function User({ props, shouldShow }) {
     <div className="userInfo">
       {show ?
         (
-          <div>
+
+          <div> {/* EXPANDED USER (RIGHT SIDE) */}
 
             <div className={modalVisibility}>
-              <UpdateModal props={props} setModalVisibility={setModalVisibility}/>
+              <UpdateModal props={userData} setModalVisibility={setModalVisibility}/>
             </div>
 
             <div className="expanded-grid-container">
 
               <div className="expanded-grid-child-info">
-                <img className="imageThumb" src={props.image} alt="not found" />
-                <h2>{props.first_name + " " + props.last_name}</h2>
-                <p>Email: {props.user_email}</p>
-                <p>Password: {props.user_password}</p>
-                <p>Membership Fee: {props.membership_fee}</p>
-                <p>Room #: {props.room_number}</p>
-                <p>Birthday: {props.birthday}</p>
-                <h4>Role: {props.role_type}</h4>
+                <img className="imageThumb" src={userObj.image} alt="not found" />
+                <h2>{userObj.firstName + " " + userObj.lastName}</h2>
+                <p>Email: {userObj.userEmail}</p>
+                <p>Password: {userObj.userPassword}</p>
+                <p>Membership Fee: {userObj.membershipFee}</p>
+                <p>Room #: {userObj.roomNumber}</p>
+                <p>Birthday: {userObj.birthday}</p>
+                {/* Roletype converted to string */}
+                <h4>Role: {userData.role_type}</h4>
               </div>
 
               <div className="expanded-grid-child-buttons">
@@ -78,27 +80,13 @@ function User({ props, shouldShow }) {
         :
 
         (
-          <div>
-            <div className={modalVisibility}>
-              <UpdateModal props={props} setModalVisibility={setModalVisibility}/>
-            </div>
+          <div> {/* COLLAPSED USER (LEFT SCROLL) */}
             <div className="collapsed-grid-container">
-              {/*image*/}
-        
-
-              {/*information*/}
               <div className="collapsed-grid-child-email">
-              <img className="imageThumb" src={props.image} alt="not found" />
-                <p>{props.first_name + " " + props.last_name}</p>
-                <p>{props.user_email}</p>
+              <img className="imageThumb" src={userData.image} alt="not found" />
+                <p>{userData.first_name + " " + userData.last_name}</p>
+                <p>{userData.user_email}</p>
               </div>
-
-              <div className="collapsed-grid-child-buttons">
-                {/*<button onClick={handleShow}>View</button>*/}
-                {/*<button className="editButton"><Link to="/update" state={{ data: userObj }}>Edit</Link></button>*/}
-                {/*<button onClick={handleUpdate} className="editButton">Edit</button>*/}
-              </div>
-
             </div>
           </div>
         )}

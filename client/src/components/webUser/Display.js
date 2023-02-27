@@ -87,7 +87,7 @@ function Display(props) {
             {userList.length > 0 ? (
               userList.map((ele, index) => (
                 <div key={index} className="userBlock" onClick={()=>setExpandedUser(ele)}>
-                  <User props={ele} shouldShow={false} />
+                  <User userData={ele} shouldShow={false} />
                 </div>
               ))
             ) : (
@@ -99,7 +99,7 @@ function Display(props) {
         </div>
 
         <div className="expandedView">
-            <User props={expandedUser} expandedUser={expandedUser} shouldShow={true} />
+            <User userData={expandedUser} shouldShow={true} />
         </div>
       </div>
 
