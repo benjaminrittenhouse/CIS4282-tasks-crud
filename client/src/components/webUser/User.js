@@ -50,7 +50,7 @@ function User({ props, shouldShow }) {
           <div>
 
             <div className={modalVisibility}>
-              <UpdateModal props={userObj} setModalVisibility={setModalVisibility}/>
+              <UpdateModal props={props} setModalVisibility={setModalVisibility}/>
             </div>
 
             <div className="expanded-grid-container">
@@ -80,7 +80,7 @@ function User({ props, shouldShow }) {
         (
           <div>
             <div className={modalVisibility}>
-              <UpdateModal props={userObj} setModalVisibility={setModalVisibility}/>
+              <UpdateModal props={props} setModalVisibility={setModalVisibility}/>
             </div>
             <div className="collapsed-grid-container">
               {/*image*/}

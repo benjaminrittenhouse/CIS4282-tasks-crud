@@ -5,6 +5,7 @@ import RoleTypes from '../webUser/RoleTypes';
 
 const UpdateModal = ({ props, setModalVisibility }) => {
 
+
     // hide / show modal
     // COOL: way to change state from a child component!!
     function handleVisibility() {
@@ -19,20 +20,22 @@ const UpdateModal = ({ props, setModalVisibility }) => {
 
     const [userData, setUserData] = useState(
         {
-            "webUserId": "",
-            "userEmail": "",
-            "firstName": "",
-            "lastName": "",
-            "userPassword": "",
-            "userPassword2": "",
-            "image": "",
-            "birthday": "",
-            "membershipFee": "",
-            "roomNumber": "",
-            "userRoleId": "",
+            "webUserId": props.web_user_id,
+            "userEmail": props.user_email,
+            "firstName": props.first_name,
+            "lastName": props.last_name,
+            "userPassword": props.user_password,
+            "userPassword2": props.user_password_2,
+            "image": props.image,
+            "birthday": props.birthday,
+            "membershipFee": props.membership_fee,
+            "roomNumber": props.room_number,
+            "userRoleId": props.user_role_id,
         }
     );
 
+    console.log("DATA BEFORE: ")
+    console.dir(userData);
 
     // error object
     const [errorObj, setErrorObj] = useState(
@@ -74,18 +77,19 @@ const UpdateModal = ({ props, setModalVisibility }) => {
 
 
     // set user data once
-    useEffect(() => {
-        setUserData(props);
-    }, []);
+    /*useEffect(() => {
+        // setUserData(props);
+    }, []);*/
 
-    console.log("User Data:");
-    console.dir(userData)
+
 
     async function updateUser() {
         try {
-
+            console.log("DATA: ")
+            console.dir(userData)
             const objToStr = new URLSearchParams(userData).toString();
             const str = `${process.env.REACT_APP_API_URL}/api/updateUser?${objToStr}`;
+            console.log("STR: " + str);
 
             const res = await fetch(str);
             const data = await res.json();
@@ -121,7 +125,7 @@ const UpdateModal = ({ props, setModalVisibility }) => {
                     <tr>
                         <td>Email</td>
                         <td>
-                            <input value={userData.userEmail} onChange=
+                            <input value={userData.user_email} onChange=
                                 {e => setUserData({ ...userData, userEmail: e.target.value })}
                             />
                         </td>
