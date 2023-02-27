@@ -18,3 +18,10 @@
     color: red;
     border: 3px solid red;
 }
+
+@media screen and (max-width: 1000px) {
+    .modalWindow {
+        top: 40%;
+        left: 10%;
+    }
+}

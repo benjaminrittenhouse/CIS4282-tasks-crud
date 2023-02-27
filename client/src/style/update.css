@@ -56,3 +56,16 @@
 #names {
     background-color: red;
 }
+
+@media screen and (max-width: 1000px) {
+    .updateShow {
+        border: 3px solid black;
+        background-color: #FBE4C4;
+        position: fixed;
+        z-index: 2;
+        left: 6%;
+        top: 25%;
+        border-radius: 10%;
+        width: 85%;
+    }
+}

@@ -68,3 +68,40 @@ body {
     padding-top: 1rem;
 
 }
+
+@media screen and (max-width: 1000px) {
+    .main {
+        text-align: center;
+        display: inline;
+    }   
+    
+    .expandedView {
+        width: 25rem;
+        margin-top: -4rem;
+    }
+
+    .userTable {
+        height: 35vh;
+        top: 10rem;
+        width: 1rem;
+    }
+
+    .tableBody {
+        width: 100%;
+    }
+
+    .view {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .App {
+       width: 100%;
+       border: 1px solid blue;
+       text-align: center;
+    }
+
+    .userTable, .expandedView {
+        display: inline-block;
+    }
+}
