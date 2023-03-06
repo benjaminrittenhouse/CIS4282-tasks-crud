@@ -3,6 +3,8 @@ import { Link } from "react-router-dom"
 import { useState, useEffect } from "react";
 import "../../style/update.css"
 
+import DbToObj from "./DbToObj"
+
 import UpdateModal from "./updateModal"
 
 function Task({ props }) {
@@ -27,16 +29,7 @@ function Task({ props }) {
   useEffect(() => {
   });
 
-  const taskObj =
-  {
-    "taskID": props.task_id,
-    "taskName": props.task_name,
-    "taskDesc": props.task_desc,
-    "taskPoints": props.task_points,
-    "targetDate": props.target_date,
-    "completionDate": props.completion_date,
-    "assignedWebUserID": props.assigned_web_user_id
-  }
+  const taskObj = DbToObj(props);
 
   return (
     <div className="userInfo">

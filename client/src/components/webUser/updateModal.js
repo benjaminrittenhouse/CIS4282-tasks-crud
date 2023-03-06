@@ -6,17 +6,12 @@ import DbToObj from "./DbToObj"
 import RoleTypes from '../webUser/RoleTypes';
 
 const UpdateModal = ({ props, setModalVisibility }) => {
-    console.log("PROPS UPDATE MODAL")
-    console.dir(props)
 
-    // hide / show modal
     // COOL: way to change state from a child component!!
     function handleVisibility() {
         setModalVisibility("updateHide");
     }
 
-    //  const location = useLocation();
-    // const {from} = props;
     const location = useLocation();
     // state message variable to keep track of which was sent most recently... either error object or webUser object
     const [updateMessage, setUpdateMessage] = useState("");
@@ -39,7 +34,7 @@ const UpdateModal = ({ props, setModalVisibility }) => {
 
     // set user data once
     useEffect(() => {
-        setUserData(DbToObj(props));
+        setUserData(props);
     }, []);
 
 

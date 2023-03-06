@@ -29,48 +29,16 @@ const UpdateModal = ({ props, setModalVisibility, assignedUser }) => {
         handleSearch(buttonVal)
     }
 
-    //  const location = useLocation();
-    // const {from} = props;
     const location = useLocation();
     // state message variable to keep track of which was sent most recently... either error object or webUser object
     const [updateMessage, setUpdateMessage] = useState("");
 
-    const [taskData, setTaskData] = useState(
-        {
-            // "taskID": "",
-            "taskName": "",
-            "taskDesc": "",
-            "taskPoints": "",
-            "targetDate": "",
-            "completionDate": "",
-            "assignedWebUserID": "",
-        }
-    );
+    const [taskData, setTaskData] = useState({});
 
-
-    const [errorObj, setErrorObj] = useState(
-        {
-            "taskID": "",
-            "taskName": "",
-            "taskDesc": "",
-            "taskPoints": "",
-            "targetDate": "",
-            "completionDate": "",
-            "assignedWebUserID": "",
-        }
-    );
+    const [errorObj, setErrorObj] = useState({});
 
     // used to set error object back to nothing
-    const emptyData = {
-        "taskID": "",
-        "taskName": "",
-        "taskDesc": "",
-        "taskPoints": "",
-        "targetDate": "",
-        "completionDate": "",
-        "assignedWebUserID": "",
-
-    }
+    const emptyData = {}
 
     const setProp = (obj, propName, propValue) => {
         var o = Object.assign({}, obj);

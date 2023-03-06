@@ -20,17 +20,7 @@ function Insert(props) {
         handleSearch(buttonVal)
     }
     
-    const [taskData, setTaskData] = useState(
-        {
-            // "taskID": "",
-            "taskName": "",
-            "taskDesc": "",
-            "taskPoints": "",
-            "targetDate": "",
-            "completionDate": "",
-            "assignedWebUserID": "",
-        }
-    );
+    const [taskData, setTaskData] = useState({});
 
 
     function testData(e){
@@ -40,29 +30,11 @@ function Insert(props) {
 
 
     // error object
-    const [errorObj, setErrorObj] = useState(
-        {
-            "taskID": "",
-            "taskName": "",
-            "taskDesc": "",
-            "taskPoints": "",
-            "targetDate": "",
-            "completionDate": "",
-            "assignedWebUserID": "",
-        }
-    )
+    const [errorObj, setErrorObj] = useState({})
 
 
     // used to set error object back to nothing
-    const emptyData = {
-        "taskID": "",
-        "taskName": "",
-        "taskDesc": "",
-        "taskPoints": "",
-        "targetDate": "",
-        "completionDate": "",
-        "assignedWebUserID": "",
-    }
+    const emptyData = {}
 
     const setProp = (obj, propName, propValue) => {
         var o = Object.assign({}, obj);

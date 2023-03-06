@@ -1,7 +1,6 @@
 import { Routes, Route, Link } from 'react-router-dom';
 import Home from './components/Home';
 import Blog from './components/Blog';
-import Update from './components/webUser/Update'
 import Insert from './components/webUser/Insert';
 import InsertTask from './components/tasks/Insert'
 import Login from './components/profile/Login'
@@ -44,7 +43,6 @@ function SPA() {
                 <Route path="insert" element={<Insert />} />
                 <Route path="tasks" element={<Tasks />} />
                 <Route path="insertTask" element={<InsertTask />} />
-                <Route path="update" element={<Update />} />
                 <Route path="login" element={<Login />} />
                 <Route path="logout" element={<LogoutPage />} />
                 <Route path="viewProfile" element={<ViewProfile />} />

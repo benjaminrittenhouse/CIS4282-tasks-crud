@@ -55,7 +55,7 @@ function User({ userData, shouldShow }) {
           <div> {/* EXPANDED USER (RIGHT SIDE) */}
 
             <div className={modalVisibility}>
-              <UpdateModal props={userData} setModalVisibility={setModalVisibility} />
+              <UpdateModal props={userObj} setModalVisibility={setModalVisibility} />
             </div>
 
             <div className="expanded-grid-container">
@@ -87,14 +87,14 @@ function User({ userData, shouldShow }) {
           <div> {/* COLLAPSED USER (LEFT SCROLL) */}
 
             <div className={modalVisibility}>
-              <UpdateModal props={userData} setModalVisibility={setModalVisibility} />
+              <UpdateModal props={userObj} setModalVisibility={setModalVisibility} />
             </div>
             <div className="collapsed-grid-container">
               <div className="collapsed-grid-child-email">
-                <img className="imageThumb" src={userData.image} alt="not found" />
+                <img className="imageThumb" src={userObj.image} alt="not found" />
                 <button onClick={handleUpdate} className="editButton">Edit</button>
-                <p>{userData.first_name + " " + userData.last_name}</p>
-                <p>{userData.user_email}</p>
+                <p>{userObj.firstName + " " + userObj.lastName}</p>
+                <p>{userObj.userEmail}</p>
               </div>
             </div>
           </div>
