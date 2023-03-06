@@ -41,9 +41,17 @@
     padding-left: 2rem;
 }
 
-.userInfo {
-}
-
 @media screen and (max-width: 1000px) {
-    
+    .expanded-grid-container {
+        width: 22rem;
+    }
+
+    .expanded-grid-child-buttons {
+        margin-top: -20rem;
+        padding-left: 1rem;
+    }
+
+    .expanded-grid-child-buttons .editButton {
+        margin: 5px;
+    }
 }

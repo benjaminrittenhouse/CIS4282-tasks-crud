@@ -4,72 +4,30 @@ import RoleTypes from '../../components/webUser/RoleTypes'
 function Insert(props) {
 
     const [userRoleId, setUserRoleId] = useState();
-    // state message variable to keep track of which was sent most recently... either error object or webUser object
     const [insertMessage, setInsertMessage] = useState("");
-
-    // Object (State Variable) that holds all the user entered data. Each object 
-    // is linked with a textbox for user input. 
-    const [userData, setUserData] = useState(
-        {
-           // "webUserId": "",
-            "userEmail": "",
-            "userPassword": "",
-            "userPassword2": "",
-            "image": "",
-            "birthday": "",
-            "membershipFee": "",
-            "userRoleId": "",
-        }
-    );
-
-    // error object
-    const [errorObj, setErrorObj] = useState(
-        {
-            "webUserId": "",
-            "userEmail": "",
-            "userPassword": "",
-            "userPassword2": "",
-            "image": "",
-            "birthday": "",
-            "membershipFee": "",
-            "userRoleId": "",
-            "errorMsg": ""
-        }
-    )
+    const [userData, setUserData] = useState({});
+    const [errorObj, setErrorObj] = useState({})
 
 
     // used to set error object back to nothing
-    const emptyData = {
-            "userEmail": "",
-            "userPassword": "",
-            "userPassword2": "",
-            "image": "",
-            "birthday": "",
-            "membershipFee": "",
-            "userRoleId": "",
-    }
+    const emptyData = {}
 
-    // This is shorter, makes a copy (then changes a value of a property of 
-    // the copy) using new ES6 Object.assign function.
+    // set prop helper method
     const setProp = (obj, propName, propValue) => {
         var o = Object.assign({}, obj);
         o[propName] = propValue;
         return o;
     };
 
-    // State variable to hold the Role List (gotten from getRolesAPI.jsp) 
-    // Role List populates the <select tag> for the UI.
     const [roleList, setRoleList] = useState([]);
 
-    // Object (State Variable) that holds all the error messages - field level 
-    // and form/record level (errorMsg).
     const [sqlMessage, setSqlMessage] = useState("");
 
 
     //an asynchronous function that will either return the API data or an error
     async function insertUser() {
         try {
-            // TEST OBJECT URL
+
             const objToStr = new URLSearchParams(userData).toString();
             const str = `${process.env.REACT_APP_API_URL}/api/insertUser?${objToStr}`;
 
@@ -113,12 +71,37 @@ function Insert(props) {
                         <td>
                             <input placeholder ="example@mail.com" value={userData.userEmail} onChange=
                                 {e => setUserData({...userData, userEmail: e.target.value})}
-                            />
+                            /> 
                         </td>
                         <td className="error">
                             {errorObj.userEmail}
                         </td>
                     </tr>
+
+                    <tr>
+                        <td>First Name</td>
+                        <td>
+                            <input placeholder ="Johnny" value={userData.firstName} onChange=
+                                {e => setUserData({...userData, firstName: e.target.value})}
+                            />
+                        </td>
+                        <td className="error">
+                            {errorObj.firstName}
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>Last Name</td>
+                        <td>
+                            <input placeholder ="Appleseed" value={userData.lastName} onChange=
+                                {e => setUserData({...userData, lastName: e.target.value})}
+                            />
+                        </td>
+                        <td className="error">
+                            {errorObj.firstName}
+                        </td>
+                    </tr>
+
                     <tr>
                         <td>Password</td>
                         <td>

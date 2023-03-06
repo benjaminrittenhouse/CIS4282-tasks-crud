@@ -28,7 +28,7 @@ validateUtils.validateDate = function (dateStr, reqd) {
             var match = dateRegex.exec(dateStr);
             console.log("Match? " + match);
             if (!match) {
-              // return "";
+              return "Invalid date format";
             }
 
             var month = match[1].padStart(2, '0');
@@ -73,7 +73,7 @@ validateUtils.validateFloat = function (float, reqd) {
     }
 }
 
-// helper for format currency (NOT IN USE)
+/* helper for format currency (NOT IN USE)
 function isFloat(value) {
     var regex = /^\d+(?:\.\d{0,2})$/;
     if (regex.test(value)) {
@@ -87,7 +87,7 @@ function isFloat(value) {
 function isDate(date) {
     var regex = /^(0?[1-9]|1[0-2])[/](0?[1-9]|[12][0-9]|3[01])[/](19|20)\d\d$/;
     return regex.test(date);
-}
+}*/
 
 // verify email with regex
 validateUtils.validateEmail = function (email, reqd) {

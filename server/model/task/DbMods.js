@@ -28,8 +28,6 @@ DbMods.formatTask = function(taskObj){
 
 // validate web user 
 DbMods.validateTask = function(taskObj){
-    console.log("Validating taskObj:")
-    console.dir(taskObj);
     var errorObj = {};
     errorObj.isError = "true";
 

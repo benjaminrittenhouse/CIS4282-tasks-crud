@@ -2,6 +2,8 @@ const express = require("express");
 const router = express.Router();
 const db = require("../dbUtils/DbConn");
 const cors = require("cors");
+const QueryToObj = require("../model/webUser/QueryToObj")
+const ErrorObj = require("../model/webUser/ErrorObj")
 
 const DbMods = require("../model/webUser/DbMods");
 
@@ -14,32 +16,12 @@ router.get("/insertUser", (req, res) => {
   var errors = false;
   // establish webUser object to take in URL query results
   // http://localhost:5000/api/insertUser?webUserId=&userEmail=asdf&userPassword=asdf&userPassword2=asdf&image=asdf&birthday=2020-05-05&membershipFee=100&userRoleId=asdf&errorMsg=
-  var webUser = {
-    "webUserId": req.query.webUserId,
-    "userEmail": req.query.userEmail,
-    "userPassword": req.query.userPassword,
-    "userPassword2": req.query.userPassword2,
-    "image": req.query.image,
-    "birthday": req.query.birthday,
-    "membershipFee": req.query.membershipFee,
-    "roomNumber": req.query.roomNumber,
-    "userRoleId": req.query.userRoleId,
-  }
+  var webUser = QueryToObj(req)
 
+  console.log("Web user: ")
+  console.dir(webUser)
   // establish error object to note any formatting errors from values inserted
-  var errorObj = {
-    "isError": "true",
-    "webUserId": "",
-    "userEmail": "",
-    "userPassword": "",
-    "userPassword2": "",
-    "image": "",
-    "birthday": "",
-    "membershipFee": "",
-    "roomNumber": "",
-    "userRoleId": "",
-    "errorMsg": ""
-  }
+  var errorObj = ErrorObj();
 
   // validate insert
   var tempObj = DbMods.validateWebUser(webUser);
@@ -56,8 +38,8 @@ router.get("/insertUser", (req, res) => {
   if (!errors) {
     console.log("no errors! lets insert");
     try {     
-      const sqlIns = "INSERT INTO web_user (user_email, user_password, image, membership_fee, birthday, room_number, user_role_id) VALUES (?,?,?,?,?,?,?)";
-      db.query(sqlIns, [webUser.userEmail, webUser.userPassword, webUser.image, webUser.membershipFee, webUser.birthday, webUser.roomNumber, webUser.userRoleId], (err, req, result) => {
+      const sqlIns = "INSERT INTO web_user (user_email, first_name, last_name, user_password, image, membership_fee, birthday, room_number, user_role_id) VALUES (?,?,?,?,?,?,?,?,?)";
+      db.query(sqlIns, [webUser.userEmail, webUser.firstName, webUser.lastName, webUser.userPassword, webUser.image, webUser.membershipFee, webUser.birthday, webUser.roomNumber, webUser.userRoleId], (err, req, result) => {
         if (err) {
           // we get database error from sqlMessage and put it into our error object
           console.log("SQL MSG: " + err.sqlMessage);

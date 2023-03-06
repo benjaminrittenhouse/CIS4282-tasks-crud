@@ -4,6 +4,8 @@ import { useState, useEffect } from "react";
 import UpdateModal from "./updateModal"
 import "../../style/update.css"
 
+import DbToObj from "./DbToObj"
+
 //This is a React Component that will be used to display the information of a SINGLE user.
 //It will take in an propsect "props".
 function User({ userData, shouldShow }) {
@@ -27,7 +29,7 @@ function User({ userData, shouldShow }) {
   useEffect(() => {
   });
 
-  const userObj =
+  /*const userObj =
   {
     "webUserId": userData.web_user_id,
     "userEmail": userData.user_email,
@@ -40,7 +42,9 @@ function User({ userData, shouldShow }) {
     "membershipFee": userData.membership_fee,
     "roomNumber": userData.room_number,
     "userRoleId": userData.user_role_id,
-  }
+  }*/
+
+  const userObj = DbToObj(userData);
 
 
   return (
@@ -51,7 +55,7 @@ function User({ userData, shouldShow }) {
           <div> {/* EXPANDED USER (RIGHT SIDE) */}
 
             <div className={modalVisibility}>
-              <UpdateModal props={userData} setModalVisibility={setModalVisibility}/>
+              <UpdateModal props={userData} setModalVisibility={setModalVisibility} />
             </div>
 
             <div className="expanded-grid-container">
@@ -81,9 +85,14 @@ function User({ userData, shouldShow }) {
 
         (
           <div> {/* COLLAPSED USER (LEFT SCROLL) */}
+
+            <div className={modalVisibility}>
+              <UpdateModal props={userData} setModalVisibility={setModalVisibility} />
+            </div>
             <div className="collapsed-grid-container">
               <div className="collapsed-grid-child-email">
-              <img className="imageThumb" src={userData.image} alt="not found" />
+                <img className="imageThumb" src={userData.image} alt="not found" />
+                <button onClick={handleUpdate} className="editButton">Edit</button>
                 <p>{userData.first_name + " " + userData.last_name}</p>
                 <p>{userData.user_email}</p>
               </div>

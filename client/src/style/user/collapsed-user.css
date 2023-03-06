@@ -42,3 +42,21 @@
 .imageThumb {
     width: 50%
 }
+
+@media screen and (max-width: 1000px) {
+    .imageThumb {
+        width: 100%;
+        height: 100%;
+        border-radius: 15px;
+    }
+
+    .collapsed-grid-child-email {
+        width: 5rem;
+        display: flex;
+    }
+
+    .collapsed-grid-container {
+        width: 100%;
+        margin-left: -3rem;
+    }
+}
