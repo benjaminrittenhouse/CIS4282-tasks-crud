@@ -1,6 +1,8 @@
 import { React, useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 
+import DbToObj from "./DbToObj"
+
 import RoleTypes from '../webUser/RoleTypes';
 
 const UpdateModal = ({ props, setModalVisibility }) => {
@@ -19,53 +21,14 @@ const UpdateModal = ({ props, setModalVisibility }) => {
     // state message variable to keep track of which was sent most recently... either error object or webUser object
     const [updateMessage, setUpdateMessage] = useState("");
 
-    const [userData, setUserData] = useState(
-        {
-            "webUserId": props.web_user_id,
-            "userEmail": props.user_email,
-            "firstName": props.first_name,
-            "lastName": props.last_name,
-            "userPassword": props.user_password,
-            "userPassword2": props.user_password_2,
-            "image": props.image,
-            "birthday": props.birthday,
-            "membershipFee": props.membership_fee,
-            "roomNumber": props.room_number,
-            "userRoleId": props.user_role_id,
-        }
-    );
+
+    const [userData, setUserData] = useState({});
 
     // error object
-    const [errorObj, setErrorObj] = useState(
-        {
-            "webUserId": "",
-            "userEmail": "",
-            "firstName": "",
-            "lastName" : "",
-            "userPassword": "",
-            "userPassword2": "",
-            "image": "",
-            "birthday": "",
-            "membershipFee": "",
-            "roomNumber": "",
-            "userRoleId": "",
-            "errorMsg": ""
-        }
-    )
+    const [errorObj, setErrorObj] = useState({})
 
     // used to set error object back to nothing
-    const emptyData = {
-        "userEmail": "",
-        "userPassword": "",
-        "userPassword2": "",
-        "firstName": "",
-        "lastName" : "",
-        "image": "",
-        "birthday": "",
-        "membershipFee": "",
-        "roomNumber": "",
-        "userRoleId": "",
-    }
+    const emptyData = {}
 
     const setProp = (obj, propName, propValue) => {
         var o = Object.assign({}, obj);
@@ -75,16 +38,15 @@ const UpdateModal = ({ props, setModalVisibility }) => {
 
 
     // set user data once
-    /*useEffect(() => {
-        // setUserData(props);
-    }, []);*/
+    useEffect(() => {
+        setUserData(DbToObj(props));
+    }, []);
 
 
 
     async function updateUser() {
         try {
-            console.log("DATA: ")
-            console.dir(userData)
+
             const objToStr = new URLSearchParams(userData).toString();
             const str = `${process.env.REACT_APP_API_URL}/api/updateUser?${objToStr}`;
             console.log("STR: " + str);
@@ -123,7 +85,7 @@ const UpdateModal = ({ props, setModalVisibility }) => {
                     <tr>
                         <td>Email</td>
                         <td>
-                            <input value={userData.user_email} onChange=
+                            <input value={userData.userEmail} onChange=
                                 {e => setUserData({ ...userData, userEmail: e.target.value })}
                             />
                         </td>
@@ -131,6 +93,32 @@ const UpdateModal = ({ props, setModalVisibility }) => {
                             {errorObj.userEmail}
                         </td>
                     </tr>
+
+                    <tr>
+                        <td>First Name</td>
+                        <td>
+                            <input value={userData.firstName} onChange=
+                                {e => setUserData({ ...userData, firstName: e.target.value })}
+                            />
+                        </td>
+                        <td className="error">
+                            {errorObj.firstName}
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>Last Name</td>
+                        <td>
+                            <input value={userData.lastName} onChange=
+                                {e => setUserData({ ...userData, lastName: e.target.value })}
+                            />
+                        </td>
+                        <td className="error">
+                            {errorObj.lastName}
+                        </td>
+                    </tr>
+
+
                     <tr>
                         <td>Password</td>
                         <td>

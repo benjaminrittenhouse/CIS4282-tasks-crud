@@ -91,7 +91,7 @@ function isDate(date) {
 
 // verify email with regex
 validateUtils.validateEmail = function (email, reqd) {
-    if (reqd && email == null) {
+    if (reqd && (email === null || email === "")) {
         return "Please enter an email (required)";
     }
 

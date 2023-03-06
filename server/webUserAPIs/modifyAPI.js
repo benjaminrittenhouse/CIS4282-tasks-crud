@@ -18,8 +18,6 @@ router.get("/insertUser", (req, res) => {
   // http://localhost:5000/api/insertUser?webUserId=&userEmail=asdf&userPassword=asdf&userPassword2=asdf&image=asdf&birthday=2020-05-05&membershipFee=100&userRoleId=asdf&errorMsg=
   var webUser = QueryToObj(req)
 
-  console.log("Web user: ")
-  console.dir(webUser)
   // establish error object to note any formatting errors from values inserted
   var errorObj = ErrorObj();
 
@@ -71,31 +69,9 @@ router.get("/insertUser", (req, res) => {
 router.get("/updateUser", (req, res) => {
   var errors = false;
   
-  var webUser = {
-    "webUserId": req.query.webUserId,
-    "userEmail": req.query.userEmail,
-    "userPassword": req.query.userPassword,
-    "userPassword2": req.query.userPassword2,
-    "image": req.query.image,
-    "birthday": req.query.birthday,
-    "roomNumber": req.query.roomNumber,
-    "membershipFee": req.query.membershipFee,
-    "userRoleId": req.query.userRoleId,
-  }
+  var webUser = QueryToObj(req)
 
-  var errorObj = {
-    "isError": "true",
-    "webUserId": "",
-    "userEmail": "",
-    "userPassword": "",
-    "userPassword2": "",
-    "image": "",
-    "birthday": "",
-    "membershipFee": "",
-    "roomNumber": "",
-    "userRoleId": "",
-    "errorMsg": ""
-  }
+  var errorObj = ErrorObj();
 
   // validate insert
   var tempObj = DbMods.validateWebUser(webUser);
@@ -112,9 +88,9 @@ router.get("/updateUser", (req, res) => {
   if (!errors) {
     console.log("no errors! lets update");
     try {     
-      const sqlIns = "UPDATE web_user SET user_email=?, user_password=?, image=?, membership_fee=?, birthday=?, room_number=?, user_role_id=?" 
+      const sqlIns = "UPDATE web_user SET user_email=?, first_name=?, last_name=?, user_password=?, image=?, membership_fee=?, birthday=?, room_number=?, user_role_id=?" 
       + " WHERE web_user_id=?";
-      const obj = [webUser.userEmail, webUser.userPassword, webUser.image, webUser.membershipFee, webUser.birthday, webUser.roomNumber, webUser.userRoleId, webUser.webUserId];
+      const obj = [webUser.userEmail, webUser.firstName, webUser.lastName, webUser.userPassword, webUser.image, webUser.membershipFee, webUser.birthday, webUser.roomNumber, webUser.userRoleId, webUser.webUserId];
       db.query(sqlIns, obj, (err, req, result) => {
         if (err) {
           // we get database error from sqlMessage and put it into our error object
