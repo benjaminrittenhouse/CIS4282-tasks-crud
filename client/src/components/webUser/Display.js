@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import User from "./User.js";
 import DeleteModal from "./DeleteModal.js";
+import UserDetail from "../webUser/userDetail/UserDetail";
+
 import UserBox from "./userList/UserBox"
 
 import "../../style/user/collapsed-user.css";
@@ -86,11 +88,16 @@ function Display(props) {
 
     <div className="displayView">
 
-    
+    {/* Scrollable User List */}
     <div className="scrollableContainer">
       <div className="userListContainer">
-        <UserList users={userList} />
+        <UserList users={userList} setExpandedUser={setExpandedUser} />
       </div>
+    </div>
+
+    {/* Expanded User View */}
+    <div className="expandedUserView">
+        <UserDetail userData={expandedUser}/>
     </div>
 
     </div>

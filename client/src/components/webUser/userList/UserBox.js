@@ -5,7 +5,7 @@ import DbToObj from '../DbToObj';
 import './UserBox.css';
 
 
-function UserBox({ userData }) {
+function UserBox({ userData, setExpandedUser }) {
 
 
 
@@ -13,7 +13,7 @@ function UserBox({ userData }) {
   const userObj = DbToObj(userData);
 
   return (
-    <Box onClick={()=>console.log("")}className="userBox" display="flex" alignItems="center" justifyContent="space-between" p={2}>
+    <Box onClick={()=>setExpandedUser(userObj)}className="userBox" display="flex" alignItems="center" justifyContent="space-between" p={2}>
       <Box display="flex" alignItems="center">
         <Avatar src={userObj.image} alt={`${userObj.firstName} ${userObj.lastName}'s avatar`} />
         <Box ml={2}>
