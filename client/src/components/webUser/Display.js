@@ -35,6 +35,8 @@ function Display(props) {
       const data = await res.json();
 
       setUserList(data);
+      console.log("user list")
+      console.dir(userList)
     } catch (err) {
 
       console.log(err);
@@ -87,7 +89,6 @@ function Display(props) {
           <div className="tableBody">
             {userList.length > 0 ? (
               userList.map((ele, index) => (
-               
                 <div key={index} className="userBlock" onClick={()=>setExpandedUser(ele)}>
                   <UserBox userData={ele} />
                 </div>
