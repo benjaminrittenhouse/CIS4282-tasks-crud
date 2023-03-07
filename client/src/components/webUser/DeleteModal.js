@@ -1,6 +1,6 @@
 import React from 'react'
 
-const DeleteModal = ({ open, task, onOkClicked, onClose }) => {
+function DeleteModal({ open, task, onOkClicked, onClose }) {
     if(!open) return null
 
   return (

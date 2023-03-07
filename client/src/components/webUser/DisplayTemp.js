@@ -87,9 +87,8 @@ function Display(props) {
           <div className="tableBody">
             {userList.length > 0 ? (
               userList.map((ele, index) => (
-               
                 <div key={index} className="userBlock" onClick={()=>setExpandedUser(ele)}>
-                  <UserBox userData={ele} />
+                  <UserBox />
                 </div>
               ))
             ) : (

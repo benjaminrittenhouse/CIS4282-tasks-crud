@@ -29,21 +29,6 @@ function User({ userData, shouldShow }) {
   useEffect(() => {
   });
 
-  /*const userObj =
-  {
-    "webUserId": userData.web_user_id,
-    "userEmail": userData.user_email,
-    "firstName": userData.first_name,
-    "lastName": userData.last_name,
-    "userPassword": userData.user_password,
-    "userPassword2": userData.user_password,
-    "image": userData.image,
-    "birthday": userData.birthday,
-    "membershipFee": userData.membership_fee,
-    "roomNumber": userData.room_number,
-    "userRoleId": userData.user_role_id,
-  }*/
-
   const userObj = DbToObj(userData);
 
 

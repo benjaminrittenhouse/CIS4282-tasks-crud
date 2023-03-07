@@ -9,8 +9,14 @@ import ViewProfile from './components/profile/ViewProfile';
 
 import logo from "./img/logo192.png"
 
-import Display from './components/webUser/Display';
+import Display from './components/webUser/DisplayTemp';
 import Tasks from './components/tasks/Display'
+
+import '@fontsource/roboto/300.css';
+import '@fontsource/roboto/400.css';
+import '@fontsource/roboto/500.css';
+import '@fontsource/roboto/700.css';
+
 
 function SPA() {
     return (

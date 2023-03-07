@@ -5,7 +5,7 @@ import DbToObj from "./DbToObj"
 
 import RoleTypes from '../webUser/RoleTypes';
 
-const UpdateModal = ({ props, setModalVisibility }) => {
+function UpdateModal({ props, setModalVisibility }) {
 
     // COOL: way to change state from a child component!!
     function handleVisibility() {
