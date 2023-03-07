@@ -13,7 +13,7 @@ function UserBox({ userData }) {
   const userObj = DbToObj(userData);
 
   return (
-    <Box className="box-style" display="flex" alignItems="center" justifyContent="space-between" p={2}>
+    <Box onClick={()=>console.log("")}className="userBox" display="flex" alignItems="center" justifyContent="space-between" p={2}>
       <Box display="flex" alignItems="center">
         <Avatar src={userObj.image} alt={`${userObj.firstName} ${userObj.lastName}'s avatar`} />
         <Box ml={2}>
@@ -21,7 +21,7 @@ function UserBox({ userData }) {
         </Box>
       </Box>
       <Box ml="auto">
-        <IconButton aria-label="edit" onClick={handleUpdate}>
+        <IconButton aria-label="edit" >
           <Edit />
         </IconButton>
         <IconButton aria-label="delete">

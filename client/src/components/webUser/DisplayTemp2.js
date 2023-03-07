@@ -11,9 +11,6 @@ import "../../style/user/user-table.css"
 import "../../style/update.css"
 import "../../style/modalWindow.css"
 
-import "../webUser/userList/UserList.css"
-import UserList from "./userList/UserList.js";
-
 
 
 function Display(props) {
@@ -83,18 +80,31 @@ function Display(props) {
   }
 
   return (
+    <div className="view">
+      <h2 className="heading">Web User Display and Delete</h2>
+      <div className="main">
+        
 
-    <div className="displayView">
+        <div className="userTable">
+          <div className="tableBody">
+            {userList.length > 0 ? (
+              userList.map((ele, index) => (
+                  <UserBox userData={ele}  key={index} onClick={console.log("yo")}/>
+              ))
+            ) : (
+              <div>
+                <p>No Users Found</p>
+              </div>
+            )}
+          </div>
+        </div>
 
-    
-    <div className="scrollableContainer">
-      <div className="userListContainer">
-        <UserList users={userList} />
+        <div className="expandedView">
+            <User userData={expandedUser} shouldShow={true} />
+        </div>
       </div>
-    </div>
 
     </div>
-
   );
 } // end of Display() function
 

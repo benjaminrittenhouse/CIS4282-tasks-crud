@@ -1,0 +1,40 @@
+.userList {
+    width: 100%;
+    z-index: -1;
+    max-height: 80vh;
+    margin: auto;
+}
+
+.displayView {
+    margin-top: 1rem;
+    margin-left: 1rem;
+}
+
+.userListContainer {
+    /* nothing */
+}
+
+.scrollableContainer {
+    width: 30%;
+    max-height: 50%;
+    overflow-y: auto;
+    display: flex;
+    justify-content: center;
+ }
+
+ .scrollableContainer::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  .scrollableContainer::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+  
+  .scrollableContainer::-webkit-scrollbar-thumb {
+    background-color: white;
+    border-radius: 25px;
+  }
+  
+  
+  
+  
