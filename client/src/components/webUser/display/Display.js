@@ -95,7 +95,7 @@ function Display(props) {
       {/* Scrollable User List */}
       <div className="scrollableContainer">
         <div className="userListContainer">
-          <UserList users={userList} setExpandedUser={setExpandedUser} setIsEditing={setIsEditing} />
+          <UserList processDelete={processDelete} users={userList} setExpandedUser={setExpandedUser} setIsEditing={setIsEditing} />
         </div>
       </div>
 

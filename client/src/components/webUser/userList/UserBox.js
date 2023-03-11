@@ -5,7 +5,7 @@ import DbToObj from '../DbToObj';
 import './UserBox.css';
 
 
-function UserBox({ userData, setExpandedUser, setIsEditing }) {
+function UserBox({ userData, setExpandedUser, setIsEditing, processDelete, index}) {
 
   const userObj = DbToObj(userData);
 
@@ -13,9 +13,10 @@ function UserBox({ userData, setExpandedUser, setIsEditing }) {
       setIsEditing(true)
   }
 
-  function handleDelete(){
-    // tbd
-}
+  async function handleDelete() {
+    console.log("deleting: " + userObj.webUserId + " at " + index);
+    await processDelete(userObj.webUserId, index);
+  }
 
   function handleClick() {
       console.log("user:")

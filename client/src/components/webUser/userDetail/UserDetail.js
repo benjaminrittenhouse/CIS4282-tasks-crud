@@ -34,6 +34,9 @@ const UserDetail = ({ userData }) => {
             {userData.userEmail}
           </Typography>
           <Typography variant="subtitle1" component="div">
+            <span style={{ fontWeight: "bold" }}>ID: </span>{userData.webUserId}
+          </Typography>
+          <Typography variant="subtitle1" component="div">
             <span style={{ fontWeight: "bold" }}>Password: </span>{userData.userPassword}
           </Typography>
           <Typography variant="subtitle1" component="div">
