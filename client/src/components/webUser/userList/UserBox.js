@@ -5,12 +5,12 @@ import DbToObj from '../DbToObj';
 import './UserBox.css';
 
 
-function UserBox({ userData, setExpandedUser }) {
+function UserBox({ userData, setExpandedUser, setIsEditing }) {
 
   const userObj = DbToObj(userData);
 
   function handleEdit(){
-      
+      setIsEditing(true)
   }
 
   function handleClick() {
@@ -20,7 +20,7 @@ function UserBox({ userData, setExpandedUser }) {
   }
 
   return (
-      <Box onClick={handleClick}className="userBox" display="flex" alignItems="center" justifyContent="space-between" p={2}>
+      <Box onClick={handleClick} className="userBox" display="flex" alignItems="center" justifyContent="space-between" p={2}>
         <Box display="flex" alignItems="center">
           <Avatar src={userObj.image} alt={`${userObj.firstName} ${userObj.lastName}'s avatar`} />
           <Box ml={2}>

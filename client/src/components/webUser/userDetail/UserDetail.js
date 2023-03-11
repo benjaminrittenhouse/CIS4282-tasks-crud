@@ -6,9 +6,6 @@ const UserDetail = ({ userData }) => {
   const fullName = userData.firstName + " " + userData.lastName;
   const birthday = "Birthday: " + userData.birthday;
 
-  console.log("user data");
-  console.dir(userData)
-
   return (
     <Card className="userDetail">
       <CardMedia

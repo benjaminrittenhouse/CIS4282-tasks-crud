@@ -17,6 +17,7 @@ import "./scrollableContainer.css"
 
 import "../../webUser/userList/UserList.css"
 import UserList from "../userList/UserList.js";
+import Edit from "../Edit"
 
 
 
@@ -29,6 +30,9 @@ function Display(props) {
   const [clickedUser, setClickedUser] = useState({});
   const [okClicked, setOkClicked] = useState(false);
   const [clickIndex, setClickIndex] = useState();
+
+  const [isEditing, setIsEditing] = useState(false);
+
 
   const [expandedUser, setExpandedUser] = useState({})
 
@@ -91,13 +95,13 @@ function Display(props) {
       {/* Scrollable User List */}
       <div className="scrollableContainer">
         <div className="userListContainer">
-          <UserList users={userList} setExpandedUser={setExpandedUser} />
+          <UserList users={userList} setExpandedUser={setExpandedUser} setIsEditing={setIsEditing} />
         </div>
       </div>
 
       {/* Expanded User View */}
       <div className="expandedUserView">
-        <UserDetail userData={expandedUser} />
+      {isEditing ? <Edit props={expandedUser} /> : <UserDetail userData={expandedUser} />}
       </div>
 
     </div>

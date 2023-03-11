@@ -3,7 +3,7 @@ import { List, ListItem, ListItemAvatar, Avatar, ListItemText } from '@mui/mater
 import UserBox from "./UserBox"
 import "../userList/UserList.css"
 
-const UserList = ({ users, setExpandedUser }) => {
+const UserList = ({ users, setExpandedUser, setIsEditing }) => {
 
   function handleClick() {
     console.log("yo from userLIst")
@@ -12,7 +12,7 @@ const UserList = ({ users, setExpandedUser }) => {
   return (
     <List className="userList">
       {users.map((user, index) => (
-          <UserBox userData={user} setExpandedUser={setExpandedUser} />
+          <UserBox userData={user} setExpandedUser={setExpandedUser} setIsEditing={setIsEditing} />
       ))}
     </List>
   );

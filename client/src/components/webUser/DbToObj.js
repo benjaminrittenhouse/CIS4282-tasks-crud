@@ -12,6 +12,7 @@ function DbToObj(db_user){
     "membershipFee": db_user.membership_fee,
     "roomNumber": db_user.room_number,
     "userRoleId": db_user.user_role_id,
+    "roleType": db_user.role_type,
   }
 
   return userObj
