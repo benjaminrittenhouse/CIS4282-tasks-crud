@@ -1,3 +1,6 @@
 .expandedUserView {
     width: 69%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

@@ -13,6 +13,10 @@ function UserBox({ userData, setExpandedUser, setIsEditing }) {
       setIsEditing(true)
   }
 
+  function handleDelete(){
+    // tbd
+}
+
   function handleClick() {
       console.log("user:")
       console.dir(userObj)
@@ -31,7 +35,7 @@ function UserBox({ userData, setExpandedUser, setIsEditing }) {
           <IconButton aria-label="edit" onClick={handleEdit}>
             <Edit />
           </IconButton>
-          <IconButton aria-label="delete">
+          <IconButton aria-label="delete" onClick={handleDelete}>
             <Delete />
           </IconButton>
         </Box>

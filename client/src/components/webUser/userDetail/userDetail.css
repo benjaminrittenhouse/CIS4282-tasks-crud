@@ -1,9 +1,27 @@
 .userDetail {
-    width: 100%;
-    height: 100%;
+    width: 75%;
     padding: 1rem;
     margin-left: 1%;
 }
+
+.userDetail .imgAndName {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.userDetail .imgAndName .name {
+    margin-left: 1rem;
+}
+
+.userDetail .userDetail__content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 1rem;
+}
+
 
 .userDetail .userDetail__media {
     border-radius: 33px;

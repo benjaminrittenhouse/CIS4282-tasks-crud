@@ -187,6 +187,7 @@ function Edit({ props, setIsEditing }) {
                         <td>
                             <RoleTypes
                                 value={props.userRoleId}
+                                className="roleTypes"
                                 getUserRoleId={(u) => setUserData(setProp(userData, "userRoleId", u))}
                             />
                         </td>

@@ -41,7 +41,7 @@ function RoleTypes({ getUserRoleId, value }) {
     }
 
     return (
-        <div>
+        <div className="roleTypes">
             <select onChange={passingProps}>
                 <option value="Select a role">Select a value</option>
                 {roles.map(item => {

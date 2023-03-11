@@ -4,7 +4,6 @@ import "./userDetail.css"
 
 const UserDetail = ({ userData }) => {
   const fullName = userData.firstName + " " + userData.lastName;
-  const birthday = "Birthday: " + userData.birthday;
 
   const [isData, setIsData] = useState(false);
 
@@ -18,31 +17,36 @@ const UserDetail = ({ userData }) => {
   return (
     (isData ? (
       <Card className="userDetail">
-        <CardMedia
-          className="userDetail__media"
-          component="img"
-          height="140"
-          image={userData.image}
-          alt={fullName}
-        />
-        <CardContent className="userDetail__content">
-          <Typography variant="h5" component="div" fontWeight="bold">
+        <div className="imgAndName">
+          <CardMedia
+            className="userDetail__media"
+            component="img"
+            height="140"
+            image={userData.image}
+            alt={fullName}
+          />
+          <Typography className="name" variant="h3" component="div" fontWeight="bold">
             {fullName}
           </Typography>
+        </div>
+        <CardContent className="userDetail__content">
           <Typography variant="subtitle1" component="div">
             {userData.userEmail}
           </Typography>
           <Typography variant="subtitle1" component="div">
-            {birthday}
+            <span style={{ fontWeight: "bold" }}>Password: </span>{userData.userPassword}
           </Typography>
           <Typography variant="subtitle1" component="div">
-            Membership Fee: ${userData.membershipFee}
+            <span style={{ fontWeight: "bold" }}>Birthday: </span>{userData.birthday}
           </Typography>
           <Typography variant="subtitle1" component="div">
-            Room Number: {userData.roomNumber}
+            <span style={{ fontWeight: "bold" }}>Membership Fee: </span> {userData.membershipFee}
           </Typography>
           <Typography variant="subtitle1" component="div">
-            Role: {userData.roleType}
+            <span style={{ fontWeight: "bold" }}>Room Number: </span> {userData.roomNumber}
+          </Typography>
+          <Typography variant="subtitle1" component="div">
+            <span style={{ fontWeight: "bold" }}>Role: </span> {userData.roleType}
           </Typography>
         </CardContent>
       </Card>
