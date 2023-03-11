@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import User from "./User.js";
-import DeleteModal from "./DeleteModal.js";
-import UserBox from "./userList/UserBox"
+import User from "../User.js";
+import DeleteModal from "../DeleteModal.js";
+import UserBox from "../userList/UserBox"
 
 import "../../style/user/collapsed-user.css";
 import "../../style/user/expanded-user.css";
@@ -89,7 +89,7 @@ function Display(props) {
           <div className="tableBody">
             {userList.length > 0 ? (
               userList.map((ele, index) => (
-                  <UserBox userData={ele}  key={index} onClick={console.log("yo")}/>
+                  <UserBox userData={ele}  key={index} />
               ))
             ) : (
               <div>

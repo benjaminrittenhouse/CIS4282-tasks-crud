@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import User from "./User.js";
-import DeleteModal from "./DeleteModal.js";
+import User from "../User.js";
+import DeleteModal from "../DeleteModal.js";
 import UserBox from "./UserBox"
 
 import "../../style/user/collapsed-user.css";

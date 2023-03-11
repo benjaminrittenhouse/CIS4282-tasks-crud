@@ -1,24 +1,22 @@
 import React, { useState, useEffect } from "react";
-import User from "./User.js";
-import DeleteModal from "./DeleteModal.js";
-import UserDetail from "../webUser/userDetail/UserDetail";
+import User from "../User.js";
+import DeleteModal from "../DeleteModal.js";
+import UserDetail from "../userDetail/UserDetail";
 
-import UserBox from "./userList/UserBox"
+import UserBox from "../userList/UserBox"
 
-import "../../style/user/collapsed-user.css";
-import "../../style/user/expanded-user.css";
-import "../../style/navbar.css";
-import "../../style/style.css"
-import "../../style/user/user-table.css"
-import "../../style/update.css"
-import "../../style/modalWindow.css"
+import "../../../style/navbar.css";
+import "../../../style/style.css"
+import "../../../style/user/user-table.css"
+import "../../../style/update.css"
+import "../../../style/modalWindow.css"
 
 import "./displayView.css"
 import "./expandedUserView.css"
 import "./scrollableContainer.css"
 
-import "../webUser/userList/UserList.css"
-import UserList from "./userList/UserList.js";
+import "../../webUser/userList/UserList.css"
+import UserList from "../userList/UserList.js";
 
 
 

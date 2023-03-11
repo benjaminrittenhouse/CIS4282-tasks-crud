@@ -9,6 +9,10 @@ function UserBox({ userData, setExpandedUser }) {
 
   const userObj = DbToObj(userData);
 
+  function handleEdit(){
+      
+  }
+
   function handleClick() {
       console.log("user:")
       console.dir(userObj)
@@ -24,7 +28,7 @@ function UserBox({ userData, setExpandedUser }) {
           </Box>
         </Box>
         <Box ml="auto">
-          <IconButton aria-label="edit" >
+          <IconButton aria-label="edit" onClick={handleEdit}>
             <Edit />
           </IconButton>
           <IconButton aria-label="delete">
