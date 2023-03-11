@@ -7,7 +7,7 @@ import './UserBox.css';
 import ConfirmDeleteModal from '../delete/ConfirmDeleteModal';
 
 
-function UserBox({ userData, setExpandedUser, setIsEditing, processDelete, index}) {
+function UserBox({userData, setExpandedUser, setIsEditing, processDelete, index}) {
 
   const userObj = DbToObj(userData);
 
@@ -39,7 +39,7 @@ function UserBox({ userData, setExpandedUser, setIsEditing, processDelete, index
   return (
       <Box onClick={handleClick} className="userBox" display="flex" alignItems="center" justifyContent="space-between" p={2}>
         
-        <ConfirmDeleteModal open={isDeleteModal} handleClose={handleClose} handleDelete={handleDelete} name={userObj.firstName + " " + userObj.lastName}/>
+        <ConfirmDeleteModal  open={isDeleteModal} handleClose={handleClose} handleDelete={handleDelete} name={userObj.firstName + " " + userObj.lastName}/>
 
         <Box display="flex" alignItems="center">
           <Avatar src={userObj.image} alt={`${userObj.firstName} ${userObj.lastName}'s avatar`} />

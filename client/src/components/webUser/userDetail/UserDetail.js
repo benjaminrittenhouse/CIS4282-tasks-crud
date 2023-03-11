@@ -11,6 +11,8 @@ const UserDetail = ({ userData }) => {
   useEffect(() => {
     if (userData.firstName !== undefined) {
       setIsData(true);
+    } else {
+      setIsData(false)
     }
   }, [userData]);
 
