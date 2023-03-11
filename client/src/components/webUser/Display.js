@@ -44,8 +44,6 @@ function Display(props) {
       const data = await res.json();
 
       setUserList(data);
-      console.log("user list")
-      console.dir(userList)
     } catch (err) {
 
       console.log(err);
