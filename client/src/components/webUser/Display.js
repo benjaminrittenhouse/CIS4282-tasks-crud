@@ -13,6 +13,10 @@ import "../../style/user/user-table.css"
 import "../../style/update.css"
 import "../../style/modalWindow.css"
 
+import "./displayView.css"
+import "./expandedUserView.css"
+import "./scrollableContainer.css"
+
 import "../webUser/userList/UserList.css"
 import UserList from "./userList/UserList.js";
 
@@ -88,17 +92,17 @@ function Display(props) {
 
     <div className="displayView">
 
-    {/* Scrollable User List */}
-    <div className="scrollableContainer">
-      <div className="userListContainer">
-        <UserList users={userList} setExpandedUser={setExpandedUser} />
+      {/* Scrollable User List */}
+      <div className="scrollableContainer">
+        <div className="userListContainer">
+          <UserList users={userList} setExpandedUser={setExpandedUser} />
+        </div>
       </div>
-    </div>
 
-    {/* Expanded User View */}
-    <div className="expandedUserView">
-        <UserDetail userData={expandedUser}/>
-    </div>
+      {/* Expanded User View */}
+      <div className="expandedUserView">
+        <UserDetail userData={expandedUser} />
+      </div>
 
     </div>
 

@@ -1,10 +1,9 @@
 import React from 'react';
 import { Card, CardContent, CardMedia, Typography } from '@mui/material';
-import "../userList/UserList.css"
+import "./userDetail.css"
 
 const UserDetail = ({ userData }) => {
-    console.log("USER DATA DETAIL")
-    console.dir(userData)
+
  return (
    <Card className="userDetail">
      <CardContent>

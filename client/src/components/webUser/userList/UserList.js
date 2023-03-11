@@ -5,10 +5,14 @@ import "../userList/UserList.css"
 
 const UserList = ({ users, setExpandedUser }) => {
 
+  function handleClick() {
+    console.log("yo from userLIst")
+  }
+
   return (
     <List className="userList">
       {users.map((user, index) => (
-            <UserBox userData={user}  key={index} setExpandedUser={setExpandedUser} />
+          <UserBox userData={user} setExpandedUser={setExpandedUser} />
       ))}
     </List>
   );
