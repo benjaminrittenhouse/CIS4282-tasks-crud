@@ -17,7 +17,7 @@ import "./scrollableContainer.css"
 
 import "../../webUser/userList/UserList.css"
 import UserList from "../userList/UserList.js";
-import Edit from "../Edit"
+import Edit from "../edit/Edit"
 
 
 
@@ -101,7 +101,7 @@ function Display(props) {
 
       {/* Expanded User View */}
       <div className="expandedUserView">
-      {isEditing ? <Edit props={expandedUser} /> : <UserDetail userData={expandedUser} />}
+      {isEditing ? <Edit props={expandedUser} setIsEditing={setIsEditing} /> : <UserDetail userData={expandedUser} />}
       </div>
 
     </div>

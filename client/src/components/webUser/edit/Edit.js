@@ -1,15 +1,15 @@
 import { React, useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 
-import DbToObj from "./DbToObj"
+import DbToObj from "../DbToObj"
 
-import RoleTypes from '../webUser/RoleTypes';
+import RoleTypes from '../RoleTypes';
+import "./edit.css"
 
-function Edit({ props, setModalVisibility }) {
+function Edit({ props, setIsEditing }) {
 
-    // COOL: way to change state from a child component!!
-    function handleVisibility() {
-        setModalVisibility("updateHide");
+    function handleClose() {
+        setIsEditing(false);
     }
 
     const location = useLocation();
@@ -72,9 +72,9 @@ function Edit({ props, setModalVisibility }) {
     }
 
     return (
-        <div className="modal">
-            <button type="button" className="xButton" onClick={handleVisibility}>X</button>
-            <h2>Update</h2>
+        <div className="edit">
+            <button type="button" className="xButton" onClick={handleClose}>X</button>
+            <h2>Update {userData.firstName + " " + userData.lastName}</h2>
             <table className="insertArea">
                 <tbody>
                     <tr>
@@ -206,7 +206,7 @@ function Edit({ props, setModalVisibility }) {
             </table>
             <div className="buttons">
                 <button type="button" className="saveButton" onClick={updateUser}>Save</button>
-                <button type="button" className="cancelButton" onClick={handleVisibility}>Cancel</button>
+                <button type="button" className="cancelButton" onClick={handleClose}>Cancel</button>
             </div>
 
             <div>
