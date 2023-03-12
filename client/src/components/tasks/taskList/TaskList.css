@@ -1,0 +1,19 @@
+.taskList {
+    width: 100%;
+    z-index: 1;
+    max-height: 80vh;
+    margin: auto;
+}
+
+.displayView {
+    margin-top: 1rem;
+    margin-left: 1rem;
+}
+
+.displayContainer {
+    /* nothing */
+}
+
+  
+  
+  

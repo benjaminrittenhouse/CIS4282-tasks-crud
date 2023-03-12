@@ -10,7 +10,7 @@ import ViewProfile from './components/profile/ViewProfile';
 import logo from "./img/logo192.png"
 
 import Display from './components/webUser/display/Display';
-import Tasks from './components/tasks/Display'
+import Tasks from './components/tasks/display/Display'
 
 import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';

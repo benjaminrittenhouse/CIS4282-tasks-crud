@@ -1,0 +1,11 @@
+.edit {
+    background-color: white;
+    padding: 1rem;
+    width: 75%;
+    margin: 1%;
+}
+
+.edit input {
+    width: 175%;
+    margin-left: 2rem; 
+}

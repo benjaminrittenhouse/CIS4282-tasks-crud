@@ -1,0 +1,9 @@
+.taskBox {
+    background-color: #8f9194;
+    color: black;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 1rem;
+  }
+  

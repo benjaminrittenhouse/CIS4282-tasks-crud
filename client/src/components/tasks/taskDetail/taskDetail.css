@@ -1,0 +1,30 @@
+.taskDetail {
+    width: 75%;
+    padding: 1rem;
+    margin-left: 1%;
+}
+
+.taskDetail .imgAndName {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.taskDetail .imgAndName .name {
+    margin-left: 1rem;
+}
+
+.taskDetail .taskDetail__content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 1rem;
+}
+
+
+.taskDetail .taskDetail__media {
+    border-radius: 33px;
+    width: 33%;
+    height: 33%;
+}
