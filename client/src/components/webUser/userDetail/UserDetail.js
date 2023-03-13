@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Card, CardContent, CardMedia, Typography } from '@mui/material';
 import "./userDetail.css"
+import ModalView from "./ModalView"
 
 const UserDetail = ({ userData }) => {
   const fullName = userData.firstName + " " + userData.lastName;

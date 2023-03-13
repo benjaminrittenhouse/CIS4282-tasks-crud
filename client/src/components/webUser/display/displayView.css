@@ -30,3 +30,9 @@
     background-color: white;
     border-radius: 25px;
 }
+
+@media only screen and (max-width: 600px) {
+    .displayView .expandedUserView {
+        display: none;
+    }
+}

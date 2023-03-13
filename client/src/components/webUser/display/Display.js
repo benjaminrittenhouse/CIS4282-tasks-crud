@@ -12,7 +12,8 @@ import "./displayView.css"
 import "../../webUser/userList/UserList.css"
 import UserList from "../userList/UserList.js";
 import Edit from "../edit/Edit"
-
+import ModalView from "../userDetail/ModalView";
+import ModalEdit from "../edit/ModalEdit"
 
 
 function Display(props) {
@@ -89,6 +90,7 @@ function Display(props) {
       {/* Expanded User View */}
       <div className="expandedUserView">
       {isEditing ? <Edit props={expandedUser} setIsEditing={setIsEditing} /> : <UserDetail userData={expandedUser} />}
+      {isEditing ? <ModalEdit props={expandedUser} setIsEditing={setIsEditing} /> : <ModalView userData={expandedUser} />}
       </div>
 
     </div>
