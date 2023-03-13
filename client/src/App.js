@@ -2,7 +2,7 @@ import { Routes, Route, Link } from 'react-router-dom';
 import Home from './components/Home';
 import Blog from './components/Blog';
 import Insert from './components/webUser/Insert';
-import InsertTask from './components/tasks/Insert'
+import InsertTask from './components/tasks/edit/Insert'
 import Login from './components/profile/Login'
 import LogoutPage from './components/profile/LogoutPage'
 import ViewProfile from './components/profile/ViewProfile';
@@ -24,12 +24,24 @@ function SPA() {
             <div class="navbar">
                 <img src={logo} alt="Logo" height="50" width="50" />
                 <div class="links">
-                    <Link class="link" to="/">HOME</Link>
-                    <Link class="link" to="blog">BLOG</Link>
-                    <Link class="link" to="users">USERS</Link>
-                    <Link class="link" to="insert">INSERT USER</Link>
-                    <Link class="link" to="tasks">TASKS</Link>
-                    <Link class="link" to="insertTask">INSERT TASK</Link>
+                    <Link class="link" to="/">Home</Link>
+                    <Link class="link" to="blog">Blog</Link>
+                </div>
+
+                <div class="dropdown">
+                    <button class="dropbtn">Users</button>
+                    <div class="dropdown-content">
+                    <Link class="link" to="users">Users List</Link>
+                    <Link class="link" to="insert">Insert a User</Link>
+                    </div>
+                </div>
+
+                <div class="dropdown">
+                    <button class="dropbtn">Tasks</button>
+                    <div class="dropdown-content">
+                    <Link class="link" to="tasks">Tasks List</Link>
+                    <Link class="link" to="insertTask">Insert a Task</Link>
+                    </div>
                 </div>
 
                 <div class="dropdown">
@@ -37,7 +49,7 @@ function SPA() {
                     <div class="dropdown-content">
                         <Link class="link" to="login">Login</Link>
                         <Link class="link" to="logout">Logout</Link>
-                        <Link class="link" to="viewProfile">ViewProfile</Link>
+                        <Link class="link" to="viewProfile">View Profile</Link>
 
                     </div>
                 </div>

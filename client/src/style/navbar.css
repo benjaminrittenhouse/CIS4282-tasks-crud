@@ -5,7 +5,8 @@
     align-items: center;
     position: sticky;
     top: 0;
-    background-color: #E8E8E8;
+    background-color: white;
+    z-index: 3;
 }
 
 .navbar .link {
@@ -41,6 +42,10 @@
     color: black;
 }
 
+.navbar a:hover {
+    color: grey;
+}
+
 .navbar #title {
     font-size: 2rem;
     text-align: center;
@@ -59,7 +64,6 @@
     font-size: 16px;
     border: none;
     background-color: transparent;
-    font-family: 'Courier New', Courier, monospace;
 }
 
 .navbar .dropbtn:hover {
