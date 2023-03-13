@@ -1,12 +1,7 @@
 import { React, useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { Autocomplete, TextField } from '@mui/material';
-
-import "./edit.css"
-
 
 function Edit({ props, setIsEditing, assignedUser }) {
-    const [webUserName, setWebUserName] = useState(props.assignedWebUser)
 
     // hide / show modal
     // COOL: way to change state from a child component!!
@@ -24,12 +19,12 @@ function Edit({ props, setIsEditing, assignedUser }) {
     const [buttonVal, setButtonVal] = useState(inputVal);
 
     const handleChange = (event) => {
-        setWebUserName(event.target.value);
+        setInputVal(event.target.value);
     }
 
     const handleClick = () => {
-        setButtonVal(webUserName)
-        handleSearch(webUserName)
+        setButtonVal(inputVal)
+        handleSearch(buttonVal)
     }
 
     const location = useLocation();
@@ -39,7 +34,6 @@ function Edit({ props, setIsEditing, assignedUser }) {
     const [taskData, setTaskData] = useState({});
 
     const [errorObj, setErrorObj] = useState({});
-
 
     // used to set error object back to nothing
     const emptyData = {}
@@ -126,11 +120,7 @@ function Edit({ props, setIsEditing, assignedUser }) {
     function handleWebUser(num, name) {
         setTaskData({...taskData, assignedWebUserID: num})
         setInputVal(name)
-        setNames([])
-        setWebUserName(name)
     }
-
-
 
     return (
         <div className="edit">
@@ -195,13 +185,25 @@ function Edit({ props, setIsEditing, assignedUser }) {
                     </tr>
                     <tr>
                         <td>Assigned User</td>
-                        <td className="assignedUserContainer">
-                            <input type="text" className="nameInput" name="inputVal" placeholder ="Search..." value={webUserName}
-                            onChange={handleChange}
+                        <td>
+                            <input type="text" id="inputVal" name="inputVal" placeholder ="Search..." /*value={taskData.assignedWebUserID}*/ onChange=
+                                // {e => setTaskData({...taskData, assignedWebUserID: e.target.dataset.value},handleSearch(e.target.value), console.log("YO:" + e.target.dataset))}
+                                {handleChange}
+                                value={inputVal}
+                                // value = {assignedName}
                                 />
                             <button onClick={handleClick}>Search</button>
-                            {/* list of names below input field */}
-                            <ul className = "names">
+                        </td>
+                        <td className="error">
+                            {errorObj.assignedWebUserID}
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                        </td>
+                        <td>
+                        <ul id = "names">
                             {names.length > 0 ? 
                             (
                                 
@@ -220,9 +222,6 @@ function Edit({ props, setIsEditing, assignedUser }) {
                             : 
                             (<option value="No names"/>)}
                             </ul>
-                        </td>
-                        <td className="error">
-                            {errorObj.assignedWebUserID}
                         </td>
                     </tr>
 

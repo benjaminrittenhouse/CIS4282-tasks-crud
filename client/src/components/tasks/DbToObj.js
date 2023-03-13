@@ -6,7 +6,8 @@ function DbToObj(task){
         "taskPoints": task.task_points,
         "targetDate": task.target_date,
         "completionDate": task.completion_date,
-        "assignedWebUserID": task.assigned_web_user_id
+        "assignedWebUserID": task.assigned_web_user_id,
+        "assignedWebUser": task.first_name + " " + task.last_name,
     }
 
   return taskObj
