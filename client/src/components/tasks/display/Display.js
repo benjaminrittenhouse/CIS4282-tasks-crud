@@ -6,11 +6,7 @@ import TaskList from "../taskList/TaskList";
 import Edit from "../edit/Edit"
 import "../../../style/navbar.css";
 import "../../../style/style.css"
-import "../../../style/user/user-table.css"
-import "../../../style/update.css"
-import "../../../style/modalWindow.css"
-
-
+import "../../../style/edit.css"
 
 function Display(props) {
 

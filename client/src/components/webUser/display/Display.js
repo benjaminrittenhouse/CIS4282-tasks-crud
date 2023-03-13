@@ -2,13 +2,8 @@ import React, { useState, useEffect } from "react";
 import UserDetail from "../userDetail/UserDetail";
 import "../../../style/navbar.css";
 import "../../../style/style.css"
-import "../../../style/user/user-table.css"
-import "../../../style/update.css"
-import "../../../style/modalWindow.css"
-
+import "../../../style/edit.css"
 import "./displayView.css"
-
-
 import "../../webUser/userList/UserList.css"
 import UserList from "../userList/UserList.js";
 import Edit from "../edit/Edit"
