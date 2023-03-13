@@ -74,12 +74,12 @@ function Edit({ props, setIsEditing }) {
     return (
         <div className="edit">
             <button type="button" className="xButton" onClick={handleClose}>X</button>
-            <h2>Update {userData.firstName + " " + userData.lastName}</h2>
+            <h2>Editing {userData.firstName + " " + userData.lastName}</h2>
             <table className="insertArea">
                 <tbody>
                     <tr>
-                        <td>Email</td>
-                        <td>
+                        <td className="textTd">Email</td>
+                        <td className="inputTd">
                             <input value={userData.userEmail} onChange=
                                 {e => setUserData({ ...userData, userEmail: e.target.value })}
                             />
@@ -90,8 +90,8 @@ function Edit({ props, setIsEditing }) {
                     </tr>
 
                     <tr>
-                        <td>First Name</td>
-                        <td>
+                        <td className="textTd">First Name</td>
+                        <td  className="inputTd">
                             <input value={userData.firstName} onChange=
                                 {e => setUserData({ ...userData, firstName: e.target.value })}
                             />
@@ -102,8 +102,8 @@ function Edit({ props, setIsEditing }) {
                     </tr>
 
                     <tr>
-                        <td>Last Name</td>
-                        <td>
+                        <td className="textTd">Last Name</td>
+                        <td  className="inputTd">
                             <input value={userData.lastName} onChange=
                                 {e => setUserData({ ...userData, lastName: e.target.value })}
                             />
@@ -115,8 +115,8 @@ function Edit({ props, setIsEditing }) {
 
 
                     <tr>
-                        <td>Password</td>
-                        <td>
+                        <td className="textTd">Password</td>
+                        <td  className="inputTd">
                             <input type="password" value={userData.userPassword} onChange=
                                 {e => setUserData({ ...userData, userPassword: e.target.value })}
                             />
@@ -126,8 +126,8 @@ function Edit({ props, setIsEditing }) {
                         </td>
                     </tr>
                     <tr>
-                        <td>Re-enter Password</td>
-                        <td>
+                        <td className="textTd">Re-enter Password</td>
+                        <td className="inputTd">
                             <input type="password" value={userData.userPassword2} onChange=
                                 {e => setUserData(setProp(userData, "userPassword2", e.target.value))}
                             />
@@ -137,8 +137,8 @@ function Edit({ props, setIsEditing }) {
                         </td>
                     </tr>
                     <tr>
-                        <td>Image</td>
-                        <td>
+                        <td className="textTd">Image</td>
+                        <td className="inputTd">
                             <input value={userData.image} onChange=
                                 {e => setUserData(setProp(userData, "image", e.target.value))}
                             />
@@ -148,8 +148,8 @@ function Edit({ props, setIsEditing }) {
                         </td>
                     </tr>
                     <tr>
-                        <td>Birthday</td>
-                        <td>
+                        <td className="textTd">Birthday</td>
+                        <td className="inputTd">
                             <input value={userData.birthday} onChange=
                                 {e => setUserData(setProp(userData, "birthday", e.target.value))}
                             />
@@ -159,8 +159,8 @@ function Edit({ props, setIsEditing }) {
                         </td>
                     </tr>
                     <tr>
-                        <td>Membership Fee</td>
-                        <td>
+                        <td className="textTd">Membership Fee</td>
+                        <td className="inputTd">
                             <input value={userData.membershipFee} onChange=
                                 {e => setUserData(setProp(userData, "membershipFee", e.target.value))}
                             />
@@ -171,8 +171,8 @@ function Edit({ props, setIsEditing }) {
                     </tr>
 
                     <tr>
-                        <td>Room #</td>
-                        <td>
+                        <td className="textTd">Room #</td>
+                        <td className="inputTd">
                             <input value={userData.roomNumber} onChange=
                                 {e => setUserData(setProp(userData, "roomNumber", e.target.value))}
                             />
@@ -183,8 +183,8 @@ function Edit({ props, setIsEditing }) {
                     </tr>
 
                     <tr>
-                        <td>Role</td>
-                        <td>
+                        <td className="textTd">Role</td>
+                        <td className="inputTd">
                             <RoleTypes
                                 value={props.userRoleId}
                                 className="roleTypes"

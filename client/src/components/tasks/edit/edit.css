@@ -33,12 +33,26 @@
     border: 2px solid black;
     left: 1rem;
     top: 0.5rem;
+    width: 73%;
 }
 
-.edit .assignedUserContainer {
+.edit .assignedUserContainerInsert {
     position: relative;
     display: flex;
     flex-direction: row;
+    width: 60%;
+}
+
+.edit .assignedUserContainerEdit {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    
+}
+
+.edit .assignedUserContainerEdit button{
+    float: right;
 }
 
 .edit .assignedUserContainer .nameInput {

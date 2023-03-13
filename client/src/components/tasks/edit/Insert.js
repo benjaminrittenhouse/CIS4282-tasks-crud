@@ -4,9 +4,9 @@ import "./edit.css"
 function Insert(props) {
     const [insertMessage, setInsertMessage] = useState("");
 
-    const [names, setNames] = useState("");
+    const [names, setNames] = useState([]);
 
-    const [webUserName, setWebUserName] = useState(props.assignedWebUser)
+    const [webUserName, setWebUserName] = useState("")
 
 
     const [assignedName, setAssignedName] = useState("");
@@ -139,8 +139,8 @@ function Insert(props) {
             <table className="insertArea">
                 <tbody>
                     <tr>
-                        <td>Name</td>
-                        <td>
+                        <td className="textTd">Name</td>
+                        <td className="inputTd">
                             <input placeholder="Take out trash..." value={taskData.taskName} onChange=
                                 {e => setTaskData({ ...taskData, taskName: e.target.value })}
                             />
@@ -150,8 +150,8 @@ function Insert(props) {
                         </td>
                     </tr>
                     <tr>
-                        <td>Description</td>
-                        <td>
+                        <td className="textTd">Description</td>
+                        <td className="inputTd">
                             <input placeholder="Sideyard" value={taskData.taskDesc} onChange=
                                 {e => setTaskData({ ...taskData, taskDesc: e.target.value })}
                             />
@@ -161,8 +161,8 @@ function Insert(props) {
                         </td>
                     </tr>
                     <tr>
-                        <td>Points</td>
-                        <td>
+                        <td className="textTd">Points</td>
+                        <td className="inputTd">
                             <input placeholder="8" value={taskData.taskPoints} onChange=
                                 {e => setTaskData({ ...taskData, taskPoints: e.target.value })}
                             />
@@ -172,8 +172,8 @@ function Insert(props) {
                         </td>
                     </tr>
                     <tr>
-                        <td>Target Date</td>
-                        <td>
+                        <td className="textTd">Target Date</td>
+                        <td className="inputTd">
                             <input placeholder="mm/dd/yyyy" value={taskData.targetDate} onChange=
                                 {e => setTaskData({ ...taskData, targetDate: e.target.value })}
                             />
@@ -183,8 +183,8 @@ function Insert(props) {
                         </td>
                     </tr>
                     <tr>
-                        <td>Completion Date</td>
-                        <td>
+                        <td className="textTd">Completion Date</td>
+                        <td className="inputTd"> 
                             <input placeholder="mm/dd/yyyy" value={taskData.completionDate} onChange=
                                 {e => setTaskData({ ...taskData, completionDate: e.target.value })}
                             />
@@ -195,8 +195,8 @@ function Insert(props) {
                     </tr>
 
                     <tr>
-                        <td>Assigned User</td>
-                        <td className="assignedUserContainer">
+                        <td className="textTd">Assigned User</td>
+                        <td className="assignedUserContainerInsert">
                             <input type="text" className="nameInput" name="inputVal" placeholder="Search..." value={webUserName}
                                 onChange={handleChange}
                             />

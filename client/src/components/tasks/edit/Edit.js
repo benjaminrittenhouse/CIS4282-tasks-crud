@@ -135,7 +135,7 @@ function Edit({ props, setIsEditing, assignedUser }) {
     return (
         <div className="edit">
             <button type="button" className="xButton" onClick={handleClose}>X</button>
-            <h2>Update</h2>
+            <h2>Editing {taskData.taskName}</h2>
             <table className="insertArea">
                 <tbody>
                 <tr>
@@ -195,7 +195,7 @@ function Edit({ props, setIsEditing, assignedUser }) {
                     </tr>
                     <tr>
                         <td className="textTd">Assigned User</td>
-                        <td className="assignedUserContainer">
+                        <td className="assignedUserContainerEdit">
                             <input type="text" className="nameInput" name="inputVal" placeholder ="Search..." value={webUserName}
                             onChange={handleChange}
                                 />
