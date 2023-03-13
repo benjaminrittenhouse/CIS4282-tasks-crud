@@ -1,10 +1,5 @@
 import React, { useState, useEffect } from "react";
-import User from "../User.js";
-import DeleteModal from "../DeleteModal.js";
 import UserDetail from "../userDetail/UserDetail";
-
-import UserBox from "../userList/UserBox"
-
 import "../../../style/navbar.css";
 import "../../../style/style.css"
 import "../../../style/user/user-table.css"
@@ -12,8 +7,7 @@ import "../../../style/update.css"
 import "../../../style/modalWindow.css"
 
 import "./displayView.css"
-import "./expandedUserView.css"
-import "./scrollableContainer.css"
+
 
 import "../../webUser/userList/UserList.css"
 import UserList from "../userList/UserList.js";
@@ -25,12 +19,6 @@ function Display(props) {
 
   //used to store the JS Object that comes from the API call
   const [userList, setUserList] = useState([]);
-
-  const [openModal, setOpenModal] = useState(false);
-  const [clickedUser, setClickedUser] = useState({});
-  const [okClicked, setOkClicked] = useState(false);
-  const [clickIndex, setClickIndex] = useState();
-
   const [isEditing, setIsEditing] = useState(false);
 
 
@@ -85,7 +73,6 @@ function Display(props) {
     } catch (err) {
       console.log(err);
     }
-    setOpenModal(false)
   }
 
   return (

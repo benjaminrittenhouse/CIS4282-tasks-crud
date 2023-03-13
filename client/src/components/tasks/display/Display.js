@@ -1,22 +1,14 @@
 import React, { useState, useEffect } from "react";
-import Task from "../Task.js";
 import TaskDetail from "../taskDetail/TaskDetail";
-
-import TaskBox from "../taskList/TaskBox"
-
+import "./displayView.css"
+import "../../tasks/taskList/TaskList.css"
+import TaskList from "../taskList/TaskList";
+import Edit from "../edit/Edit"
 import "../../../style/navbar.css";
 import "../../../style/style.css"
 import "../../../style/user/user-table.css"
 import "../../../style/update.css"
 import "../../../style/modalWindow.css"
-
-import "./displayView.css"
-import "./expandedTaskView.css"
-import "./scrollableContainer.css"
-
-import "../../tasks/taskList/TaskList.css"
-import TaskList from "../taskList/TaskList";
-import Edit from "../edit/Edit"
 
 
 
@@ -25,7 +17,6 @@ function Display(props) {
   //used to store the JS Object that comes from the API call
   const [taskList, setTaskList] = useState([]);
 
-  const [openModal, setOpenModal] = useState(false);
  
   const [isEditing, setIsEditing] = useState(false);
 
@@ -81,7 +72,6 @@ function Display(props) {
     } catch (err) {
       console.log(err);
     }
-    setOpenModal(false)
   }
 
   return (
