@@ -1,7 +1,7 @@
 import { React, useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { Autocomplete, TextField } from '@mui/material';
-
+import Dropdown from "./Dropdown"
 import "./edit.css"
 
 
@@ -194,36 +194,12 @@ function Edit({ props, setIsEditing, assignedUser }) {
                         </td>
                     </tr>
                     <tr>
-                        <td className="textTd">Assigned User</td>
-                        <td className="assignedUserContainerEdit">
-                            <input type="text" className="nameInput" name="inputVal" placeholder ="Search..." value={webUserName}
-                            onChange={handleChange}
-                                />
-                            <button onClick={handleClick}>Search</button>
-                            {/* list of names below input field */}
-                            <ul className = "names">
-                            {names.length > 0 ? 
-                            (
-                                
-                                names.map((ele) => (
-                                <option 
-                                value={ele.web_user_id}
-                                onClick={() => handleWebUser(ele.web_user_id, ele.first_name + " " + ele.last_name)}
-
-                                >
-                                    {ele.first_name + " " + ele.last_name}
-                                </option>
-                                )
-                            
-                            )
-                            ) 
-                            : 
-                            (<option value="No names"/>)}
-                            </ul>
-                        </td>
-                        <td className="error">
-                            {errorObj.assignedWebUserID}
-                        </td>
+                        <Dropdown names={names} 
+                                  handleClick={handleClick} 
+                                  handleChange={handleChange} 
+                                  webUserName={webUserName} 
+                                  handleWebUser={handleWebUser}
+                        />                        
                     </tr>
 
                     <tr>

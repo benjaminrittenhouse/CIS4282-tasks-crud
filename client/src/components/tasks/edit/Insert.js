@@ -1,5 +1,6 @@
 import { React, useState, useEffect } from 'react';
 import "./edit.css"
+import Dropdown from "./Dropdown"
 
 function Insert(props) {
     const [insertMessage, setInsertMessage] = useState("");
@@ -25,16 +26,8 @@ function Insert(props) {
 
     const [taskData, setTaskData] = useState({});
 
-
-    function testData(e) {
-        console.log("E: ");
-        console.dir(e);
-    }
-
-
     // error object
-    const [errorObj, setErrorObj] = useState({})
-
+    const [errorObj, setErrorObj] = useState({});
 
     // used to set error object back to nothing
     const emptyData = {}
@@ -195,53 +188,22 @@ function Insert(props) {
                     </tr>
 
                     <tr>
-                        <td className="textTd">Assigned User</td>
-                        <td className="assignedUserContainerInsert">
-                            <input type="text" className="nameInput" name="inputVal" placeholder="Search..." value={webUserName}
-                                onChange={handleChange}
-                            />
-                            <button onClick={handleClick}>Search</button>
-                            {/* list of names below input field */}
-                            <ul className="names">
-                                {names.length > 0 ?
-                                    (
-
-                                        names.map((ele) => (
-                                            <option
-                                                value={ele.web_user_id}
-                                                onClick={() => handleWebUser(ele.web_user_id, ele.first_name + " " + ele.last_name)}
-
-                                            >
-                                                {ele.first_name + " " + ele.last_name}
-                                            </option>
-                                        )
-
-                                        )
-                                    )
-                                    :
-                                    (<option value="No names" />)}
-                            </ul>
-                        </td>
-                        <td className="error">
-                            {errorObj.assignedWebUserID}
-                        </td>
+                    <Dropdown names={names} 
+                                  handleClick={handleClick} 
+                                  handleChange={handleChange} 
+                                  webUserName={webUserName} 
+                                  handleWebUser={handleWebUser}
+                        />    
                     </tr>
 
-                    <tr>
-                        <td>
-                            <br />
-                            <button type="button" onClick={insertTask}>Save</button>
-                        </td>
-                        <td className="error" colSpan="2">
-                            <br />
-                            {/* TO DO : re-render this so we see record inserted, when we first get an error, and then insert again*/}
-                            {insertMessage}
-                            <div>
-                            </div>
-                        </td>
-                    </tr>
+                
                 </tbody>
             </table>
+
+            <div className="save">
+                <button type="button" onClick={insertTask}>Save</button>
+                <div className="message">{insertMessage}</div>
+            </div>
 
         </div>
     )

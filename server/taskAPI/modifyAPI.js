@@ -4,6 +4,8 @@ const db = require("../dbUtils/DbConn");
 const cors = require("cors");
 
 const DbMods = require("../model/task/DbMods");
+const QueryToObj = require("../model/task/QueryToObj");
+const ErrorObj = require("../model/task/ErrorObj");
 
 router.use(cors());
 router.use(express.json());
@@ -13,27 +15,10 @@ router.use(express.urlencoded({ extended: false }));
 router.get("/insertTask", (req, res) => {
   var errors = false;
   // establish task object to take in URL query results
-  var task = {
-    "taskID": req.query.taskID,
-    "taskName": req.query.taskName,
-    "taskDesc": req.query.taskDesc,
-    "taskPoints": req.query.taskPoints,
-    "targetDate": req.query.targetDate,
-    "completionDate": req.query.completionDate,
-    "assignedWebUserID": req.query.assignedWebUserID
-  }
+  var task = QueryToObj(req)
 
   // establish error object to note any formatting errors from values inserted
-  var errorObj = {
-    "isError": "true",
-    "taskID": "",
-    "taskName": "",
-    "taskDesc": "",
-    "taskPoints": "",
-    "targetDate": "",
-    "completionDate": "",
-    "assignedWebUserID": ""
-  }
+  var errorObj = ErrorObj()
 
   // validate insert
   var tempObj = DbMods.validateTask(task);

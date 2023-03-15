@@ -18,6 +18,7 @@
     justify-content: center;
 }
 
+
 .displayView .scrollableContainer::-webkit-scrollbar {
     width: 10px;
 }
@@ -27,9 +28,10 @@
 }
   
 .displayView .scrollableContainer::-webkit-scrollbar-thumb {
-    background-color: white;
+    background-color: black;
     border-radius: 25px;
 }
+
 
 @media only screen and (max-width: 600px) {
     .displayView .expandedUserView {

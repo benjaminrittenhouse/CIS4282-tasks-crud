@@ -55,5 +55,12 @@
     float: right;
 }
 
-.edit .assignedUserContainer .nameInput {
+.save {
+    display: flex;
+    flex-direction: row;
+    margin-top: 3rem;
+}
+
+.save .message {
+    margin-left: 10rem;
 }
