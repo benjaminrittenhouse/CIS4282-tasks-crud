@@ -65,6 +65,9 @@ function SPA() {
                 <img src={logo} alt="Logo" height="50" width="50" />
                 <div class="links">
                     <Link onClick={handleLink} class="link" to="/">Home</Link>
+                </div>
+
+                <div class="links">
                     <Link onClick={handleLink} class="link" to="blog">Blog</Link>
                 </div>
 

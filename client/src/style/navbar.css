@@ -1,12 +1,20 @@
 .navbar {
-    padding-left: 1%;
-    padding-top: 1%;
     display: flex;
+    flex-direction: row;
+    justify-content: center;
     align-items: center;
     position: sticky;
-    top: 0;
+    top: 0rem;
+    left: 0rem;
+    z-index: 100;
+    width: 100%;
+    white-space: nowrap;
+    height: 7vh;
+    padding: 0.75rem;
+    padding-top: 1rem;
+    box-shadow: 0rem 0rem 1rem black;
+    /* header 3-D effect*/
     background-color: white;
-    z-index: 3;
 }
 
 .navbar .link {
@@ -16,25 +24,11 @@
 }
 
 .navbar .links {
-    margin-left: 2%;
+    margin: auto;
 }
 
-.navbar .navBar {
-    display: flex;
-    flex-direction: column;
-
-    position: fixed;
-    top: 0rem;
-    left: 0rem;
-    z-index: 1;
-    width: 100%;
-    white-space: nowrap;
-
-    padding: 0.75rem;
-    padding-top: 1rem;
-    box-shadow: 0rem 0rem 1rem black;
-    /* header 3-D effect*/
-    background-color: rgb(183, 99, 3);
+.navbar .dropdown {
+    margin: auto;
 }
 
 .navbar a {

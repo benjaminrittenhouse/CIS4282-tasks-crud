@@ -9,6 +9,7 @@ import UserList from "../userList/UserList.js";
 import Edit from "../edit/Edit"
 import ModalView from "../userDetail/ModalView";
 import ModalEdit from "../edit/ModalEdit"
+import DbToObj from "../DbToObj";
 
 
 function Display(props) {
@@ -30,6 +31,7 @@ function Display(props) {
       const data = await res.json();
 
       setUserList(data);
+      setExpandedUser(DbToObj(data[0]))
     } catch (err) {
 
       console.log(err);
@@ -65,6 +67,7 @@ function Display(props) {
         var newList = userList;
         newList.splice(index, 1);
         setUserList([...newList]);
+        setExpandedUser(DbToObj(userList[0]))
       }
     } catch (err) {
       console.log(err);
