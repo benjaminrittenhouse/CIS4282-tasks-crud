@@ -1,13 +1,11 @@
-import { React } from 'react';
+import { React, useEffect } from 'react';
 
 function Dropdown({ names, handleClick, handleChange, recent, webUserName, handleWebUser, handleMore, numUsers }) {
 
-
-    function more(n) {
-        if (n > 20) {
-            return (<option>More...</option>)
-        }
-    }
+    useEffect(() => {
+        // handleWebUser();
+        handleClick();
+      }, []);
 
     return (
         <>
