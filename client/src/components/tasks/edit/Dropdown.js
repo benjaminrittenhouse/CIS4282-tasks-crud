@@ -1,6 +1,7 @@
 import { React } from 'react';
 
-function Dropdown({ names, handleClick, handleChange, webUserName, handleWebUser, numUsers }) {
+function Dropdown({ names, handleClick, handleChange, recent, webUserName, handleWebUser, handleMore, numUsers }) {
+
 
     function more(n) {
         if (n > 20) {
@@ -27,8 +28,9 @@ function Dropdown({ names, handleClick, handleChange, webUserName, handleWebUser
                                 >
                                     {ele.first_name + " " + ele.last_name}
                                 </option>
+                                
                             ))}
-                            {numUsers > 10 ? <option>More...</option> : null}
+                            {names.length >= 10 ? (<option onClick={()=>handleMore(webUserName, recent)}>More...</option>) : (null)}
                         </>
                     ) : (
                         <option value="No names">No names.</option>

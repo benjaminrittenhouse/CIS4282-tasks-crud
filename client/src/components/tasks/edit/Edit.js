@@ -30,7 +30,7 @@ function Edit({ props, setIsEditing, assignedUser }) {
     const handleClick = () => {
         setButtonVal(webUserName)
         handleSearch(webUserName)
-        handleNumUsers(webUserName)
+        // handleNumUsers(webUserName, recent)
     }
 
     const location = useLocation();
@@ -42,6 +42,9 @@ function Edit({ props, setIsEditing, assignedUser }) {
     const [errorObj, setErrorObj] = useState({});
 
     const [numUsers, setNumUsers] = useState(0);
+
+    // last name that will be populated into list (before More...)
+    const [recent, setRecent] = useState("");
 
 
     // used to set error object back to nothing
@@ -78,6 +81,9 @@ function Edit({ props, setIsEditing, assignedUser }) {
 
             setNames(data);
             setAssignedName(inp)
+            setRecent(names[names.length-1].first_name)
+            setNumUsers(numUsers - 10)
+            console.log("recent: " + recent)
             // check if data is an eror objec
             if(data.isError) {
                 setErrorObj(data);
@@ -97,11 +103,11 @@ function Edit({ props, setIsEditing, assignedUser }) {
         }
     }
 
-    async function handleNumUsers(inp) {
+   /* async function handleNumUsers(fn, t) {
         try {
 
             // const objToStr = new URLSearchParams(inp).toString();
-            const str = `${process.env.REACT_APP_API_URL}/api/getNumberUsers?firstName=${inp}`;
+            const str = `${process.env.REACT_APP_API_URL}/api/getNumberUsers?firstName=${fn}&threshold=${t}`;
 
             // console log the API fetch call
             console.log("STR w/ Task OBJ: " + str);
@@ -119,7 +125,7 @@ function Edit({ props, setIsEditing, assignedUser }) {
             //error catching for when fetch fails
             console.log("err (caught fetch):" + String(err));
         }
-    }
+    }*/
 
     async function updateTask() {
         try {
@@ -149,6 +155,44 @@ function Edit({ props, setIsEditing, assignedUser }) {
         }
     }
 
+    // first name, threshold
+    async function handleMore(fn, t) {
+        try {
+
+            // const objToStr = new URLSearchParams(inp).toString();
+            const str = `${process.env.REACT_APP_API_URL}/api/queryGreaterUsers?firstName=${fn}&threshold=${t}`;
+
+            // console log the API fetch call
+            console.log("STR w/ Task OBJ: " + str);
+           
+            // await json response & grab json
+            const res = await fetch(str);
+            const data = await res.json();
+
+            // print data returned from API call
+            console.log("Data returned from API (MORE) call: " + JSON.stringify(data));
+
+
+            setNames(data);
+            setAssignedName(fn)
+            setRecent(names[names.length-1].first_name)
+            // check if data is an eror objec
+            if(data.isError) {
+                setErrorObj(data);
+                console.log("setting error (task) data...");
+            } else {
+                console.log("setting task data...");
+                // clear the previous messages from errors when we successfully insert
+                setErrorObj(emptyData);
+                // setTaskData(data);
+            }
+            
+        } catch (err) {
+            //error catching for when fetch fails
+            console.log("err (caught fetch):" + String(err));
+        }
+    }
+
     // set input to name, set id to web user
     function handleWebUser(num, name) {
         setTaskData({...taskData, assignedWebUserID: num})
@@ -161,7 +205,7 @@ function Edit({ props, setIsEditing, assignedUser }) {
 
     return (
         <div className="edit">
-            <button type="button" className="xButton" onClick={()=>handleNumUsers(webUserName)}>test</button>
+            {/*<button type="button" className="xButton" onClick={()=>handleNumUsers(webUserName)}>test</button>*/}
             <button type="button" className="xButton" onClick={handleClose}>X</button>
             <h2>Editing {taskData.taskName}</h2>
             <table className="insertArea">
@@ -228,6 +272,8 @@ function Edit({ props, setIsEditing, assignedUser }) {
                                   webUserName={webUserName} 
                                   handleWebUser={handleWebUser}
                                   numUsers={numUsers}
+                                  handleMore={handleMore}
+                                  recent={recent}
                         />                        
                     </tr>
 
