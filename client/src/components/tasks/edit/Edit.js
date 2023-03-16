@@ -30,6 +30,7 @@ function Edit({ props, setIsEditing, assignedUser }) {
     const handleClick = () => {
         setButtonVal(webUserName)
         handleSearch(webUserName)
+        handleNumUsers(webUserName)
     }
 
     const location = useLocation();
@@ -39,6 +40,8 @@ function Edit({ props, setIsEditing, assignedUser }) {
     const [taskData, setTaskData] = useState({});
 
     const [errorObj, setErrorObj] = useState({});
+
+    const [numUsers, setNumUsers] = useState(0);
 
 
     // used to set error object back to nothing
@@ -94,6 +97,30 @@ function Edit({ props, setIsEditing, assignedUser }) {
         }
     }
 
+    async function handleNumUsers(inp) {
+        try {
+
+            // const objToStr = new URLSearchParams(inp).toString();
+            const str = `${process.env.REACT_APP_API_URL}/api/getNumberUsers?firstName=${inp}`;
+
+            // console log the API fetch call
+            console.log("STR w/ Task OBJ: " + str);
+           
+            // await json response & grab json
+            const res = await fetch(str);
+            const data = await res.json();
+
+            // print data returned from API call
+            console.log("Data returned from NUMBERS API call: " + data[0].count);
+
+            setNumUsers(Number(data[0].count))
+            
+        } catch (err) {
+            //error catching for when fetch fails
+            console.log("err (caught fetch):" + String(err));
+        }
+    }
+
     async function updateTask() {
         try {
 
@@ -134,6 +161,7 @@ function Edit({ props, setIsEditing, assignedUser }) {
 
     return (
         <div className="edit">
+            <button type="button" className="xButton" onClick={()=>handleNumUsers(webUserName)}>test</button>
             <button type="button" className="xButton" onClick={handleClose}>X</button>
             <h2>Editing {taskData.taskName}</h2>
             <table className="insertArea">
@@ -199,6 +227,7 @@ function Edit({ props, setIsEditing, assignedUser }) {
                                   handleChange={handleChange} 
                                   webUserName={webUserName} 
                                   handleWebUser={handleWebUser}
+                                  numUsers={numUsers}
                         />                        
                     </tr>
 
