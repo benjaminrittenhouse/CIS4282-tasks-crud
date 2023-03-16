@@ -14,7 +14,8 @@ function Display(props) {
   //used to store the JS Object that comes from the API call
   const [taskList, setTaskList] = useState([]);
 
- 
+  const [viewing, setViewing] = useState(false);
+
   const [isEditing, setIsEditing] = useState(false);
 
 
@@ -30,7 +31,7 @@ function Display(props) {
       const data = await res.json();
 
       setTaskList(data);
-      setExpandedTask(DbToObj(taskList[0]))
+      setExpandedTask(DbToObj(data[0]))
     } catch (err) {
 
       console.log(err);
@@ -75,18 +76,18 @@ function Display(props) {
 
   return (
 
-    <div className="displayView">
+    <div className={`displayView ${viewing}`}>
 
       {/* Scrollable Task List */}
       <div className="scrollableContainer">
         <div className="taskListContainer">
-          <TaskList expandedTask={expandedTask} processDelete={processDelete} tasks={taskList} setExpandedTask={setExpandedTask} setIsEditing={setIsEditing} />
+          <TaskList expandedTask={expandedTask} processDelete={processDelete} setViewing={setViewing} tasks={taskList} setExpandedTask={setExpandedTask} setIsEditing={setIsEditing} />
         </div>
       </div>
 
       {/* Expanded Task View */}
-      <div className="expandedTaskView">
-      {isEditing ? <Edit props={expandedTask} setIsEditing={setIsEditing} /> : <TaskDetail taskData={expandedTask} />}
+      <div className={`expandedTaskView ${viewing}`}>
+      {isEditing ? <Edit props={expandedTask} setIsEditing={setIsEditing} /> : <TaskDetail setViewing={setViewing} taskData={expandedTask} />}
       </div>
 
     </div>

@@ -105,4 +105,11 @@
     display: block;
     background-color:#FBE4C4;
 }
-.navbar .dropdown:hover .dropbtn {}
+
+.big-dropdown {
+    display: none;
+}
+
+@media only screen and (max-width: 40rem) {
+    
+}

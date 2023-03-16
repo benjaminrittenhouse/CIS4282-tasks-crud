@@ -16,6 +16,7 @@
     overflow-y: auto;
     display: flex;
     justify-content: center;
+    margin-top: 1rem;
 }
 
 .displayView .scrollableContainer::-webkit-scrollbar {

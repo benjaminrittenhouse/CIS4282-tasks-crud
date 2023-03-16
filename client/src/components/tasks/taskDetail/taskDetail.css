@@ -22,9 +22,27 @@
     margin-top: 1rem;
 }
 
+.taskDetail .xButton {
+    display: none;
+}
 
 .taskDetail .taskDetail__media {
     border-radius: 33px;
     width: 33%;
     height: 33%;
+}
+
+@media only screen and (max-width: 40rem) {
+    .taskDetail .xButton {
+        display: block;
+        float: right;
+    }
+
+    .taskDetail.false {
+        display: none;
+    }
+
+    .taskDetail.true {
+        display: block;
+    }
 }

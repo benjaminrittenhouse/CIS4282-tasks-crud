@@ -3,7 +3,7 @@ import { List, ListItem, ListItemAvatar, Avatar, ListItemText } from '@mui/mater
 import TaskBox from "./TaskBox"
 import "../taskList/TaskList.css"
 
-const TaskList = ({ tasks, expandedTask, setExpandedTask, setIsEditing, processDelete }) => {
+const TaskList = ({ tasks, expandedTask, setExpandedTask, setIsEditing, processDelete, setViewing }) => {
 
   console.log("expanded task:")
   console.dir(expandedTask)
@@ -11,7 +11,7 @@ const TaskList = ({ tasks, expandedTask, setExpandedTask, setIsEditing, processD
   return (
     <List className="taskList">
       {tasks.map((task, index) => (
-          <TaskBox index={index} processDelete={processDelete} taskData={task} setExpandedTask={setExpandedTask} setIsEditing={setIsEditing} />
+          <TaskBox index={index} setViewing={setViewing} processDelete={processDelete} taskData={task} setExpandedTask={setExpandedTask} setIsEditing={setIsEditing} />
       ))}
     </List>
   );

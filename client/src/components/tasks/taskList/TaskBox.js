@@ -7,7 +7,7 @@ import './TaskBox.css';
 import ConfirmDeleteModal from '../delete/ConfirmDeleteModal';
 
 
-function TaskBox({taskData, setExpandedTask, setIsEditing, processDelete, index}) {
+function TaskBox({taskData, setExpandedTask, setIsEditing, processDelete, index, setViewing}) {
 
   const taskObj = DbToObj(taskData);
 
@@ -28,6 +28,7 @@ function TaskBox({taskData, setExpandedTask, setIsEditing, processDelete, index}
       console.log("task:")
       console.dir(taskObj)
       setExpandedTask(taskObj)
+      setViewing(true)
   }
 
   const [isDeleteModal, setIsDeleteModal] = useState(false)

@@ -2,10 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { Card, CardContent, CardMedia, Typography } from '@mui/material';
 import "./taskDetail.css"
 
-const TaskDetail = ({ taskData }) => {
+const TaskDetail = ({ taskData, setViewing, viewing}) => {
 
   const [isData, setIsData] = useState(false);
-
+  
+  function handleClose(){
+    setViewing(false)
+    // console.log("viewing: " + )
+  }
 
   useEffect(() => {
     if (taskData.taskName !== undefined) {
@@ -17,7 +21,8 @@ const TaskDetail = ({ taskData }) => {
 
   return (
     (isData ? (
-      <Card className="taskDetail">
+      <Card className={`taskDetail ${viewing}`}>
+        <button type="button" className="xButton" onClick={handleClose}>X</button>
         <div className="imgAndName">
           <CardMedia
             className="taskDetail__media"

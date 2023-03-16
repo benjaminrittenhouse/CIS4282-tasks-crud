@@ -39,7 +39,6 @@ function Display(props) {
 
   useEffect(() => {
     fetchAllUsers();
-    console.log("viewing: " + viewing);
   }, []);
 
 
