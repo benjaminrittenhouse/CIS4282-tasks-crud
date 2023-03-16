@@ -77,7 +77,7 @@ router.get("/queryGreaterUsers", (req, res) => {
 
 });
 
-/*router.get("/getNumberUsers", (req, res) => {
+router.get("/getNumberUsers", (req, res) => {
   var firstName = req.query.firstName;
   // console.log("FIRST NAME: " + req.query.firstName)
   try {
@@ -97,6 +97,6 @@ router.get("/queryGreaterUsers", (req, res) => {
 
   }
 
-}); */
+});
 
 module.exports = router;

@@ -30,7 +30,7 @@ function Dropdown({ names, handleClick, handleChange, recent, webUserName, handl
                                 </option>
                                 
                             ))}
-                            {names.length >= 10 ? (<option onClick={()=>handleMore(webUserName, recent)}>More...</option>) : (null)}
+                            {names.length === 10 && numUsers > 10 ? (<option onClick={()=>handleMore(webUserName, recent)}>More...</option>) : (null)}
                         </>
                     ) : (
                         <option value="No names">No names.</option>

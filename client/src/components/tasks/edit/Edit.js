@@ -30,7 +30,7 @@ function Edit({ props, setIsEditing, assignedUser }) {
     const handleClick = () => {
         setButtonVal(webUserName)
         handleSearch(webUserName)
-        // handleNumUsers(webUserName, recent)
+        handleNumUsers(webUserName, recent)
     }
 
     const location = useLocation();
@@ -103,7 +103,7 @@ function Edit({ props, setIsEditing, assignedUser }) {
         }
     }
 
-   /* async function handleNumUsers(fn, t) {
+   async function handleNumUsers(fn, t) {
         try {
 
             // const objToStr = new URLSearchParams(inp).toString();
@@ -125,7 +125,7 @@ function Edit({ props, setIsEditing, assignedUser }) {
             //error catching for when fetch fails
             console.log("err (caught fetch):" + String(err));
         }
-    }*/
+    }
 
     async function updateTask() {
         try {
@@ -205,7 +205,7 @@ function Edit({ props, setIsEditing, assignedUser }) {
 
     return (
         <div className="edit">
-            {/*<button type="button" className="xButton" onClick={()=>handleNumUsers(webUserName)}>test</button>*/}
+            <button type="button" className="xButton" onClick={()=>handleNumUsers(webUserName)}>test</button>
             <button type="button" className="xButton" onClick={handleClose}>X</button>
             <h2>Editing {taskData.taskName}</h2>
             <table className="insertArea">
