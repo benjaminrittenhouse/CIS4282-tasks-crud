@@ -59,15 +59,23 @@
 }
 
 /* Dropdown menu, per W3 schools */
-.navbar .dropbtn {
+.navbar .dropbtntrue {
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    background-color: #FBE4C4;
+}
+
+.navbar .dropbtnfalse {
     padding: 16px;
     font-size: 16px;
     border: none;
     background-color: transparent;
 }
 
-.navbar .dropbtn:hover {
-    background-color: #FBE4C4;
+
+.navbar .dropbtntrue:hover .dropbtnfalse:hover {
+    color: grey;
 }
 
 .navbar .dropdown {
@@ -75,26 +83,32 @@
     display: inline-block;
 }
 
-.navbar .dropdown-content {
+.navbar .false {
     display: none;
     position: absolute;
     min-width: 160px;
     z-index: 1;
 }
 
-.navbar .dropdown-content a {
+.navbar .true {
+    position: absolute;
+    min-width: 160px;
+    z-index: 1;
+}
+
+.navbar .true a {
     color: black;
     padding: 12px 16px;
     text-decoration: none;
     display: block;
 }
 
-.navbar .dropdown-content a:hover {
+.navbar .true a:hover {
     background-color: #ddd;
 }
 
-.navbar .dropdown:hover .dropdown-content {
+.navbar .dropdown .true {
     display: block;
     background-color:#FBE4C4;
 }
-.navbar .dropdown:hover .dropbtn {background-color: #FBE4C4}
+.navbar .dropdown:hover .dropbtn {}

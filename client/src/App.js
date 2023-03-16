@@ -12,7 +12,6 @@ import logo from "./img/logo192.png"
 
 import Display from './components/webUser/display/Display';
 import Tasks from './components/tasks/display/Display'
-import { AppBar, Toolbar, Button, Typography, Menu, MenuItem } from '@mui/material';
 
 import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
@@ -20,119 +19,77 @@ import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 
 function SPA() {
-    const [anchorEl1, setAnchorEl1] = useState(null);
-    const [anchorEl2, setAnchorEl2] = useState(null);
+    const [users, setUsers] = useState(false)
+    const [tasks, setTasks] = useState(false)
+    const [profile, setProfile] = useState(false)
 
-    const handleMenuClick1 = (event) => {
-        setAnchorEl1(event.currentTarget);
-    };
+    function handleUsersClick(){
+        if(!users){
+            setUsers(true)
+            setTasks(false)
+            setProfile(false)
+        } else {
+            setUsers(false)
+        }
+    }
 
-    const handleMenuClose1 = () => {
-        setAnchorEl1(null);
-    };
+    function handleTasksClick(){
+        if(!tasks){
+            setTasks(true)
+            setUsers(false)
+            setProfile(false)
+        } else {
+            setTasks(false)
+        }
+    }
 
-    const handleMenuClick2 = (event) => {
-        setAnchorEl2(event.currentTarget);
-    };
+    function handleProfileClick(){
+        if(!profile){
+            setProfile(true)
+            setUsers(false)
+            setTasks(false)
+        } else {
+            setProfile(false)
+        }
+    }
 
-    const handleMenuClose2 = () => {
-        setAnchorEl2(null);
-    };
+    function handleLink(){
+        setUsers(false)
+        setTasks(false)
+        setProfile(false)
+    }
 
     return (
         <div class="App">
-            <AppBar position="static">
-                <Toolbar>
-                    <Typography variant="h6">
-                        CRUD
-                    </Typography>
-                    <Button color="inherit"><Link to="/">Home</Link></Button>
-                    <Button color="inherit"><Link to="blog">Blog</Link></Button>
-                    {/* USERS */}
-                    <Button
-                        color="inherit"
-                        onClick={handleMenuClick1}
-                        aria-controls="menu"
-                        aria-haspopup="true"
-                    >
-                        Users
-                    </Button>
-                    <Menu
-                        id="menu"
-                        anchorEl1={anchorEl1}
-                        open={Boolean(anchorEl1)}
-                        onClose={handleMenuClose1}
-                    >
-                        <MenuItem onClick={handleMenuClose1}><Link to="users">Users List</Link></MenuItem>
-                        <MenuItem onClick={handleMenuClose1}><Link class="link" to="insert">Insert a User</Link></MenuItem>
-                    </Menu>
-                    {/* ------- */}
-
-                    {/* TASKS */}
-                    <Button
-                        color="inherit"
-                        onClick={handleMenuClick2}
-                        aria-controls="menu"
-                        aria-haspopup="true"
-                    >
-                        Tasks
-                    </Button>
-                    <Menu
-                        id="menu"
-                        anchorEl2={anchorEl2}
-                        open={Boolean(anchorEl2)}
-                        onClose={handleMenuClose2}
-                    >
-                        <MenuItem onClick={handleMenuClose2}><Link to="tasks">Tasks List</Link></MenuItem>
-                        <MenuItem onClick={handleMenuClose2}><Link class="link" to="insertTask">Insert a User</Link></MenuItem>
-                    </Menu>
-                    {/* ------------ */}
-
-                </Toolbar>
-            </AppBar>
-
-            {/* Routes to pages */}
-            <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="blog" element={<Blog />} />
-                <Route path="users" element={<Display />} />
-                <Route path="insert" element={<Insert />} />
-                <Route path="tasks" element={<Tasks />} />
-                <Route path="insertTask" element={<InsertTask />} />
-                <Route path="login" element={<Login />} />
-                <Route path="logout" element={<LogoutPage />} />
-                <Route path="viewProfile" element={<ViewProfile />} />
-            </Routes>
-            {/*<div class="navbar">
+            <div class="navbar">
                 <img src={logo} alt="Logo" height="50" width="50" />
                 <div class="links">
-                    <Link class="link" to="/">Home</Link>
-                    <Link class="link" to="blog">Blog</Link>
+                    <Link onClick={handleLink} class="link" to="/">Home</Link>
+                    <Link onClick={handleLink} class="link" to="blog">Blog</Link>
                 </div>
 
                 <div class="dropdown">
-                    <button class="dropbtn">Users</button>
-                    <div class="dropdown-content">
-                    <Link class="link" to="users">Users List</Link>
-                    <Link class="link" to="insert">Insert a User</Link>
+                    <button className={`dropbtn${users}`} onClick={handleUsersClick}>Users</button>
+                    <div className={`${users}`}>
+                    <Link onClick={handleLink} class="link" to="users">Users List</Link>
+                    <Link onClick={handleLink} class="link" to="insert">Insert a User</Link>
                     </div>
                 </div>
 
                 <div class="dropdown">
-                    <button class="dropbtn">Tasks</button>
-                    <div class="dropdown-content">
-                    <Link class="link" to="tasks">Tasks List</Link>
-                    <Link class="link" to="insertTask">Insert a Task</Link>
+                    <button className={`dropbtn${tasks}`} onClick={handleTasksClick}>Tasks</button>
+                    <div className={`${tasks}`}>
+                    <Link onClick={handleLink} class="link" to="tasks">Tasks List</Link>
+                    <Link onClick={handleLink} class="link" to="insertTask">Insert a Task</Link>
                     </div>
                 </div>
 
                 <div class="dropdown">
-                    <button class="dropbtn">Profile</button>
-                    <div class="dropdown-content">
-                        <Link class="link" to="login">Login</Link>
-                        <Link class="link" to="logout">Logout</Link>
-                        <Link class="link" to="viewProfile">View Profile</Link>
-
+                    <button className={`dropbtn${profile}`} onClick={handleProfileClick}>Profile</button>
+                    <div className={`${profile}`}>
+                        <Link onClick={handleLink} class="link" to="login">Login</Link>
+                        <Link onClick={handleLink} class="link" to="logout">Logout</Link>
+                        <Link onClick={handleLink} class="link" to="viewProfile">View Profile</Link>
                     </div>
                 </div>
             </div>
@@ -146,7 +103,7 @@ function SPA() {
                 <Route path="login" element={<Login />} />
                 <Route path="logout" element={<LogoutPage />} />
                 <Route path="viewProfile" element={<ViewProfile />} />
-    </Routes>*/}
+    </Routes>
         </div>
     );
 }
