@@ -1,13 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { Card, CardContent, CardMedia, Typography } from '@mui/material';
 import "./userDetail.css"
-import ModalView from "./ModalView"
 
-const UserDetail = ({ userData }) => {
+const UserDetail = ({userData, setViewing, viewing}) => {
   const fullName = userData.firstName + " " + userData.lastName;
 
   const [isData, setIsData] = useState(false);
 
+  function handleClose(){
+      setViewing(false)
+      // console.log("viewing: " + )
+  }
 
   useEffect(() => {
     if (userData.firstName !== undefined) {
@@ -19,7 +22,8 @@ const UserDetail = ({ userData }) => {
 
   return (
     (isData ? (
-      <Card className="userDetail">
+      <Card className={`userDetail ${viewing}`}>
+        <button type="button" className="xButton" onClick={handleClose}>X</button>
         <div className="imgAndName">
           <CardMedia
             className="userDetail__media"

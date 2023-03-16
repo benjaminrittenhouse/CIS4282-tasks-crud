@@ -7,6 +7,7 @@ import Edit from "../edit/Edit"
 import "../../../style/navbar.css";
 import "../../../style/style.css"
 import "../../../style/edit.css"
+import DbToObj from "../DbToObj";
 
 function Display(props) {
 
@@ -29,6 +30,7 @@ function Display(props) {
       const data = await res.json();
 
       setTaskList(data);
+      setExpandedTask(DbToObj(taskList[0]))
     } catch (err) {
 
       console.log(err);
@@ -64,6 +66,7 @@ function Display(props) {
         var newList = taskList;
         newList.splice(index, 1);
         setTaskList([...newList]);
+        setExpandedTask(DbToObj(taskList[0]))
       }
     } catch (err) {
       console.log(err);

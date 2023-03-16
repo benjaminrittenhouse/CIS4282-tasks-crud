@@ -7,8 +7,6 @@ import "./displayView.css"
 import "../../webUser/userList/UserList.css"
 import UserList from "../userList/UserList.js";
 import Edit from "../edit/Edit"
-import ModalView from "../userDetail/ModalView";
-import ModalEdit from "../edit/ModalEdit"
 import DbToObj from "../DbToObj";
 
 
@@ -18,6 +16,7 @@ function Display(props) {
   const [userList, setUserList] = useState([]);
   const [isEditing, setIsEditing] = useState(false);
 
+  const [viewing, setViewing] = useState(false);
 
   const [expandedUser, setExpandedUser] = useState({})
 
@@ -40,6 +39,7 @@ function Display(props) {
 
   useEffect(() => {
     fetchAllUsers();
+    console.log("viewing: " + viewing);
   }, []);
 
 
@@ -76,19 +76,18 @@ function Display(props) {
 
   return (
 
-    <div className="displayView">
+    <div className={`displayView ${viewing}`}>
 
       {/* Scrollable User List */}
       <div className="scrollableContainer">
         <div className="userListContainer">
-          <UserList processDelete={processDelete} users={userList} setExpandedUser={setExpandedUser} setIsEditing={setIsEditing} />
+          <UserList processDelete={processDelete} users={userList} setViewing={setViewing} setExpandedUser={setExpandedUser} setIsEditing={setIsEditing} />
         </div>
       </div>
 
       {/* Expanded User View */}
-      <div className="expandedUserView">
-      {isEditing ? <Edit props={expandedUser} setIsEditing={setIsEditing} /> : <UserDetail userData={expandedUser} />}
-      {isEditing ? <ModalEdit props={expandedUser} setIsEditing={setIsEditing} /> : <ModalView userData={expandedUser} />}
+      <div className={`expandedUserView ${viewing}`}>
+      {isEditing ? <Edit props={expandedUser} setIsEditing={setIsEditing} /> : <UserDetail userData={expandedUser} viewing={viewing} setViewing={setViewing} />}
       </div>
 
     </div>

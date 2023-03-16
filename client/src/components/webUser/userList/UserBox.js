@@ -7,7 +7,7 @@ import './UserBox.css';
 import ConfirmDeleteModal from '../delete/ConfirmDeleteModal';
 
 
-function UserBox({userData, setExpandedUser, setIsEditing, processDelete, index}) {
+function UserBox({userData, setExpandedUser, setIsEditing, processDelete, index, setViewing}) {
 
   const userObj = DbToObj(userData);
 
@@ -28,6 +28,7 @@ function UserBox({userData, setExpandedUser, setIsEditing, processDelete, index}
       console.log("user:")
       console.dir(userObj)
       setExpandedUser(userObj)
+      setViewing(true)
   }
 
   const [isDeleteModal, setIsDeleteModal] = useState(false)
