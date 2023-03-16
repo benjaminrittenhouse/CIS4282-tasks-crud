@@ -1,10 +1,35 @@
-import { React, useEffect } from 'react';
+import { React, useEffect, useState } from 'react';
 
-function Dropdown({ names, handleClick, handleChange, recent, webUserName, handleWebUser, handleMore, numUsers }) {
+function Dropdown({ names, handleClick, handleChange, recent, webUserName, handleWebUser, handleMore }) {
+    const [numUsers, setNumUsers] = useState(0)
+
+    async function handleNumUsers(fn, t) {
+        try {
+
+            // const objToStr = new URLSearchParams(inp).toString();
+            const str = `${process.env.REACT_APP_API_URL}/api/getNumberUsers?firstName=${fn}&threshold=${t}`;
+
+            // console log the API fetch call
+            console.log("STR w/ Task OBJ: " + str);
+           
+            // await json response & grab json
+            const res = await fetch(str);
+            const data = await res.json();
+
+            // print data returned from API call
+            console.log("Data returned from NUMBERS API call: " + data[0].count);
+
+            setNumUsers(Number(data[0].count))
+            
+        } catch (err) {
+            //error catching for when fetch fails
+            console.log("err (caught fetch):" + String(err));
+        }
+    }
+
 
     useEffect(() => {
-        // handleWebUser();
-        handleClick();
+        handleNumUsers(webUserName, recent)
       }, []);
 
     return (
