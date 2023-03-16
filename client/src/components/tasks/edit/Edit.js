@@ -30,7 +30,7 @@ function Edit({ props, setIsEditing, assignedUser }) {
     const handleClick = () => {
         setButtonVal(webUserName)
         handleSearch(webUserName)
-        // handleNumUsers(webUserName, recent)
+        handleNumUsers(webUserName, recent)
     }
 
     const location = useLocation();
@@ -102,6 +102,29 @@ function Edit({ props, setIsEditing, assignedUser }) {
         }
     }
 
+   async function handleNumUsers(fn, t) {
+        try {
+
+            // const objToStr = new URLSearchParams(inp).toString();
+            const str = `${process.env.REACT_APP_API_URL}/api/getNumberUsers?firstName=${fn}&threshold=${t}`;
+
+            // console log the API fetch call
+            console.log("STR w/ Task OBJ: " + str);
+           
+            // await json response & grab json
+            const res = await fetch(str);
+            const data = await res.json();
+
+            // print data returned from API call
+            console.log("Data returned from NUMBERS API call: " + data[0].count);
+
+            setNumUsers(Number(data[0].count))
+            
+        } catch (err) {
+            //error catching for when fetch fails
+            console.log("err (caught fetch):" + String(err));
+        }
+    }
 
     async function updateTask() {
         try {
@@ -177,8 +200,11 @@ function Edit({ props, setIsEditing, assignedUser }) {
         setWebUserName(name)
     }
 
+
+
     return (
         <div className="edit">
+            <button type="button" className="xButton" onClick={()=>handleNumUsers(webUserName)}>test</button>
             <button type="button" className="xButton" onClick={handleClose}>X</button>
             <h2>Editing {taskData.taskName}</h2>
             <table className="insertArea">
@@ -244,6 +270,7 @@ function Edit({ props, setIsEditing, assignedUser }) {
                                   handleChange={handleChange} 
                                   webUserName={webUserName} 
                                   handleWebUser={handleWebUser}
+                                  numUsers={numUsers}
                                   handleMore={handleMore}
                                   recent={recent}
                         />                        
