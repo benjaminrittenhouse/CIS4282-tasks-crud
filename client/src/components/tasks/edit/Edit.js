@@ -82,7 +82,6 @@ function Edit({ props, setIsEditing, assignedUser }) {
             setNames(data);
             setAssignedName(inp)
             setRecent(names[names.length-1].first_name)
-            setNumUsers(numUsers - 10)
             console.log("recent: " + recent)
             // check if data is an eror objec
             if(data.isError) {

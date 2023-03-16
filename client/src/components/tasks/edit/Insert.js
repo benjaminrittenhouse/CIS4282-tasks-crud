@@ -9,6 +9,8 @@ function Insert(props) {
 
     const [webUserName, setWebUserName] = useState("")
 
+    const [numUsers, setNumUsers] = useState(0);
+    const [recent, setRecent] = useState("")
 
     const [assignedName, setAssignedName] = useState("");
 
@@ -22,6 +24,7 @@ function Insert(props) {
     const handleClick = () => {
         setButtonVal(webUserName)
         handleSearch(webUserName)
+        handleNumUsers(webUserName, recent)
     }
 
     const [taskData, setTaskData] = useState({});
@@ -80,6 +83,68 @@ function Insert(props) {
         }
     }
 
+// first name, threshold
+async function handleMore(fn, t) {
+    try {
+
+        // const objToStr = new URLSearchParams(inp).toString();
+        const str = `${process.env.REACT_APP_API_URL}/api/queryGreaterUsers?firstName=${fn}&threshold=${t}`;
+
+        // console log the API fetch call
+        console.log("STR w/ Task OBJ: " + str);
+       
+        // await json response & grab json
+        const res = await fetch(str);
+        const data = await res.json();
+
+        // print data returned from API call
+        console.log("Data returned from API (MORE) call: " + JSON.stringify(data));
+
+
+        setNames(data);
+        setAssignedName(fn)
+        setRecent(names[names.length-1].first_name)
+        // check if data is an eror objec
+        if(data.isError) {
+            setErrorObj(data);
+            console.log("setting error (task) data...");
+        } else {
+            console.log("setting task data...");
+            // clear the previous messages from errors when we successfully insert
+            setErrorObj(emptyData);
+            // setTaskData(data);
+        }
+        
+    } catch (err) {
+        //error catching for when fetch fails
+        console.log("err (caught fetch):" + String(err));
+    }
+}
+
+    async function handleNumUsers(fn, t) {
+        try {
+
+            // const objToStr = new URLSearchParams(inp).toString();
+            const str = `${process.env.REACT_APP_API_URL}/api/getNumberUsers?firstName=${fn}&threshold=${t}`;
+
+            // console log the API fetch call
+            console.log("STR w/ Task OBJ: " + str);
+           
+            // await json response & grab json
+            const res = await fetch(str);
+            const data = await res.json();
+
+            // print data returned from API call
+            console.log("Data returned from NUMBERS API call: " + data[0].count);
+
+            setNumUsers(Number(data[0].count))
+            
+        } catch (err) {
+            //error catching for when fetch fails
+            console.log("err (caught fetch):" + String(err));
+        }
+    }
+
     async function handleSearch(inp) {
         try {
 
@@ -99,6 +164,7 @@ function Insert(props) {
 
             setNames(data);
             setAssignedName(inp)
+            setRecent(names[names.length-1].first_name)
             // check if data is an eror objec
             if (data.isError) {
                 setErrorObj(data);
@@ -193,6 +259,9 @@ function Insert(props) {
                                   handleChange={handleChange} 
                                   webUserName={webUserName} 
                                   handleWebUser={handleWebUser}
+                                  recent={recent}
+                                  numUsers={numUsers}
+                                  handleMore={handleMore}
                         />    
                     </tr>
 
