@@ -68,27 +68,10 @@ router.get("/updateTask", (req, res) => {
   // http://localhost:5001/api/updateTask?taskName=newNameHere&taskDesc=newDesHere&taskPoints=555&targetDate=2021-05-05&completionDate=2021-05-05&assignedWebUserID=4&taskID=2
   var errors = false;
   
-  var task = {
-    "taskID": req.query.taskID,
-    "taskName": req.query.taskName,
-    "taskDesc": req.query.taskDesc,
-    "taskPoints": req.query.taskPoints,
-    "targetDate": req.query.targetDate,
-    "completionDate": req.query.completionDate,
-    "assignedWebUserID": req.query.assignedWebUserID
-  }
+  var task = QueryToObj(req);
 
   // establish error object to note any formatting errors from values inserted
-  var errorObj = {
-    "isError": "true",
-    "taskID": "",
-    "taskName": "",
-    "taskDesc": "",
-    "taskPoints": "",
-    "targetDate": "",
-    "completionDate": "",
-    "assignedWebUserID": ""
-  }
+  var errorObj = ErrorObj()
 
   // validate insert
   var tempObj = DbMods.validateTask(task);

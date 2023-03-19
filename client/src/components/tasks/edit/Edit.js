@@ -204,7 +204,6 @@ function Edit({ props, setIsEditing, assignedUser }) {
 
     return (
         <div className="edit">
-            <button type="button" className="xButton" onClick={()=>handleNumUsers(webUserName)}>test</button>
             <button type="button" className="xButton" onClick={handleClose}>X</button>
             <h2>Editing {taskData.taskName}</h2>
             <table className="insertArea">

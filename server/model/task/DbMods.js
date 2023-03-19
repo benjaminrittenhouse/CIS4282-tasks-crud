@@ -59,8 +59,8 @@ DbMods.insertTask = function(taskObj){
     if(taskObj.completionDate === "") taskObj.completionDate = null;
     if(taskObj.assigned_name === "") taskObj.assignedWebUserID = null;
 
-    taskObj.targetDate = formatUtils.dateConversion(taskObj.targetDate);
-    taskObj.completionDate = formatUtils.dateConversion(taskObj.completionDate);
+    taskObj.targetDate = validateUtils.dateConversion(taskObj.targetDate);
+    taskObj.completionDate = validateUtils.dateConversion(taskObj.completionDate);
 
     return taskObj;
 }

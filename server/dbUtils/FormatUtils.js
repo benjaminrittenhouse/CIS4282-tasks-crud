@@ -27,33 +27,6 @@ formatUtils.formatDate = function (date) {
     }
 }
 
-// convert to store in database format
-formatUtils.dateConversion = function(date){
-    try {  
-        var dateFormat = new Date(date);
-        return dateFormat;
-    } catch (err){
-        return "Bad date in FormatUtils.formatDate: " + err;
-    }
-}
-
-// convert decimal to database format
-formatUtils.decimalConversion = function(val){
-    if ((val == null) || (val.length == 0)) {
-        return null;  // Since this field is not required, empty string is valid user entry.
-    }
-    val = val.replace("$", ""); // removes $
-    val = val.replace(",", ""); // removes ,
-
-    try{
-        val = parseFloat(val);
-        return val;
-    } catch(err){
-        System.out.println("FormatUtils.decimalConversion: cannot convert " + val + " to float (decimal)");
-        return null;
-    }
-}
-
 // format currency (INCOMPLETE)
 formatUtils.formatCurrency = function (currency) {
     if(currency == null){
