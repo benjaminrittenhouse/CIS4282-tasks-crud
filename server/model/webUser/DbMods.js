@@ -59,8 +59,8 @@ DbMods.validateWebUser = function(userObj){
 
 // use this after webuser has been validated, insert the stripped values
 DbMods.insertWebUser = function(userObj){
-    userObj.membershipFee = formatUtils.decimalConversion(userObj.membershipFee);
-    userObj.birthday = formatUtils.dateConversion(userObj.birthday);
+    userObj.membershipFee = validateUtils.decimalConversion(userObj.membershipFee);
+    userObj.birthday = validateUtils.dateConversion(userObj.birthday);
 
     if(userObj.membershipFee === "") userObj.membershipFee = null;
     if(userObj.birthday === "") userObj.birthday = null;
