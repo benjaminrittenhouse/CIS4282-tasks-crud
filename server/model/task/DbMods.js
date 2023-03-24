@@ -24,6 +24,7 @@ DbMods.formatTask = function(taskObj){
 
     // testing
     task.cat_icon = formatUtils.formatString(taskObj.cat_icon);
+    task.cat_id = formatUtils.formatString(taskObj.cat_id);
     
     return task;
 }

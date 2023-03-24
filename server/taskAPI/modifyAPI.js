@@ -35,8 +35,8 @@ router.get("/insertTask", (req, res) => {
   if (!errors) {
     console.log("no errors! lets insert task");
     try {     
-      const sqlIns = "INSERT INTO tasks (task_name, task_desc, task_points, target_date, completion_date, assigned_web_user_id) VALUES (?,?,?,?,?,?)";
-      db.query(sqlIns, [task.taskName, task.taskDesc, task.taskPoints, task.targetDate, task.completionDate, task.assignedWebUserID], (err, req, result) => {
+      const sqlIns = "INSERT INTO tasks (task_name, task_desc, task_points, target_date, completion_date, assigned_web_user_id, assigned_category) VALUES (?,?,?,?,?,?,?)";
+      db.query(sqlIns, [task.taskName, task.taskDesc, task.taskPoints, task.targetDate, task.completionDate, task.assignedWebUserID, task.catID], (err, req, result) => {
         if (err) {
           // we get database error from sqlMessage and put it into our error object
           console.log("SQL MSG (task): " + err.sqlMessage);

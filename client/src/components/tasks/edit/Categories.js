@@ -31,6 +31,7 @@ function Categories({ getUserCategoryId, value }) {
     //useEffect will run upon loading the page, this is where we will call our RoleTypes API
     useEffect(() => {
         fetchCategories();
+        console.log("Value: " + value)
     }, []);
 
 
@@ -44,7 +45,7 @@ function Categories({ getUserCategoryId, value }) {
                 <option value="Select a category">Select a value</option>
                 {categories.map(item => {
                     // if this is our value, use it as defaul selection
-                    if(item["cat_id"] == value){
+                    if(item["cat_id"] === value){
 
                         return <option
                         onClick = {passingProps}

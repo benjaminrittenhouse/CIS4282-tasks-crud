@@ -43,7 +43,7 @@ function TaskBox({taskData, setExpandedTask, setIsEditing, processDelete, index,
         <ConfirmDeleteModal  open={isDeleteModal} handleClose={handleClose} handleDelete={handleDelete} name={taskObj.taskName}/>
 
         <Box display="flex" alignItems="center">
-          <Avatar src={taskObj.image} alt={`${taskObj.name}'s picture`} />
+          <Avatar className="img" src={taskObj.catIcon} alt={`${taskObj.name}'s picture`} />
           <Box ml={2}>
             <Typography variant="h6">{taskObj.taskName}</Typography>
           </Box>
