@@ -1,4 +1,4 @@
-.navbar {
+.navbar-expand-false {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -17,50 +17,121 @@
     background-color: white;
 }
 
-.navbar .link {
+.navbar-expand-true {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    position: sticky;
+    top: 0rem;
+    left: 0rem;
+    z-index: 100;
+    width: 100%;
+    white-space: nowrap;
+    height: 7vh;
+    padding: 0.75rem;
+    padding-top: 1rem;
+    box-shadow: 0rem 0rem 1rem black;
+    /* header 3-D effect*/
+    background-color: white;
+}
+
+.navbar-expand-false .link {
     margin: 10px;
     text-decoration: none;
     color: black;
 }
 
-.navbar .links {
-    margin: auto;
-}
-
-.navbar .dropdown {
-    margin: auto;
-}
-
-.navbar a {
+.navbar-expand-true .link {
+    margin: 10px;
     text-decoration: none;
     color: black;
 }
 
-.navbar a:hover {
+.navbar-expand-false .links {
+    margin: auto;
+}
+
+
+.navbar-expand-true .links {
+    margin: auto;
+}
+
+
+
+.navbar-expand-false .dropdown {
+    margin: auto;
+}
+
+.navbar-expand-true .dropdown {
+    margin: auto;
+}
+
+.navbar-expand-false a {
+    text-decoration: none;
+    color: black;
+}
+
+.navbar-expand-true a {
+    text-decoration: none;
+    color: black;
+}
+
+.navbar-expand-false a:hover {
     color: grey;
 }
 
-.navbar #title {
+.navbar-expand-true a:hover {
+    color: grey;
+}
+
+.navbar-expand-false #title {
     font-size: 2rem;
     text-align: center;
 
     letter-spacing: 0.1rem;
 }
 
-.navbar #nav {
+.navbar-expand-true #title {
+    font-size: 2rem;
+    text-align: center;
+
+    letter-spacing: 0.1rem;
+}
+
+.navbar-expand-false #nav {
+    font-size: 1.3rem;
+    text-align: right;
+}
+
+.navbar-expand-true #nav {
     font-size: 1.3rem;
     text-align: right;
 }
 
 /* Dropdown menu, per W3 schools */
-.navbar .dropbtntrue {
+.navbar-expand-false .dropbtntrue {
     padding: 16px;
     font-size: 16px;
     border: none;
     background-color: #FBE4C4;
 }
 
-.navbar .dropbtnfalse {
+.navbar-expand-true .dropbtntrue {
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    background-color: #FBE4C4;
+}
+
+.navbar-expand-false .dropbtnfalse {
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    background-color: transparent;
+}
+
+.navbar-expand-true .dropbtnfalse {
     padding: 16px;
     font-size: 16px;
     border: none;
@@ -68,40 +139,79 @@
 }
 
 
-.navbar .dropbtntrue:hover .dropbtnfalse:hover {
+.navbar-expand-false .dropbtntrue:hover .dropbtnfalse:hover {
     color: grey;
 }
 
-.navbar .dropdown {
+.navbar-expand-true .dropbtntrue:hover .dropbtnfalse:hover {
+    color: grey;
+}
+
+
+.navbar-expand-false .dropdown {
     position: relative;
     display: inline-block;
 }
 
-.navbar .false {
+.navbar-expand-true .dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.navbar-expand-false .false {
     display: none;
     position: absolute;
     min-width: 160px;
     z-index: 1;
 }
 
-.navbar .true {
+.navbar-expand-true .false {
+    display: none;
     position: absolute;
     min-width: 160px;
     z-index: 1;
 }
 
-.navbar .true a {
+.navbar-expand-false .true {
+    position: absolute;
+    min-width: 160px;
+    z-index: 1;
+}
+
+.navbar-expand-true .true {
+    position: absolute;
+    min-width: 160px;
+    z-index: 1;
+}
+
+.navbar-expand-false .true a {
     color: black;
     padding: 12px 16px;
     text-decoration: none;
     display: block;
 }
 
-.navbar .true a:hover {
+.navbar-expand-true .true a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.navbar-expand-false .true a:hover {
     background-color: #ddd;
 }
 
-.navbar .dropdown .true {
+.navbar-expand-true .true a:hover {
+    background-color: #ddd;
+}
+
+.navbar-expand-false .dropdown .true {
+    display: block;
+    background-color:#FBE4C4;
+}
+
+.navbar-expand-true .dropdown .true {
     display: block;
     background-color:#FBE4C4;
 }
@@ -110,6 +220,105 @@
     display: none;
 }
 
+.navbar-expand-false .brud {
+    display: flex;
+    flex-direction: row;
+    padding: auto;
+}
+
+.navbar-expand-true .brud {
+    display: flex;
+    flex-direction: row;
+    padding: auto;
+}
+
+.navbar-expand-false .brud .title {
+    font-weight: bold;
+    font-size: 2rem;
+    margin: auto;
+    padding-left: 1rem;
+}
+
+.navbar-expand-true .brud .title {
+    font-weight: bold;
+    font-size: 2rem;
+    margin: auto;
+    padding-left: 1rem;
+}
+
+.navbar-expand-false .btn {
+    display: none;
+}
+
+.navbar-expand-true .btn {
+    display: none;
+}
+
 @media only screen and (max-width: 40rem) {
-    
+    .navbar-expand-true {
+        flex-direction: column;
+        height: 75vh;
+        position: absolute;
+        padding: 0;
+        margin: 0;
+        justify-content: flex-start;
+    }
+
+    .navbar-expand-true {
+        flex-direction: column;
+        height: 75vh;
+        position: absolute;
+        padding: 0;
+        margin: 0;
+        justify-content: flex-start;
+    }
+
+    .navbar-expand-false .btn {
+        display: inline-block;
+        background-color: transparent;
+        border: none;
+        margin: 0;
+        padding: 0;
+        font-family: inherit;
+        font-size: 2rem;
+        margin-left: 1rem;
+    }
+
+    .navbar-expand-true .btn {
+        display: inline-block;
+        background-color: transparent;
+        border: none;
+        margin: 0;
+        padding: 0;
+        font-family: inherit;
+        font-size: 2rem;
+        margin-left: 1rem;
+    }
+
+    .navbar-expand-false .links {
+        display: none;
+    }
+
+    .navbar-expand-false .dropdown {
+        display: none;
+    }
+
+    .navbar-expand-true .brud {
+        margin: 0;
+        padding: 0;
+        margin-bottom: 1rem;
+        margin-top: 0.5rem;
+    }
+
+    .navbar-expand-true .brud .title {}
+
+    .navbar-expand-true .links {
+        margin: 1rem;
+    }
+
+    .navbar-expand-true .dropdown {
+        margin: 1rem;
+    }
+
+
 }

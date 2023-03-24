@@ -23,6 +23,8 @@ function SPA() {
     const [tasks, setTasks] = useState(false)
     const [profile, setProfile] = useState(false)
 
+    const [expand, setExpand] = useState("navbar-expand-false")
+
     function handleUsersClick(){
         if(!users){
             setUsers(true)
@@ -57,12 +59,35 @@ function SPA() {
         setUsers(false)
         setTasks(false)
         setProfile(false)
+        setExpand("navbar-expand-false")
+    }
+
+
+    function handleExpand() {
+        // console.log(handleExpand + " equals: " + (handleExpand == "navbar-expand-false"))
+        if(expand === "navbar-expand-false"){
+            console.log("setting to true")
+            setExpand("navbar-expand-true")
+        } else {
+            setExpand("navbar-expand-false")
+            console.log("setting to false")
+        }
     }
 
     return (
         <div class="App">
-            <div class="navbar">
+            <div className={expand}>
+                <div class="brud">
+
                 <img src={logo} alt="Logo" height="50" width="50" />
+                <div class="title">
+                    <div>BRUD</div>
+                </div>
+
+                <button class="btn" onClick={handleExpand}>|||</button>
+
+                </div>
+                
                 <div class="links">
                     <Link onClick={handleLink} class="link" to="/">Home</Link>
                 </div>
