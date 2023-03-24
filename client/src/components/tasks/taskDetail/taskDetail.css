@@ -28,8 +28,8 @@
 
 .taskDetail .taskDetail__media {
     border-radius: 33px;
-    width: 33%;
-    height: 33%;
+    width: 8%;
+    height: 8%;
 }
 
 @media only screen and (max-width: 40rem) {

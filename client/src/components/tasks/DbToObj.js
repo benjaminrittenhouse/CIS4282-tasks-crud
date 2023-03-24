@@ -8,7 +8,10 @@ function DbToObj(task){
         "completionDate": task.completion_date,
         "assignedWebUserID": task.assigned_web_user_id,
         "assignedWebUser": task.first_name + " " + task.last_name,
+        "catIcon": task.cat_icon,
     }
+
+    console.log("task.cat icon was " + taskObj.catIcon)
 
   return taskObj
 }

@@ -3,6 +3,8 @@ import { Card, CardContent, CardMedia, Typography } from '@mui/material';
 import "./taskDetail.css"
 
 const TaskDetail = ({ taskData, setViewing, viewing}) => {
+  console.log("TAKSD DETAIL WAS " + taskData.catIcon);
+
 
   const [isData, setIsData] = useState(false);
   
@@ -28,7 +30,7 @@ const TaskDetail = ({ taskData, setViewing, viewing}) => {
             className="taskDetail__media"
             component="img"
             height="140"
-            image={taskData.image}
+            image={taskData.catIcon}
             alt={taskData.taskName}
           />
           <Typography className="name" variant="h3" component="div" fontWeight="bold">
@@ -37,7 +39,7 @@ const TaskDetail = ({ taskData, setViewing, viewing}) => {
         </div>
         <CardContent className="taskDetail__content">
           <Typography variant="subtitle1" component="div">
-          <span style={{ fontWeight: "bold" }}>Description: </span>{taskData.taskDesc}
+          <span style={{ fontWeight: "bold" }}>Description: </span>{taskData.taskDesc} 
           </Typography>
           <Typography variant="subtitle1" component="div">
             <span style={{ fontWeight: "bold" }}>Points: </span>{taskData.taskID}

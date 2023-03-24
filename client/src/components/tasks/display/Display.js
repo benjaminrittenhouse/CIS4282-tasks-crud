@@ -31,6 +31,8 @@ function Display(props) {
       const data = await res.json();
 
       setTaskList(data);
+      console.log("data: ")
+      console.dir(data);
       setExpandedTask(DbToObj(data[0]))
     } catch (err) {
 

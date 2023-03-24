@@ -33,6 +33,8 @@ function Display(props) {
       const data = await res.json();
 
       setTaskList(data);
+      console.log("TASKS")
+      console.dir(taskList)
     } catch (err) {
 
       console.log(err);

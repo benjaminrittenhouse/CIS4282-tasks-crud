@@ -7,7 +7,8 @@ function QueryToObj(req){
       "taskPoints": req.query.taskPoints ||= "",
       "targetDate": req.query.targetDate ||= "",
       "completionDate": req.query.completionDate ||= "",
-      "assignedWebUserID": req.query.assignedWebUserID ||= ""
+      "assignedWebUserID": req.query.assignedWebUserID ||= "",
+      "catIcon": req.query.catIcon ||= "",
     }
 
   return taskObj

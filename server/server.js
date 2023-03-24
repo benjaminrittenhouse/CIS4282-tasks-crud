@@ -25,11 +25,13 @@ const modifyWebUser = require("./webUserAPIs/modifyAPI");
 const readWebUser = require("./webUserAPIs/readAPI");
 const readTasks = require("./taskAPI/readAPI");
 const modifyTasks = require("./taskAPI/modifyAPI");
+const readCategories = require("./categoryAPI/readAPI")
 
 app.use("/api", modifyWebUser);
 app.use("/api", readWebUser);
 app.use("/api", readTasks);
 app.use("/api", modifyTasks)
+app.use("/api", readCategories);
 
 app.get("/", (req, res) => {
   if(db.state === 'disconnected'){

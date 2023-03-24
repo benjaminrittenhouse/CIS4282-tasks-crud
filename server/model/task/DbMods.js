@@ -19,8 +19,11 @@ DbMods.formatTask = function(taskObj){
     task.target_date = formatUtils.formatDate(taskObj.target_date);
     task.completion_date = formatUtils.formatDate(taskObj.completion_date);
     task.assigned_web_user_id = formatUtils.formatInteger(taskObj.assigned_web_user_id);
-    task.first_name = formatUtils.formatString(taskObj.first_name)
+    task.first_name = formatUtils.formatString(taskObj.first_name);
     task.last_name = formatUtils.formatString(taskObj.last_name);
+
+    // testing
+    task.cat_icon = formatUtils.formatString(taskObj.cat_icon);
     
     return task;
 }
