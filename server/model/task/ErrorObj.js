@@ -8,6 +8,8 @@ function ErrorObj(){
         "targetDate": "",
         "completionDate": "",
         "assignedWebUserID": "",
+        "catID": "",
+        "catIcon": "",
         "errorMsg": ""
       }
 

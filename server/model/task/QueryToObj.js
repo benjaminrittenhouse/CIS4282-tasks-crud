@@ -9,6 +9,7 @@ function QueryToObj(req){
       "completionDate": req.query.completionDate ||= "",
       "assignedWebUserID": req.query.assignedWebUserID ||= "",
       "catIcon": req.query.catIcon ||= "",
+      "catID": req.query.catID ||= "",
     }
 
   return taskObj

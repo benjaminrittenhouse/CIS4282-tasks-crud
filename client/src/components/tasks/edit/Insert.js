@@ -1,6 +1,7 @@
 import { React, useState, useEffect } from 'react';
 import "./edit.css"
 import Dropdown from "./Dropdown"
+import Categories from './Categories';
 
 function Insert(props) {
     const [insertMessage, setInsertMessage] = useState("");
@@ -250,6 +251,16 @@ async function handleMore(fn, t) {
                         </td>
                         <td className="error">
                             {errorObj.completionDate}
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td className="textTd">Category</td>
+                        <td className="inputTd">
+                            <Categories 
+                                value={taskData.catID}
+                                getUserCategoryId={(u) => setTaskData(setProp(taskData, "catID", u))}
+                            />
                         </td>
                     </tr>
 

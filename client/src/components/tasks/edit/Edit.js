@@ -4,6 +4,7 @@ import { Autocomplete, TextField } from '@mui/material';
 import Dropdown from "./Dropdown"
 import "./edit.css"
 
+import Categories from './Categories';
 
 function Edit({ props, setIsEditing, assignedUser }) {
     const [webUserName, setWebUserName] = useState(props.assignedWebUser)
@@ -261,6 +262,15 @@ function Edit({ props, setIsEditing, assignedUser }) {
                         </td>
                         <td className="error">
                             {errorObj.completionDate}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td className="textTd">Category</td>
+                        <td className="inputTd">
+                            <Categories 
+                                value={taskData.catID}
+                                getUserCategoryId={(u) => setTaskData(setProp(taskData, "catID", u))}
+                            />
                         </td>
                     </tr>
                     <tr>

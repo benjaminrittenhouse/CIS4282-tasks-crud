@@ -64,6 +64,7 @@ DbMods.insertTask = function(taskObj){
 
     taskObj.targetDate = validateUtils.dateConversion(taskObj.targetDate);
     taskObj.completionDate = validateUtils.dateConversion(taskObj.completionDate);
+    // taskObj.catID = validateUtils.validateString(taskObj.catID);
 
     return taskObj;
 }

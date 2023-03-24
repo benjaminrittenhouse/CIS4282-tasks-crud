@@ -68,7 +68,11 @@ router.get("/updateTask", (req, res) => {
   // http://localhost:5001/api/updateTask?taskName=newNameHere&taskDesc=newDesHere&taskPoints=555&targetDate=2021-05-05&completionDate=2021-05-05&assignedWebUserID=4&taskID=2
   var errors = false;
   
+  console.log("REQ: ");
+  console.dir(req.query);
+
   var task = QueryToObj(req);
+
 
   // establish error object to note any formatting errors from values inserted
   var errorObj = ErrorObj()
@@ -88,9 +92,11 @@ router.get("/updateTask", (req, res) => {
   if (!errors) {
     console.log("no errors! lets update task");
     try {     
-      const sqlIns = "UPDATE tasks SET task_name=?, task_desc=?, task_points=?, target_date=?, completion_date=?, assigned_web_user_id=?" 
+      const sqlIns = "UPDATE tasks SET task_name=?, task_desc=?, task_points=?, target_date=?, completion_date=?, assigned_web_user_id=?, assigned_category=?" 
       + " WHERE task_id=?";
-      const obj = [task.taskName, task.taskDesc, task.taskPoints, task.targetDate, task.completionDate, task.assignedWebUserID, task.taskID];
+      const obj = [task.taskName, task.taskDesc, task.taskPoints, task.targetDate, task.completionDate, task.assignedWebUserID,  task.catID, task.taskID];
+      console.log("CAT ID IN MODIFY: ")
+      console.dir(task)
       db.query(sqlIns, obj, (err, req, result) => {
         if (err) {
           // we get database error from sqlMessage and put it into our error object
