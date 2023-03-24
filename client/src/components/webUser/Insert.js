@@ -62,13 +62,13 @@ function Insert(props) {
 
 
     return (
-        <div className="spaPage">
+        <div className="edit">
             <h2 className="heading">Insert Page</h2>
             <table className="insertArea">
                 <tbody>
                     <tr>
-                        <td>Email</td>
-                        <td>
+                        <td className="textTd">Email</td>
+                        <td className="inputTd">
                             <input placeholder ="example@mail.com" value={userData.userEmail} onChange=
                                 {e => setUserData({...userData, userEmail: e.target.value})}
                             /> 
@@ -79,8 +79,8 @@ function Insert(props) {
                     </tr>
 
                     <tr>
-                        <td>First Name</td>
-                        <td>
+                        <td className="textTd">First Name</td>
+                        <td className="inputTd">
                             <input placeholder ="Johnny" value={userData.firstName} onChange=
                                 {e => setUserData({...userData, firstName: e.target.value})}
                             />
@@ -91,8 +91,8 @@ function Insert(props) {
                     </tr>
 
                     <tr>
-                        <td>Last Name</td>
-                        <td>
+                        <td className="textTd">Last Name</td>
+                        <td className="inputTd">
                             <input placeholder ="Appleseed" value={userData.lastName} onChange=
                                 {e => setUserData({...userData, lastName: e.target.value})}
                             />
@@ -103,8 +103,8 @@ function Insert(props) {
                     </tr>
 
                     <tr>
-                        <td>Password</td>
-                        <td>
+                        <td className="textTd">Password</td>
+                        <td className="inputTd">
                             <input type="password" value={userData.userPassword} onChange=
                                 {e => setUserData({...userData, userPassword: e.target.value})}
                             />
@@ -114,8 +114,8 @@ function Insert(props) {
                         </td>
                     </tr>
                     <tr>
-                        <td>Re-enter Password</td>
-                        <td>
+                        <td className="textTd">Re-enter Password</td>
+                        <td className="inputTd">
                             <input type="password" value={userData.userPassword2} onChange=
                                 {e => setUserData(setProp(userData, "userPassword2", e.target.value))}
                             />
@@ -125,8 +125,8 @@ function Insert(props) {
                         </td>
                     </tr>
                     <tr>
-                        <td>Image</td>
-                        <td>
+                        <td className="textTd">Image</td>
+                        <td className="inputTd">
                             <input value={userData.image} onChange=
                                 {e => setUserData(setProp(userData, "image", e.target.value))}
                             />
@@ -136,8 +136,8 @@ function Insert(props) {
                         </td>
                     </tr>
                     <tr>
-                        <td>Birthday</td>
-                        <td>
+                        <td className="textTd">Birthday</td>
+                        <td className="inputTd">
                             <input placeholder="mm/dd/yyyy" value={userData.birthday} onChange=
                                 {e => setUserData(setProp(userData, "birthday", e.target.value))}
                             />
@@ -147,8 +147,8 @@ function Insert(props) {
                         </td>
                     </tr>
                     <tr>
-                        <td>Membership Fee</td>
-                        <td>
+                        <td className="textTd">Membership Fee</td>
+                        <td className="inputTd">
                             <input placeholder ="$100.00"value={userData.membershipFee} onChange=
                                 {e => setUserData(setProp(userData, "membershipFee", e.target.value))}
                             />
@@ -159,8 +159,8 @@ function Insert(props) {
                     </tr>
 
                     <tr>
-                        <td>Room #:</td>
-                        <td>
+                        <td className="textTd">Room #:</td>
+                        <td className="inputTd">
                             <input placeholder ="111"value={userData.roomNumber} onChange=
                                 {e => setUserData(setProp(userData, "roomNumber", e.target.value))}
                             />
@@ -171,8 +171,8 @@ function Insert(props) {
                     </tr>
 
                     <tr>
-                        <td>Role</td>
-                        <td>
+                        <td className="textTd">Role</td>
+                        <td className="inputTd">
                             {/* use component RoleTypes to get selection from DB in dropdown list (see RoleTypes.js) */}
                             <RoleTypes 
                                 value={userData.userRoleId}
