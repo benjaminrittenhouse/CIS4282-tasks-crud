@@ -10,6 +10,7 @@ function QueryToObj(req){
       "assignedWebUserID": req.query.assignedWebUserID ||= "",
       "catIcon": req.query.catIcon ||= "",
       "catID": req.query.catID ||= "",
+      "catName": req.query.catName ||= "",
     }
 
   return taskObj

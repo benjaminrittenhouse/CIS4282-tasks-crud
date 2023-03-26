@@ -1,5 +1,4 @@
 function DbToObj(task){
-  console.log("DB TO OBJ " + task.cat_id)
     const taskObj = {
         "taskID": task.task_id,
         "taskName": task.task_name,
@@ -11,6 +10,7 @@ function DbToObj(task){
         "assignedWebUser": task.first_name + " " + task.last_name,
         "catID": task.cat_id,
         "catIcon": task.cat_icon,
+        "catName": task.cat_name
     }
 
   return taskObj
