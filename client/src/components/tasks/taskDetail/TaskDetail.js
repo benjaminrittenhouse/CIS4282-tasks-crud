@@ -7,7 +7,7 @@ const TaskDetail = ({ taskData, setViewing, viewing }) => {
   // snackbar state
   const [openSnackbar, setOpenSnackbar] = useState(false);
 
-  const [position, setPosition] = useState({x: 0, y: 0});
+  const [position, setPosition] = useState({ x: 0, y: 0 });
 
   const handleOpenSnackbar = (event) => {
     setPosition({ x: event.clientX, y: event.clientY });
@@ -42,6 +42,7 @@ const TaskDetail = ({ taskData, setViewing, viewing }) => {
         <div className="imgAndName">
           <CardMedia
             className="taskDetail__media"
+            title="Test category"
             component="img"
             height="140"
             image={taskData.catIcon}
@@ -50,25 +51,29 @@ const TaskDetail = ({ taskData, setViewing, viewing }) => {
             onMouseLeave={handleCloseSnackbar}
           />
 
-            <Snackbar
-              open={openSnackbar}
-              message={"Category: " + taskData.catName}
-              autoHideDuration={3000}
-              onClose={handleCloseSnackbar}
-              anchorOrigin={{
+          <div className="skDiv">
+            Test category here
+          </div>
+
+          <Snackbar
+            open={openSnackbar}
+            message={"Category: " + taskData.catName}
+            autoHideDuration={3000}
+            onClose={handleCloseSnackbar}
+            anchorOrigin={{
+              vertical: 'bottom',
+              horizontal: 'center',
+              // Update the y position of the Snackbar to be above the mouse cursor
+              transformOrigin: {
                 vertical: 'bottom',
                 horizontal: 'center',
-                // Update the y position of the Snackbar to be above the mouse cursor
-                transformOrigin: {
-                  vertical: 'bottom',
-                  horizontal: 'center',
-                },
-                // Set the offset of the Snackbar to the position of the mouse cursor
-                // minus half the width of the Snackbar
-                // This centers the Snackbar above the mouse cursor
-                offset: `0, -${window.innerWidth - position.x - 100}, ${position.y - window.innerHeight + 100}, 0`,
-              }}
-            />
+              },
+              // Set the offset of the Snackbar to the position of the mouse cursor
+              // minus half the width of the Snackbar
+              // This centers the Snackbar above the mouse cursor
+              offset: `0, -${window.innerWidth - position.x - 100}, ${position.y - window.innerHeight + 100}, 0`,
+            }}
+          />
 
 
           <Typography className="name" variant="h3" component="div" fontWeight="bold">

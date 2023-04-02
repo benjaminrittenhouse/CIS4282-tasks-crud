@@ -8,6 +8,16 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    /* sk edit */
+    position: relative;
+}
+
+.taskDetail .imgAndName .skDiv {
+    position: absolute;
+    z-index: 2;
+    top: 3rem;
+    left: 5rem;
+    /*display: none;*/
 }
 
 .taskDetail .imgAndName .name {

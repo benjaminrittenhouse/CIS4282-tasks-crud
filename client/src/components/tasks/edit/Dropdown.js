@@ -16,9 +16,9 @@ function Dropdown({ names, handleClick, handleChange, recent, webUserName, handl
                 />
                 <button onClick={handleClick}>Search</button>
                 {/* list of names below input field */}
-                <ul className="names">
+                
                     {names.length > 0 ? (
-                        <>
+                        <ul className="names">
                             {names.map((ele) => (
                                 <option
                                     value={ele.web_user_id}
@@ -29,11 +29,11 @@ function Dropdown({ names, handleClick, handleChange, recent, webUserName, handl
                                 
                             ))}
                             {names.length === 10 && numUsers > 10 ? (<option onClick={()=>handleMore(webUserName, recent)}>More...</option>) : (null)}
-                        </>
+                        </ul>
                     ) : (
-                        <option value="No names">No names.</option>
+                       <>
+                       </>
                     )}
-                </ul>
 
             </td>
         </>

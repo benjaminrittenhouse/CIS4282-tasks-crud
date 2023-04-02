@@ -223,7 +223,7 @@ function Edit({ props, setIsEditing, assignedUser }) {
                     <tr>
                         <td className="textTd">Description</td>
                         <td className="inputTd">
-                            <input placeholder="Sideyard" value={taskData.taskDesc} onChange=
+                            <textarea placeholder="This task is about..." value={taskData.taskDesc} onChange=
                                 {e => setTaskData({...taskData, taskDesc: e.target.value})}
                             />
                         </td>

@@ -84,43 +84,43 @@ function Insert(props) {
         }
     }
 
-// first name, threshold
-async function handleMore(fn, t) {
-    try {
+    // first name, threshold
+    async function handleMore(fn, t) {
+        try {
 
-        // const objToStr = new URLSearchParams(inp).toString();
-        const str = `${process.env.REACT_APP_API_URL}/api/queryGreaterUsers?firstName=${fn}&threshold=${t}`;
+            // const objToStr = new URLSearchParams(inp).toString();
+            const str = `${process.env.REACT_APP_API_URL}/api/queryGreaterUsers?firstName=${fn}&threshold=${t}`;
 
-        // console log the API fetch call
-        console.log("STR w/ Task OBJ: " + str);
-       
-        // await json response & grab json
-        const res = await fetch(str);
-        const data = await res.json();
+            // console log the API fetch call
+            console.log("STR w/ Task OBJ: " + str);
 
-        // print data returned from API call
-        console.log("Data returned from API (MORE) call: " + JSON.stringify(data));
+            // await json response & grab json
+            const res = await fetch(str);
+            const data = await res.json();
+
+            // print data returned from API call
+            console.log("Data returned from API (MORE) call: " + JSON.stringify(data));
 
 
-        setNames(data);
-        setAssignedName(fn)
-        setRecent(names[names.length-1].first_name)
-        // check if data is an eror objec
-        if(data.isError) {
-            setErrorObj(data);
-            console.log("setting error (task) data...");
-        } else {
-            console.log("setting task data...");
-            // clear the previous messages from errors when we successfully insert
-            setErrorObj(emptyData);
-            // setTaskData(data);
+            setNames(data);
+            setAssignedName(fn)
+            setRecent(names[names.length - 1].first_name)
+            // check if data is an eror objec
+            if (data.isError) {
+                setErrorObj(data);
+                console.log("setting error (task) data...");
+            } else {
+                console.log("setting task data...");
+                // clear the previous messages from errors when we successfully insert
+                setErrorObj(emptyData);
+                // setTaskData(data);
+            }
+
+        } catch (err) {
+            //error catching for when fetch fails
+            console.log("err (caught fetch):" + String(err));
         }
-        
-    } catch (err) {
-        //error catching for when fetch fails
-        console.log("err (caught fetch):" + String(err));
     }
-}
 
     async function handleNumUsers(fn, t) {
         try {
@@ -130,7 +130,7 @@ async function handleMore(fn, t) {
 
             // console log the API fetch call
             console.log("STR w/ Task OBJ: " + str);
-           
+
             // await json response & grab json
             const res = await fetch(str);
             const data = await res.json();
@@ -139,7 +139,7 @@ async function handleMore(fn, t) {
             console.log("Data returned from NUMBERS API call: " + data[0].count);
 
             setNumUsers(Number(data[0].count))
-            
+
         } catch (err) {
             //error catching for when fetch fails
             console.log("err (caught fetch):" + String(err));
@@ -165,7 +165,7 @@ async function handleMore(fn, t) {
 
             setNames(data);
             setAssignedName(inp)
-            setRecent(names[names.length-1].first_name)
+            setRecent(names[names.length - 1].first_name)
             // check if data is an eror objec
             if (data.isError) {
                 setErrorObj(data);
@@ -193,6 +193,17 @@ async function handleMore(fn, t) {
         setWebUserName(name)
     }
 
+    // function to allow a user to upload a .txt file and read the text, store it in a state variable
+    function handleFileUpload(e) {
+        const file = e.target.files[0];
+        const reader = new FileReader();
+        reader.onload = function (e) {
+            const text = (e.target.result);
+            setTaskData({ ...taskData, taskDesc: text })
+        };
+        reader.readAsText(file);
+    }
+
     return (
         <div className="edit">
             <h2 className="heading">Task Insert Page</h2>
@@ -212,9 +223,12 @@ async function handleMore(fn, t) {
                     <tr>
                         <td className="textTd">Description</td>
                         <td className="inputTd">
-                            <input placeholder="Sideyard" value={taskData.taskDesc} onChange=
+                            <textarea placeholder="This task is about..." value={taskData.taskDesc} onChange=
                                 {e => setTaskData({ ...taskData, taskDesc: e.target.value })}
                             />
+                        </td>
+                        <td className="inputFileTd">
+                        <input type="file" onChange={handleFileUpload} accept=".txt" />
                         </td>
                         <td className="error">
                             {errorObj.taskDesc}
@@ -244,7 +258,7 @@ async function handleMore(fn, t) {
                     </tr>
                     <tr>
                         <td className="textTd">Completion Date</td>
-                        <td className="inputTd"> 
+                        <td className="inputTd">
                             <input placeholder="mm/dd/yyyy" value={taskData.completionDate} onChange=
                                 {e => setTaskData({ ...taskData, completionDate: e.target.value })}
                             />
@@ -257,7 +271,7 @@ async function handleMore(fn, t) {
                     <tr>
                         <td className="textTd">Category</td>
                         <td className="inputTd">
-                            <Categories 
+                            <Categories
                                 value={taskData.catID}
                                 getUserCategoryId={(u) => setTaskData(setProp(taskData, "catID", u))}
                             />
@@ -265,18 +279,18 @@ async function handleMore(fn, t) {
                     </tr>
 
                     <tr>
-                    <Dropdown names={names} 
-                                  handleClick={handleClick} 
-                                  handleChange={handleChange} 
-                                  webUserName={webUserName} 
-                                  handleWebUser={handleWebUser}
-                                  recent={recent}
-                                  numUsers={numUsers}
-                                  handleMore={handleMore}
-                        />    
+                        <Dropdown names={names}
+                            handleClick={handleClick}
+                            handleChange={handleChange}
+                            webUserName={webUserName}
+                            handleWebUser={handleWebUser}
+                            recent={recent}
+                            numUsers={numUsers}
+                            handleMore={handleMore}
+                        />
                     </tr>
 
-                
+
                 </tbody>
             </table>
 

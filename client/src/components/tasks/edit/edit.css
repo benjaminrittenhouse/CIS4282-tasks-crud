@@ -19,12 +19,25 @@
     width: 45%;
 }
 
+.edit table .inputFileTd {
+    padding-left: 1rem;
+}
+
 .edit table .error {
     text-align: center;
 }
 
 .edit table .textTd {
     width: 20%;
+}
+
+.edit table .inputTd textarea {
+    height: 5rem;
+    overflow-y: auto;
+    font-family: inherit;
+    margin-left: 1rem;
+    resize: none;
+    width: 100% !important;
 }
 
 .edit .names {
