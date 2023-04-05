@@ -6,6 +6,9 @@ import Categories from './Categories';
 function Insert(props) {
     const [insertMessage, setInsertMessage] = useState("");
 
+    // assigned user, dirty flag
+    const [assignedIsSet, setAssignedIsSet] = useState(false);
+
     const [names, setNames] = useState([]);
 
     const [webUserName, setWebUserName] = useState("")
@@ -20,6 +23,7 @@ function Insert(props) {
 
     const handleChange = (event) => {
         setWebUserName(event.target.value);
+        setAssignedIsSet(false);
     }
 
     const handleClick = () => {
@@ -49,34 +53,38 @@ function Insert(props) {
     async function insertTask() {
         try {
 
-            console.log("Task data:");
-            console.dir(taskData);
-            const objToStr = new URLSearchParams(taskData).toString();
-            const str = `${process.env.REACT_APP_API_URL}/api/insertTask?${objToStr}`;
+            // assigned user is in a dirty state
+           
+                console.log("Task data:");
+                console.dir(taskData);
+                const objToStr = new URLSearchParams(taskData).toString();
+                const str = `${process.env.REACT_APP_API_URL}/api/insertTask?${objToStr}`;
+    
+                // console log the API fetch call
+                console.log("STR w/ Task OBJ: " + str);
+    
+                // await json response & grab json
+                const res = await fetch(str);
+                const data = await res.json();
+    
+                // print data returned from API call
+                console.log("Data returned from API call: " + JSON.stringify(data));
+    
+                setNames(data);
+                // check if data is an eror objec
+                if (data.isError) {
+                    setErrorObj(data);
+                    console.log("setting error (task) data...");
+                } else {
+                    console.log("setting task data...");
+                    // clear the previous messages from errors when we successfully insert
+                    setErrorObj(emptyData);
+                    // setTaskData(data);
+                }
+    
+                setInsertMessage(data.errorMsg);
+            
 
-            // console log the API fetch call
-            console.log("STR w/ Task OBJ: " + str);
-
-            // await json response & grab json
-            const res = await fetch(str);
-            const data = await res.json();
-
-            // print data returned from API call
-            console.log("Data returned from API call: " + JSON.stringify(data));
-
-            setNames(data);
-            // check if data is an eror objec
-            if (data.isError) {
-                setErrorObj(data);
-                console.log("setting error (task) data...");
-            } else {
-                console.log("setting task data...");
-                // clear the previous messages from errors when we successfully insert
-                setErrorObj(emptyData);
-                // setTaskData(data);
-            }
-
-            setInsertMessage(data.errorMsg);
 
         } catch (err) {
             //error catching for when fetch fails
@@ -191,6 +199,7 @@ function Insert(props) {
         setInputVal(name)
         setNames([])
         setWebUserName(name)
+        setAssignedIsSet(true)
     }
 
     // function to allow a user to upload a .txt file and read the text, store it in a state variable
@@ -279,13 +288,14 @@ function Insert(props) {
                     </tr>
 
                     <tr>
-                        <Dropdown names={names}
+                        <Dropdown listItems={names}
                             handleClick={handleClick}
                             handleChange={handleChange}
-                            webUserName={webUserName}
-                            handleWebUser={handleWebUser}
+                            selectedValue={webUserName}
+                            dropdownName={"Assigned User"}
+                            handleSelect={handleWebUser}
                             recent={recent}
-                            numUsers={numUsers}
+                            numItems={numUsers}
                             handleMore={handleMore}
                         />
                     </tr>

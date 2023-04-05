@@ -13,6 +13,9 @@ import logo from "./img/logo192.png"
 import Display from './components/webUser/display/Display';
 import Tasks from './components/tasks/display/Display'
 
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
+
 import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
@@ -88,7 +91,14 @@ function SPA() {
 
                     </div>
                     
-                    <button class="btn" onClick={handleExpand}>|||</button>
+                    {(expand === "navbar-expand-true" ) ? (
+                        <button class="btn" onClick={handleExpand}><KeyboardArrowUpIcon/></button>
+                    )
+                    :
+                    (
+                        <button class="btn" onClick={handleExpand}><KeyboardArrowDownIcon/></button>
+                    )}
+                    
 
                 </div>
 

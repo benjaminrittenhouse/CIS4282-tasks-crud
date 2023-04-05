@@ -1,34 +1,38 @@
-import { React, useEffect } from 'react';
+import { React, useEffect, useState } from 'react';
+import { Alert, AlertTitle } from "@mui/material";
 
-function Dropdown({ names, handleClick, handleChange, recent, webUserName, handleWebUser, handleMore, numUsers }) {
+function Dropdown({dropdownName, listItems, handleClick, handleChange, recent, selectedValue, handleSelect, handleMore, numItems }) {
 
+    
     useEffect(() => {
         // handleWebUser();
-        handleClick();
+        // handleClick();
       }, []);
 
     return (
         <>
-            <td className="textTd">Assigned User</td>
+            <td className="textTd">{dropdownName}</td>
             <td className="assignedUserContainerEdit">
-                <input type="text" className="nameInput" name="inputVal" placeholder="Search..." value={webUserName}
+                <input type="text" className="nameInput" name="inputVal" placeholder="Type starting chars and click search..." value={selectedValue}
                     onChange={handleChange}
                 />
+
                 <button onClick={handleClick}>Search</button>
                 {/* list of names below input field */}
                 
-                    {names.length > 0 ? (
+                    {listItems.length > 0 ? (
                         <ul className="names">
-                            {names.map((ele) => (
+                            {listItems.map((ele) => (
                                 <option
                                     value={ele.web_user_id}
-                                    onClick={() => handleWebUser(ele.web_user_id, ele.first_name + " " + ele.last_name)}
+                                    onClick={() => handleSelect(ele.web_user_id, ele.first_name + " " + ele.last_name)}
                                 >
                                     {ele.first_name + " " + ele.last_name}
+                                    
                                 </option>
                                 
                             ))}
-                            {names.length === 10 && numUsers > 10 ? (<option onClick={()=>handleMore(webUserName, recent)}>More...</option>) : (null)}
+                            {listItems.length === 10 && numItems > 10 ? (<option onClick={()=>handleMore(selectedValue, recent)}>More...</option>) : (null)}
                         </ul>
                     ) : (
                        <>

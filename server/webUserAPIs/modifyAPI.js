@@ -68,7 +68,9 @@ router.get("/insertUser", (req, res) => {
 // Update
 router.get("/updateUser", (req, res) => {
   var errors = false;
-  
+  // iterate
+  // write to server file and save
+  // in database, path or url or pointer to file in some folder under /server
   var webUser = QueryToObj(req)
 
   var errorObj = ErrorObj();

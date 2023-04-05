@@ -20,13 +20,13 @@
 .navbar-expand-false .allNav {
     display: flex;
     flex-direction: row;
-    margin-right: 1rem;
+    margin-right: 2rem;
 }
 
 .navbar-expand-true .allNav {
     display: flex;
     flex-direction: column;
-    margin-right: 1rem;
+    margin-right: 2rem;
 }
 
 .navbar-expand-true {
@@ -288,7 +288,7 @@
 
     .navbar-expand-true {
         flex-direction: column;
-        height: 75vh;
+        height: 65vh;
         position: absolute;
         padding: 0;
         margin: 0;
@@ -347,6 +347,14 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
+    }
+
+    .navbar-expand-true .allNav {
+        justify-content: center;
+        text-align: center;
+        align-items: center;
+        margin: auto;
+        margin-top: 0;
     }
 
     .navbar-expand-true .brud .title {}

@@ -51,9 +51,7 @@ const TaskDetail = ({ taskData, setViewing, viewing }) => {
             onMouseLeave={handleCloseSnackbar}
           />
 
-          <div className="skDiv">
-            Test category here
-          </div>
+
 
           <Snackbar
             open={openSnackbar}
