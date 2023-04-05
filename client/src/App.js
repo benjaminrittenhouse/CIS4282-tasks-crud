@@ -13,8 +13,7 @@ import logo from "./img/logo192.png"
 import Display from './components/webUser/display/Display';
 import Tasks from './components/tasks/display/Display'
 
-import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
-import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
+import MenuIcon from '@mui/icons-material/Menu';
 
 import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
@@ -85,21 +84,13 @@ function SPA() {
 
                     <div className="tAndL">
                     <img src={logo} alt="Logo" height="50" width="50" />
-                    <div class="title">
-                        <div>Task Manager</div>
+                    <div className="title">
+                        <div className="titleText">Task Manager</div>
                     </div>
 
                     </div>
                     
-                    {(expand === "navbar-expand-true" ) ? (
-                        <button class="btn" onClick={handleExpand}><KeyboardArrowUpIcon/></button>
-                    )
-                    :
-                    (
-                        <button class="btn" onClick={handleExpand}><KeyboardArrowDownIcon/></button>
-                    )}
-                    
-
+                    <button class="btn" onClick={handleExpand}><MenuIcon style={{fontSize: 48}}/></button>
                 </div>
 
 
@@ -112,7 +103,7 @@ function SPA() {
                         <button className={`dropbtn${users}`} onClick={handleUsersClick}>Users</button>
                         <div className={`${users}`}>
                             <Link onClick={handleLink} class="link" to="users">Users List</Link>
-                            <Link onClick={handleLink} class="link" to="insert">Insert a User</Link>
+                            <Link onClick={handleLink} class="link" to="insert">Add User</Link>
                         </div>
                     </div>
 
@@ -120,7 +111,7 @@ function SPA() {
                         <button className={`dropbtn${tasks}`} onClick={handleTasksClick}>Tasks</button>
                         <div className={`${tasks}`}>
                             <Link onClick={handleLink} class="link" to="tasks">Tasks List</Link>
-                            <Link onClick={handleLink} class="link" to="insertTask">Insert a Task</Link>
+                            <Link onClick={handleLink} class="link" to="insertTask">Create Task</Link>
                         </div>
                     </div>
 

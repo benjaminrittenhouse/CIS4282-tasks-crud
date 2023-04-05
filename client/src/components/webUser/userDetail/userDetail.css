@@ -37,6 +37,7 @@
     .userDetail .xButton {
         display: block;
         float: right;
+        z-index: 1000;
     }
 
     .userDetail.false {
@@ -45,5 +46,9 @@
 
     .userDetail.true {
         display: block;
+    }
+
+    .userDetail .imgAndName .name {
+        font-size: 5vh;
     }
 }

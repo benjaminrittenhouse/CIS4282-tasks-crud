@@ -2,6 +2,7 @@
     width: 75%;
     padding: 1rem;
     margin-left: 1%;
+    position: relative;
 }
 
 .taskDetail .imgAndName {
@@ -43,10 +44,12 @@
     padding: 1rem;
 }
 
+
 @media only screen and (max-width: 40rem) {
     .taskDetail .xButton {
         display: block;
         float: right;
+        z-index: 1000;
     }
 
     .taskDetail.false {

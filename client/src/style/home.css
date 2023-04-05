@@ -1,0 +1,17 @@
+.spaPage {
+    background-color: white;
+    border-radius: 25px;
+    padding: 1rem;
+    margin-top: 3vh;
+    margin-left: 1vw;
+    margin-right: 1vw;
+}
+
+@media only screen and (max-width: 40rem) {
+    .spaPage {
+        margin-top: 12vh;
+        padding: 1rem;
+        margin-right: 3px;
+        margin-left: 3px;
+    }
+}

@@ -63,7 +63,7 @@ function Insert(props) {
 
     return (
         <div className="edit">
-            <h2 className="heading">Insert Page</h2>
+            <h2 className="heading">Add a New User</h2>
             <table className="insertArea">
                 <tbody>
                     <tr>

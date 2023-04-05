@@ -29,6 +29,7 @@ function Edit({ props, setIsEditing, assignedUser }) {
     }
 
     const handleClick = () => {
+        console.log("web user name " + webUserName)
         setButtonVal(webUserName)
         handleSearch(webUserName)
         handleNumUsers(webUserName, recent)
@@ -274,7 +275,7 @@ function Edit({ props, setIsEditing, assignedUser }) {
                         </td>
                     </tr>
                     <tr>
-                        <Dropdown names={names} 
+                        <Dropdown listItems={names} 
                                   handleClick={handleClick} 
                                   handleChange={handleChange} 
                                   webUserName={webUserName} 

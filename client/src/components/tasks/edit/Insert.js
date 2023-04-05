@@ -215,7 +215,7 @@ function Insert(props) {
 
     return (
         <div className="edit">
-            <h2 className="heading">Task Insert Page</h2>
+            <h2 className="heading">Create a New Task</h2>
             <table className="insertArea">
                 <tbody>
                     <tr>

@@ -1,6 +1,25 @@
 import React, { useState, useEffect } from 'react';
 import { Card, CardContent, CardMedia, Typography, Snackbar } from '@mui/material';
 import "./taskDetail.css"
+import Tooltip, {tooltipClasses} from '@mui/material/Tooltip';
+import { styled } from '@mui/material/styles';
+
+
+
+// Code to create a custom tooltip for hovering over task image (React MUI)
+const HtmlTooltip = styled(({ className, ...props }) => (
+  <Tooltip {...props} classes={{ popper: className }} />
+))(({ theme }) => ({
+  [`& .${tooltipClasses.tooltip}`]: {
+    backgroundColor: '#3ea0f0',
+    color: 'white',
+    maxWidth: 350,
+    fontSize: '1rem',
+    border: '1px solid #dadde9',
+    marginLeft: '1rem'
+  },
+}));
+
 
 const TaskDetail = ({ taskData, setViewing, viewing }) => {
 
@@ -40,39 +59,16 @@ const TaskDetail = ({ taskData, setViewing, viewing }) => {
       <Card className={`taskDetail ${viewing}`}>
         <button type="button" className="xButton" onClick={handleClose}>X</button>
         <div className="imgAndName">
+        <HtmlTooltip title={taskData.catName} placement="left-start">
           <CardMedia
             className="taskDetail__media"
-            title="Test category"
             component="img"
             height="140"
             image={taskData.catIcon}
             alt={taskData.taskName}
-            onMouseEnter={handleOpenSnackbar}
-            onMouseLeave={handleCloseSnackbar}
           />
 
-
-
-          <Snackbar
-            open={openSnackbar}
-            message={"Category: " + taskData.catName}
-            autoHideDuration={3000}
-            onClose={handleCloseSnackbar}
-            anchorOrigin={{
-              vertical: 'bottom',
-              horizontal: 'center',
-              // Update the y position of the Snackbar to be above the mouse cursor
-              transformOrigin: {
-                vertical: 'bottom',
-                horizontal: 'center',
-              },
-              // Set the offset of the Snackbar to the position of the mouse cursor
-              // minus half the width of the Snackbar
-              // This centers the Snackbar above the mouse cursor
-              offset: `0, -${window.innerWidth - position.x - 100}, ${position.y - window.innerHeight + 100}, 0`,
-            }}
-          />
-
+          </HtmlTooltip>
 
           <Typography className="name" variant="h3" component="div" fontWeight="bold">
             {taskData.taskName}

@@ -279,7 +279,7 @@
 @media only screen and (max-width: 40rem) {
     .navbar-expand-false {
         flex-direction: column;
-        height: 15vh;
+        height: 10vh;
         position: absolute;
         padding: 0;
         margin: 0;
@@ -288,7 +288,7 @@
 
     .navbar-expand-true {
         flex-direction: column;
-        height: 65vh;
+        height: 57vh;
         position: absolute;
         padding: 0;
         margin: 0;
@@ -302,8 +302,9 @@
         margin: 0;
         padding: 0;
         font-family: inherit;
-        font-size: 2rem;
         margin-left: 1rem;
+        float: right;
+        align-self: flex-end;
     }
 
     .navbar-expand-true .btn {
@@ -315,6 +316,8 @@
         font-family: inherit;
         font-size: 2rem;
         margin-left: 1rem;
+        float: right;
+        align-self: flex-end;
     }
 
     .navbar-expand-false .links {
@@ -333,7 +336,7 @@
         margin-bottom: 1rem;
         margin-top: 0.5rem;
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
         align-items: center;
         justify-content: center;
     }
@@ -344,7 +347,7 @@
         margin-bottom: 1rem;
         margin-top: 0.5rem;
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
         align-items: center;
         justify-content: center;
     }
@@ -357,7 +360,13 @@
         margin-top: 0;
     }
 
-    .navbar-expand-true .brud .title {}
+    .navbar-expand-true .brud .title .titleText{
+        font-size: 2rem;
+    }
+
+    .navbar-expand-false .brud .title .titleText{
+        font-size: 2rem;
+    }
 
     .navbar-expand-true .links {
         margin: 1rem;
@@ -365,6 +374,15 @@
 
     .navbar-expand-true .dropdown {
         margin: 1rem;
+    }
+
+
+    .navbar-expand-true .brud .tAndL {
+        align-self: flex-start;
+    }
+
+    .navbar-expand-false .brud .tAndL {
+        align-self: flex-start;
     }
 
 
