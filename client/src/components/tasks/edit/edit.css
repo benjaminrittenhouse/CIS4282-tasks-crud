@@ -19,6 +19,14 @@
     width: 45%;
 }
 
+.edit table .inputTd .errorBelow {
+    padding-left: 1rem;
+    padding-bottom: 5px;
+    padding-top: 1px;
+    font-size: 0.9rem;
+    color: #f03e50
+}
+
 .edit table .inputFileTd {
     padding-left: 1rem;
 }
@@ -82,4 +90,7 @@
 
 
 @media only screen and (max-width: 40rem) {
+    .edit {
+        width: 100%;
+    }
 }

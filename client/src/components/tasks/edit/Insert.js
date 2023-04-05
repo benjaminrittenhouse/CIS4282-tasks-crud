@@ -224,10 +224,13 @@ function Insert(props) {
                             <input placeholder="Take out trash..." value={taskData.taskName} onChange=
                                 {e => setTaskData({ ...taskData, taskName: e.target.value })}
                             />
-                        </td>
-                        <td className="error">
+                            <div className="errorBelow">
                             {errorObj.taskName}
+                            </div>
                         </td>
+                        {/*<td className="error">
+                            {errorObj.taskName}
+                        </td>*/}
                     </tr>
                     <tr>
                         <td className="textTd">Description</td>
@@ -235,12 +238,12 @@ function Insert(props) {
                             <textarea placeholder="This task is about..." value={taskData.taskDesc} onChange=
                                 {e => setTaskData({ ...taskData, taskDesc: e.target.value })}
                             />
+                            <div className="errorBelow">
+                            {errorObj.taskDesc}
+                            </div>
                         </td>
                         <td className="inputFileTd">
                         <input type="file" onChange={handleFileUpload} accept=".txt" />
-                        </td>
-                        <td className="error">
-                            {errorObj.taskDesc}
                         </td>
                     </tr>
                     <tr>
@@ -249,9 +252,9 @@ function Insert(props) {
                             <input placeholder="8" value={taskData.taskPoints} onChange=
                                 {e => setTaskData({ ...taskData, taskPoints: e.target.value })}
                             />
-                        </td>
-                        <td className="error">
+                            <div className="errorBelow">
                             {errorObj.taskPoints}
+                            </div>
                         </td>
                     </tr>
                     <tr>
@@ -260,9 +263,9 @@ function Insert(props) {
                             <input placeholder="mm/dd/yyyy" value={taskData.targetDate} onChange=
                                 {e => setTaskData({ ...taskData, targetDate: e.target.value })}
                             />
-                        </td>
-                        <td className="error">
+                            <div className="errorBelow">
                             {errorObj.targetDate}
+                            </div>
                         </td>
                     </tr>
                     <tr>
@@ -271,10 +274,11 @@ function Insert(props) {
                             <input placeholder="mm/dd/yyyy" value={taskData.completionDate} onChange=
                                 {e => setTaskData({ ...taskData, completionDate: e.target.value })}
                             />
-                        </td>
-                        <td className="error">
+                            <div className="errorBelow">
                             {errorObj.completionDate}
+                            </div>
                         </td>
+
                     </tr>
 
                     <tr>
@@ -284,6 +288,9 @@ function Insert(props) {
                                 value={taskData.catID}
                                 getUserCategoryId={(u) => setTaskData(setProp(taskData, "catID", u))}
                             />
+                            <div className="errorBelow">
+                            {errorObj.catName}
+                            </div>
                         </td>
                     </tr>
 
@@ -298,6 +305,9 @@ function Insert(props) {
                             numItems={numUsers}
                             handleMore={handleMore}
                         />
+                       
+                       
+
                     </tr>
 
 

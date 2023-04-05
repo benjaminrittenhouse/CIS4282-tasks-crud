@@ -38,7 +38,7 @@ DbMods.validateTask = function(taskObj){
     errorObj.isError = "true";
 
     // errorObj.taskId = validateUtils.validateInteger(taskObj.taskId, true);
-    errorObj.taskName = validateUtils.validateString(taskObj.taskName, true);
+    errorObj.taskName = validateUtils.validateString(taskObj.taskName, 0, true);
 
                                                         // password, min length for password
     errorObj.taskDesc = validateUtils.validateString(taskObj.taskDesc, 5, true);
@@ -47,6 +47,8 @@ DbMods.validateTask = function(taskObj){
     errorObj.targetDate = validateUtils.validateDate(taskObj.targetDate, true);
     errorObj.completionDate = validateUtils.validateDate(taskObj.completionDate, false);
     errorObj.assignedWebUserID = validateUtils.validateInteger(taskObj.assignedWebUserID, false);
+
+    errorObj.catName = validateUtils.validateString(taskObj.catName, 0, true);
     
 
     var errs = checkErrors(errorObj)
@@ -74,8 +76,10 @@ DbMods.insertTask = function(taskObj){
 // function to determine if there are any errors currently
 function checkErrors(errorObj){
     // there are errors
+    console.log("cat name error: " + errorObj.catName)
     if(errorObj.taskName.length > 0 || errorObj.taskDesc.length > 0 || errorObj.taskPoints.length > 0 
-        || errorObj.targetDate.length > 0 || errorObj.completionDate.length > 0 || errorObj.assignedWebUserID.length > 0) 
+        || errorObj.targetDate.length > 0 || errorObj.completionDate.length > 0 || errorObj.assignedWebUserID.length > 0
+        || errorObj.catName.length > 0) 
         
         return true;
 
