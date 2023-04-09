@@ -78,9 +78,6 @@ DbMods.insertTask = function(taskObj){
 
     if(taskObj.assigned_name === "") taskObj.assignedWebUserID = null;
 
-   
-    
-    // taskObj.catID = validateUtils.validateString(taskObj.catID);
 
     return taskObj;
 }

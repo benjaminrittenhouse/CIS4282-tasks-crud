@@ -47,43 +47,38 @@ function Insert(props) {
     };
 
     useEffect(() => {
-        handleSearch("");
+        // handleSearch("");
     }, []);
 
     async function insertTask() {
         try {
+            const objToStr = new URLSearchParams(taskData).toString();
+            const str = `${process.env.REACT_APP_API_URL}/api/insertTask?${objToStr}`;
 
-            // assigned user is in a dirty state
-           
-                console.log("Task data:");
-                console.dir(taskData);
-                const objToStr = new URLSearchParams(taskData).toString();
-                const str = `${process.env.REACT_APP_API_URL}/api/insertTask?${objToStr}`;
-    
-                // console log the API fetch call
-                console.log("STR w/ Task OBJ: " + str);
-    
-                // await json response & grab json
-                const res = await fetch(str);
-                const data = await res.json();
-    
-                // print data returned from API call
-                console.log("Data returned from API call: " + JSON.stringify(data));
-    
-                setNames(data);
-                // check if data is an eror objec
-                if (data.isError) {
-                    setErrorObj(data);
-                    console.log("setting error (task) data...");
-                } else {
-                    console.log("setting task data...");
-                    // clear the previous messages from errors when we successfully insert
-                    setErrorObj(emptyData);
-                    // setTaskData(data);
-                }
-    
-                setInsertMessage(data.errorMsg);
-            
+            // console log the API fetch call
+            console.log("STR w/ Task OBJ: " + str);
+
+            // await json response & grab json
+            const res = await fetch(str);
+            const data = await res.json();
+
+            // print data returned from API call
+            console.log("Data returned from API call: " + JSON.stringify(data));
+
+            setNames(data);
+            // check if data is an eror objec
+            if (data.isError) {
+                setErrorObj(data);
+                console.log("setting error (task) data...");
+            } else {
+                console.log("setting task data...");
+                // clear the previous messages from errors when we successfully insert
+                setErrorObj(emptyData);
+                // setTaskData(data);
+            }
+
+            setInsertMessage(data.errorMsg);
+
 
 
         } catch (err) {
@@ -144,7 +139,7 @@ function Insert(props) {
             const data = await res.json();
 
             // print data returned from API call
-            console.log("Data returned from NUMBERS API call: " + data[0].count);
+            console.log("Data returned from NUMBERS API (INSERT) call: " + data[0].count);
 
             setNumUsers(Number(data[0].count))
 
@@ -225,7 +220,7 @@ function Insert(props) {
                                 {e => setTaskData({ ...taskData, taskName: e.target.value })}
                             />
                             <div className="errorBelow">
-                            {errorObj.taskName}
+                                {errorObj.taskName}
                             </div>
                         </td>
                         {/*<td className="error">
@@ -239,11 +234,11 @@ function Insert(props) {
                                 {e => setTaskData({ ...taskData, taskDesc: e.target.value })}
                             />
                             <div className="errorBelow">
-                            {errorObj.taskDesc}
+                                {errorObj.taskDesc}
                             </div>
                         </td>
                         <td className="inputFileTd">
-                        <input type="file" onChange={handleFileUpload} accept=".txt" />
+                            <input type="file" onChange={handleFileUpload} accept=".txt" />
                         </td>
                     </tr>
                     <tr>
@@ -253,7 +248,7 @@ function Insert(props) {
                                 {e => setTaskData({ ...taskData, taskPoints: e.target.value })}
                             />
                             <div className="errorBelow">
-                            {errorObj.taskPoints}
+                                {errorObj.taskPoints}
                             </div>
                         </td>
                     </tr>
@@ -264,7 +259,7 @@ function Insert(props) {
                                 {e => setTaskData({ ...taskData, targetDate: e.target.value })}
                             />
                             <div className="errorBelow">
-                            {errorObj.targetDate}
+                                {errorObj.targetDate}
                             </div>
                         </td>
                     </tr>
@@ -275,7 +270,7 @@ function Insert(props) {
                                 {e => setTaskData({ ...taskData, completionDate: e.target.value })}
                             />
                             <div className="errorBelow">
-                            {errorObj.completionDate}
+                                {errorObj.completionDate}
                             </div>
                         </td>
 
@@ -289,7 +284,7 @@ function Insert(props) {
                                 getUserCategoryId={(u) => setTaskData(setProp(taskData, "catID", u))}
                             />
                             <div className="errorBelow">
-                            {errorObj.catID}
+                                {errorObj.catID}
                             </div>
                         </td>
                     </tr>
@@ -307,9 +302,9 @@ function Insert(props) {
                             handleMore={handleMore}
                             assignedWebUserID={taskData.assignedWebUserID}
                         />
-                       
-                       
-                       <div className="errorBelow">
+
+
+                        <div className="errorBelow">
                             {errorObj.assignedWebUserID}
                         </div>
 

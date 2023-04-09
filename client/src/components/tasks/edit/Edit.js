@@ -119,9 +119,10 @@ function Edit({ props, setIsEditing, assignedUser }) {
             const data = await res.json();
 
             // print data returned from API call
-            console.log("Data returned from NUMBERS API call: " + data[0].count);
+            console.log("Data returned from NUMBERS APII call: " + Number(data[0].count));
 
             setNumUsers(Number(data[0].count))
+            console.log("NUM USERS " + numUsers);
             
         } catch (err) {
             //error catching for when fetch fails
@@ -282,7 +283,7 @@ function Edit({ props, setIsEditing, assignedUser }) {
                                   dropdownName={"Assigned User"}
                                   selectedValue={webUserName} 
                                   handleSelect={handleWebUser}
-                                  numUsers={numUsers}
+                                  numItems={numUsers}
                                   handleMore={handleMore}
                                   recent={recent}
                                   assignedWebUserID={taskData.assignedWebUserID}

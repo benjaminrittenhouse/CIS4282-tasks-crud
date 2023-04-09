@@ -1,3 +1,31 @@
+@media only screen and (max-width: 40rem) {
+    .edit {
+        width: 100% !important;
+        margin-top: 5rem !important;
+    }
+
+    .edit table .inputTd {
+        width: 60% !important;
+    }
+
+    .edit table .inputTd textarea {
+        margin-left: 1.5rem !important;
+    }
+
+    .edit table .inputTd input {
+        margin-left: 1.5rem !important;
+    }
+
+    .edit table .inputTd .roleTypes {
+        margin-left: 1.5rem !important;
+    }
+
+
+    .edit .assignedUserContainerEdit {
+        margin-left: 0.5rem
+    }
+}
+
 .edit {
     background-color: white;
     padding: 1rem;
@@ -10,8 +38,8 @@
 }
 
 .edit input {
-    width: 100% !important;
-    margin-left: 1rem !important; 
+    width: 100%;
+    margin-left: 1rem;
 }
 
 .edit table .inputTd {
@@ -78,10 +106,9 @@
     display: flex;
     flex-direction: row;
     width: 100%;
-    
 }
 
-.edit .assignedUserContainerEdit button{
+.edit .assignedUserContainerEdit button {
     float: right;
 }
 
@@ -93,12 +120,4 @@
 
 .save .message {
     margin-left: 10rem;
-}
-
-
-
-@media only screen and (max-width: 40rem) {
-    .edit {
-        width: 100%;
-    }
 }
