@@ -1,4 +1,4 @@
-import "../style/home.css"
+import "../style/spaPage.css"
 
 function Home() {
     return (

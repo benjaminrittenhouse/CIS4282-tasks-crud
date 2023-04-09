@@ -33,9 +33,9 @@ function Dropdown({assignedWebUserID, dropdownName, listItems, handleClick, hand
                             {listItems.map((ele) => (
                                 <option
                                     value={ele.web_user_id}
-                                    onClick={() => handleSelect(ele.web_user_id, ele.first_name + " " + ele.last_name)}
+                                    onClick={() => handleSelect(ele.web_user_id, ele.last_name + ", " + ele.first_name)}
                                 >
-                                    {ele.first_name + " " + ele.last_name}
+                                    {ele.last_name + ", " + ele.first_name}
                                     
                                 </option>
                                 

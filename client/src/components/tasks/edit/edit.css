@@ -33,6 +33,12 @@
     margin: 1%;
 }
 
+.edit .inputTd.file {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
 .edit table {
     width: 100%;
 }

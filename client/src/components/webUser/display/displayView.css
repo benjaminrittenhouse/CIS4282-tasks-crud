@@ -50,4 +50,9 @@
     .displayView .expandedUserView.false {
         z-index: -999;
     }
+
+    .displayView.false {
+        margin-top: 10vh;
+    }
+    
 }

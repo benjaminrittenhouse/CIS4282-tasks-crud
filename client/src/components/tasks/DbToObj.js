@@ -7,7 +7,7 @@ function DbToObj(task){
         "targetDate": task.target_date,
         "completionDate": task.completion_date,
         "assignedWebUserID": task.assigned_web_user_id,
-        "assignedWebUser": task.first_name + " " + task.last_name,
+        "assignedWebUser": task.last_name + ", " + task.first_name,
         "catID": task.cat_id,
         "catIcon": task.cat_icon,
         "catName": task.cat_name

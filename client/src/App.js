@@ -25,7 +25,7 @@ function SPA() {
     const [tasks, setTasks] = useState(false)
     const [profile, setProfile] = useState(false)
 
-    const [expand, setExpand] = useState("navbar-expand-false")
+    const [expand, setExpand] = useState("expandFalse")
 
     function handleUsersClick() {
         if (!users) {
@@ -61,25 +61,24 @@ function SPA() {
         setUsers(false)
         setTasks(false)
         setProfile(false)
-        setExpand("navbar-expand-false")
+        setExpand("expandFalse")
     }
 
 
     function handleExpand() {
-        // console.log(handleExpand + " equals: " + (handleExpand == "navbar-expand-false"))
-        if (expand === "navbar-expand-false") {
-            console.log("setting to true")
-            setExpand("navbar-expand-true")
+        if(expand === "expandTrue"){
+            setExpand("expandFalse")
         } else {
-            setExpand("navbar-expand-false")
-            console.log("setting to false")
+            setExpand("expandTrue")
         }
+
+        console.log("expand " + expand)
     }
 
 
     return (
         <div class="App">
-            <div className={expand}>
+            <div className="navbar">
                 <div class="brud">
 
                     <div className="tAndL">
@@ -94,9 +93,10 @@ function SPA() {
                 </div>
 
 
-                <div className="allNav">
+                <div className={expand}>
                     <div class="links">
                         <Link onClick={handleLink} class="link" to="/">Home</Link>
+                        <Link onClick={handleLink} class="link" to="/blog">Blog</Link>
                     </div>
 
                     <div class="dropdown">

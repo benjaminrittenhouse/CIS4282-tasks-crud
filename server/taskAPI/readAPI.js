@@ -35,7 +35,7 @@ router.get("/queryUsers", (req, res) => {
   var firstName = req.query.firstName;
   // console.log("FIRST NAME: " + req.query.firstName)
   try {
-    const sqlGet = `SELECT web_user_id, first_name, last_name FROM web_user WHERE first_name LIKE \'${firstName}%\' ORDER BY first_name ASC LIMIT 10`;
+    const sqlGet = `SELECT web_user_id, first_name, last_name FROM web_user WHERE last_name LIKE \'${firstName}%\' ORDER BY last_name ASC LIMIT 10`;
     db.query(sqlGet,[req.query.firstName, req.query.lastName], (err, req2, result) => {
       if (err) {
         console.log("SQL MSG: " + err.sqlMessage);
@@ -58,8 +58,8 @@ router.get("/queryGreaterUsers", (req, res) => {
   var threshold = req.query.threshold
   // console.log("FIRST NAME: " + req.query.firstName)
   try {
-    const sqlGet = `SELECT web_user_id, first_name, last_name FROM web_user WHERE first_name LIKE \'${firstName}%\'`
-    + ` AND first_name > \'${threshold}\' ORDER BY first_name ASC LIMIT 10`;
+    const sqlGet = `SELECT web_user_id, first_name, last_name FROM web_user WHERE last_name LIKE \'${firstName}%\'`
+    + ` AND last_name > \'${threshold}\' ORDER BY last_name ASC LIMIT 10`;
     db.query(sqlGet,[req.query.firstName, req.query.lastName], (err, req2, result) => {
       if (err) {
         console.log("SQL MSG: " + err.sqlMessage);
