@@ -26,6 +26,7 @@ function Edit({ props, setIsEditing, assignedUser }) {
 
     const handleChange = (event) => {
         setWebUserName(event.target.value);
+        setTaskData({ ...taskData, assignedWebUserID: "" })
     }
 
     const handleClick = () => {
@@ -278,11 +279,13 @@ function Edit({ props, setIsEditing, assignedUser }) {
                         <Dropdown listItems={names} 
                                   handleClick={handleClick} 
                                   handleChange={handleChange} 
-                                  webUserName={webUserName} 
-                                  handleWebUser={handleWebUser}
+                                  dropdownName={"Assigned User"}
+                                  selectedValue={webUserName} 
+                                  handleSelect={handleWebUser}
                                   numUsers={numUsers}
                                   handleMore={handleMore}
                                   recent={recent}
+                                  assignedWebUserID={taskData.assignedWebUserID}
                         />                        
                     </tr>
 
