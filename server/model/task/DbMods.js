@@ -46,11 +46,11 @@ DbMods.validateTask = function(taskObj){
     errorObj.taskDesc = validateUtils.validateString(taskObj.taskDesc, 5, true);
     errorObj.taskPoints = validateUtils.validateInteger(taskObj.taskPoints, true);
 
-    errorObj.targetDate = validateUtils.validateDate(taskObj.targetDate, true);
+    errorObj.targetDate = validateUtils.validateDate(taskObj.targetDate, false);
     errorObj.completionDate = validateUtils.validateDate(taskObj.completionDate, false);
     errorObj.assignedWebUserID = validateUtils.validateForeignKey(taskObj.assignedWebUserID, true);
 
-    errorObj.catName = validateUtils.validateString(taskObj.catName, 0, true);
+    errorObj.catID = validateUtils.validateForeignKey(taskObj.catID, true);
     
 
     var errs = checkErrors(errorObj)
@@ -64,12 +64,22 @@ DbMods.validateTask = function(taskObj){
 
 // use this after task has been validated, insert the stripped values
 DbMods.insertTask = function(taskObj){
-    if(taskObj.targetDate === "") taskObj.targetDate = null;
-    if(taskObj.completionDate === "") taskObj.completionDate = null;
+    if(taskObj.targetDate === "" || taskObj.targetDate === null){
+        taskObj.targetDate = null;
+    } else {
+        taskObj.targetDate = validateUtils.dateConversion(taskObj.targetDate);
+    }
+
+    if(taskObj.completionDate === "" || taskObj.completionDate === null){
+        taskObj.completionDate = null;
+    } else {
+        taskObj.completionDate = validateUtils.dateConversion(taskObj.completionDate);
+    }
+
     if(taskObj.assigned_name === "") taskObj.assignedWebUserID = null;
 
-    taskObj.targetDate = validateUtils.dateConversion(taskObj.targetDate);
-    taskObj.completionDate = validateUtils.dateConversion(taskObj.completionDate);
+   
+    
     // taskObj.catID = validateUtils.validateString(taskObj.catID);
 
     return taskObj;
@@ -78,10 +88,10 @@ DbMods.insertTask = function(taskObj){
 // function to determine if there are any errors currently
 function checkErrors(errorObj){
     // there are errors
-    console.log("assigned id error: " + errorObj.assignedWebUserID)
+    console.log("assigned cat id error: " + errorObj.catID)
     if(errorObj.taskName.length > 0 || errorObj.taskDesc.length > 0 || errorObj.taskPoints.length > 0 
         || errorObj.targetDate.length > 0 || errorObj.completionDate.length > 0 || errorObj.assignedWebUserID.length > 0
-        || errorObj.catName.length > 0) 
+        || errorObj.catID.length > 0) 
         
         return true;
 

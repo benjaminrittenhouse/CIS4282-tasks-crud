@@ -289,7 +289,7 @@ function Insert(props) {
                                 getUserCategoryId={(u) => setTaskData(setProp(taskData, "catID", u))}
                             />
                             <div className="errorBelow">
-                            {errorObj.catName}
+                            {errorObj.catID}
                             </div>
                         </td>
                     </tr>
