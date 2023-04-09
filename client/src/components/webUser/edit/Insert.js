@@ -1,5 +1,5 @@
 import { React, useState } from 'react';
-import RoleTypes from '../../components/webUser/RoleTypes'
+import RoleTypes from './RoleTypes'
 
 function Insert(props) {
 

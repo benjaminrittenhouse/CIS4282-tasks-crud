@@ -23,7 +23,7 @@ function Insert(props) {
 
     const handleChange = (event) => {
         setWebUserName(event.target.value);
-        setAssignedIsSet(false);
+        setTaskData({ ...taskData, assignedWebUserID: "" })
     }
 
     const handleClick = () => {
@@ -295,6 +295,7 @@ function Insert(props) {
                     </tr>
 
                     <tr>
+
                         <Dropdown listItems={names}
                             handleClick={handleClick}
                             handleChange={handleChange}
@@ -304,9 +305,13 @@ function Insert(props) {
                             recent={recent}
                             numItems={numUsers}
                             handleMore={handleMore}
+                            assignedWebUserID={taskData.assignedWebUserID}
                         />
                        
                        
+                       <div className="errorBelow">
+                            {errorObj.assignedWebUserID}
+                        </div>
 
                     </tr>
 

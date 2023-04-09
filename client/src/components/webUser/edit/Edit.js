@@ -3,7 +3,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 
 import DbToObj from "../DbToObj"
 
-import RoleTypes from '../RoleTypes';
+import RoleTypes from './RoleTypes';
 import "./edit.css"
 
 function Edit({ props, setIsEditing }) {

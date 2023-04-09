@@ -100,6 +100,15 @@ validateUtils.validateFloat = function (float, reqd) {
     }
 }
 
+// Foreign key where the key is an integer and the value is a string (web user ID 1, name Abigail Smith, for ex.)
+validateUtils.validateForeignKey = function (val, reqd) {
+    if(reqd && (val === null || val === "")){
+        return "Please enter a value (required)"
+    } else {
+        return "";
+    }
+}
+
 /* helper for format currency (NOT IN USE)
 function isFloat(value) {
     var regex = /^\d+(?:\.\d{0,2})$/;

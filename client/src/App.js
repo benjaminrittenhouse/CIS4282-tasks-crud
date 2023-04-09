@@ -2,7 +2,7 @@ import { Routes, Route, Link } from 'react-router-dom';
 import React, { useState } from 'react'
 import Home from './components/Home';
 import Blog from './components/Blog';
-import Insert from './components/webUser/Insert';
+import Insert from './components/webUser/edit/Insert'
 import InsertTask from './components/tasks/edit/Insert'
 import Login from './components/profile/Login'
 import LogoutPage from './components/profile/LogoutPage'

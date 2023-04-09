@@ -22,6 +22,7 @@ router.get("/insertTask", (req, res) => {
 
   // validate insert
   var tempObj = DbMods.validateTask(task);
+  
 
   // check if object returned was a web user object or an error object, update accordingly
   if(tempObj.isError){

@@ -27,6 +27,14 @@
     color: #f03e50
 }
 
+.edit table .errorBelow {
+    padding-left: 1rem;
+    padding-bottom: 5px;
+    padding-top: 1px;
+    font-size: 0.9rem;
+    color: #f03e50
+}
+
 .edit table .inputFileTd {
     padding-left: 1rem;
 }
