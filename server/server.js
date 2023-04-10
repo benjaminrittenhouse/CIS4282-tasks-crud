@@ -39,10 +39,7 @@ app.get("/", (req, res) => {
   } else {
     console.log("Homepage");
     res.send("web user crud");
-  }
-
-  res.send("Hello from backend");
-  
+  }  
 });
 
 // LOGIN PASTE *******************
@@ -184,8 +181,32 @@ app.get("/logout", (req, res) => {
     res.send(logoutObj);
 });
 
+
+
 // ***** END LOGIN
 
-app.listen(process.env.PORT || 5000, () => {
+// FILE WRITING
+// "multer" used as middle man to write files
+
+const multer = require('multer');
+
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, 'uploads/');
+  },
+  filename: function (req, file, cb) {
+    // gets type of file user chose, writes to "/uploads" in post request
+    const fileExtension = file.originalname.split('.').pop();
+    cb(null, `${file.fieldname}-${Date.now()}.${fileExtension}`);
+  },
+});
+
+const upload = multer({ storage: storage });
+
+app.post('/upload', upload.single('file'), (req, res) => {
+  res.send('File uploaded successfully!');
+});
+
+app.listen(5001, () => {
   console.log("Listening...");
 });

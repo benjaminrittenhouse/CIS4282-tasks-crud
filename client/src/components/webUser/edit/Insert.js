@@ -1,5 +1,7 @@
-import { React, useState } from 'react';
+import React, { useState } from 'react';
 import RoleTypes from './RoleTypes'
+import axios from 'axios';
+
 
 function Insert(props) {
 
@@ -23,6 +25,19 @@ function Insert(props) {
 
     const [sqlMessage, setSqlMessage] = useState("");
 
+    // file submission 
+    const [selectedFile, setSelectedFile] = useState(null);
+
+    const handleFileSelect = (event) => {
+      setSelectedFile(event.target.files[0]);
+    };
+  
+    const handleUpload = () => {
+      const formData = new FormData();
+      formData.append('file', selectedFile);
+      axios.post('http://localhost:5001/uploads', formData);
+      console.log("uploaded file ")
+    };
 
     //an asynchronous function that will either return the API data or an error
     async function insertUser() {
@@ -50,6 +65,7 @@ function Insert(props) {
                 // clear the previous messages from errors when we successfully insert
                 setErrorObj(emptyData);
                 // setUserData(data);
+                handleUpload();
             }
 
             setInsertMessage(data.errorMsg);
@@ -59,6 +75,7 @@ function Insert(props) {
             console.log("err (caught fetch):" + String(err));
         }
     }
+
 
 
     return (
@@ -127,9 +144,9 @@ function Insert(props) {
                     <tr>
                         <td className="textTd">Image</td>
                         <td className="inputTd">
-                            <input value={userData.image} onChange=
-                                {e => setUserData(setProp(userData, "image", e.target.value))}
-                            />
+                        <td className="inputFileTd">
+                            <input type="file" onChange={handleFileSelect}/>
+                        </td>
                         </td>
                         <td className="error">
                             {errorObj.image}

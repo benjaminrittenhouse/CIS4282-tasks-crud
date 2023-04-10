@@ -7,6 +7,7 @@ import InsertTask from './components/tasks/edit/Insert'
 import Login from './components/profile/Login'
 import LogoutPage from './components/profile/LogoutPage'
 import ViewProfile from './components/profile/ViewProfile';
+import Upload from './components/fileUpload/Upload';
 
 import logo from "./img/logo192.png"
 
@@ -97,6 +98,7 @@ function SPA() {
                     <div class="links">
                         <Link onClick={handleLink} class="link" to="/">Home</Link>
                         <Link onClick={handleLink} class="link" to="/blog">Blog</Link>
+                        <Link onClick={handleLink} class="link" to="/upload">Upload</Link>
                     </div>
 
                     <div class="dropdown">
@@ -136,6 +138,7 @@ function SPA() {
                 <Route path="login" element={<Login />} />
                 <Route path="logout" element={<LogoutPage />} />
                 <Route path="viewProfile" element={<ViewProfile />} />
+                <Route path="upload" element={<Upload />} />
             </Routes>
         </div>
     );

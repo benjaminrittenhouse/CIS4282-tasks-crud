@@ -1,4 +1,5 @@
 import "../style/spaPage.css"
+import React from 'react'
 
 function Blog() {
     return (

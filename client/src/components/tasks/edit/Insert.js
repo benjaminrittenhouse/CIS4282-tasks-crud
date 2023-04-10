@@ -1,4 +1,4 @@
-import { React, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import "./edit.css"
 import Dropdown from "./Dropdown"
 import Categories from './Categories';
@@ -207,7 +207,7 @@ function Insert(props) {
         };
         reader.readAsText(file);
     }
-
+ 
     return (
         <div className="edit">
             <h2 className="heading">Create a New Task</h2>

@@ -1,4 +1,5 @@
 import "../../style/profile.css"
+import React from 'react'
 
 
 const User = ({ obj }) => {
