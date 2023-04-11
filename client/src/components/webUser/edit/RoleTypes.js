@@ -41,9 +41,9 @@ function RoleTypes({ getUserRoleId, value }) {
     }
 
     return (
-        <div className="roleTypes">
+        <div className="foreignKey">
             <select onChange={passingProps}>
-                <option value="Select a role">Select a value</option>
+                <option value="-999">Select a value</option>
                 {roles.map(item => {
                     // if this is our value, use it as defaul selection
                     if(item["user_role_id"] == value){

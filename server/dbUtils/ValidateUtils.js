@@ -103,7 +103,7 @@ validateUtils.validateFloat = function (float, reqd) {
 // Foreign key where the key is an integer and the value is a string (web user ID 1, name Abigail Smith, for ex.)
 validateUtils.validateForeignKey = function (val, reqd) {
     console.log("VAL: " + val)
-    if(reqd && (val === null || val === "")){
+    if(reqd && (val === null || val === "" || val === "-999")){
         return "Please enter a value (required)"
     } else {
         return "";

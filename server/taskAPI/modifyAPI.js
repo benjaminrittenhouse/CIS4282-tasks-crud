@@ -41,7 +41,7 @@ router.get("/insertTask", (req, res) => {
         if (err) {
           // we get database error from sqlMessage and put it into our error object
           console.log("SQL MSG (task): " + err.sqlMessage);
-          errorObj.errorMsg = err.sqlMessage;
+          errorObj.errorMsg = "Please select a valid category.";
           res.send(errorObj);
           console.log("There was an error! Task not inserted!")
         } else {
@@ -102,7 +102,7 @@ router.get("/updateTask", (req, res) => {
         if (err) {
           // we get database error from sqlMessage and put it into our error object
           console.log("SQL MSG: " + err.sqlMessage);
-          errorObj.errorMsg = err.sqlMessage;
+          errorObj.errorMsg = "Please select a valid category.";
           res.send(errorObj);
           console.log("There was an error! Record not updated!")
         } else {

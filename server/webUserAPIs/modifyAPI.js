@@ -40,13 +40,11 @@ router.get("/insertUser", (req, res) => {
       db.query(sqlIns, [webUser.userEmail, webUser.firstName, webUser.lastName, webUser.userPassword, webUser.image, webUser.membershipFee, webUser.birthday, webUser.roomNumber, webUser.userRoleId], (err, req, result) => {
         if (err) {
           // we get database error from sqlMessage and put it into our error object
-          console.log("SQL MSG: " + err.sqlMessage);
-          errorObj.errorMsg = err.sqlMessage;
+          errorObj.errorMsg = "Please make a valid role selection.";
           res.send(errorObj);
-          console.log("There was an error! Record not inserted!")
+          console.log("There was an error! Record not inserted: " + err.sqlMessage);
         } else {
           webUser.errorMsg = "Record inserted!"
-          console.log("Birthday: " + webUser.birthday);
           res.send(webUser);
           console.log("No errors! Record inserted!");
         }
@@ -97,7 +95,7 @@ router.get("/updateUser", (req, res) => {
         if (err) {
           // we get database error from sqlMessage and put it into our error object
           console.log("SQL MSG: " + err.sqlMessage);
-          errorObj.errorMsg = err.sqlMessage;
+          errorObj.errorMsg = "Please make a valid role selection.";
           res.send(errorObj);
           console.log("There was an error! Record not updated!")
         } else {

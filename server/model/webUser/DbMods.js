@@ -44,7 +44,7 @@ DbMods.validateWebUser = function(userObj){
     errorObj.birthday = validateUtils.validateDate(userObj.birthday, false);
     errorObj.membershipFee = validateUtils.validateFloat(userObj.membershipFee, false);
     errorObj.roomNumber = validateUtils.validateInteger(userObj.roomNumber, false);
-    errorObj.userRoleId = validateUtils.validateInteger(userObj.userRoleId, true);
+    errorObj.userRoleId = validateUtils.validateForeignKey(userObj.userRoleId, true);
 
     
 

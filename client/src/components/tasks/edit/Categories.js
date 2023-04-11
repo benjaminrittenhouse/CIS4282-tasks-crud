@@ -40,9 +40,9 @@ function Categories({ getUserCategoryId, value }) {
     }
 
     return (
-        <div className="roleTypes">
+        <div className="foreignKey">
             <select onChange={passingProps}>
-                <option value="0">Select a value</option>
+                <option value="-999">Select a category</option>
                 {categories.map(item => {
                     // if this is our value, use it as defaul selection
                     if(item["cat_id"] === value){
