@@ -1,4 +1,4 @@
-import { React, useState, useEffect } from 'react';
+import React , { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 import DbToObj from "../DbToObj"
@@ -62,9 +62,6 @@ function Edit({ props, setIsEditing }) {
 
             setUpdateMessage(data.errorMsg);
 
-            // auto reload so user does not have to manual refresh (this is kind of ductape)
-            // when user clicks save, the entire page refreshes and update modal closes
-            // window.location.reload();
         } catch (err) {
             //error catching for when fetch fails
             console.log("err (caught fetch):" + String(err));

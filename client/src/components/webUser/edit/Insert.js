@@ -5,7 +5,6 @@ import axios from 'axios';
 
 function Insert(props) {
 
-    const [userRoleId, setUserRoleId] = useState();
     const [insertMessage, setInsertMessage] = useState("");
     const [userData, setUserData] = useState({});
     const [errorObj, setErrorObj] = useState({})

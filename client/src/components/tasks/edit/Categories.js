@@ -42,7 +42,7 @@ function Categories({ getUserCategoryId, value }) {
     return (
         <div className="roleTypes">
             <select onChange={passingProps}>
-                <option value="Select a category">Select a value</option>
+                <option value="0">Select a value</option>
                 {categories.map(item => {
                     // if this is our value, use it as defaul selection
                     if(item["cat_id"] === value){

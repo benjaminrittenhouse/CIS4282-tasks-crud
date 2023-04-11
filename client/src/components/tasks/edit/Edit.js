@@ -1,4 +1,4 @@
-import { React, useState, useEffect } from 'react';
+import React , { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { Autocomplete, TextField } from '@mui/material';
 import Dropdown from "./Dropdown"
@@ -32,7 +32,7 @@ function Edit({ props, setIsEditing, assignedUser }) {
     const handleClick = () => {
         console.log("web user name " + webUserName)
         setButtonVal(webUserName)
-        handleSearch(webUserName)
+        handleSearch(webUserName, "");
         handleNumUsers(webUserName, recent)
     }
 
@@ -65,11 +65,11 @@ function Edit({ props, setIsEditing, assignedUser }) {
         setTaskData(props);
     }, []);
 
-    async function handleSearch(inp) {
+    async function handleSearch(searchName, t) {
         try {
 
             // const objToStr = new URLSearchParams(inp).toString();
-            const str = `${process.env.REACT_APP_API_URL}/api/queryUsers?firstName=${inp}`;
+            const str = `${process.env.REACT_APP_API_URL}/api/queryUsers?searchName=${searchName}&threshold=${t}`;
 
             // console log the API fetch call
             console.log("STR w/ Task OBJ: " + str);
@@ -83,8 +83,8 @@ function Edit({ props, setIsEditing, assignedUser }) {
 
 
             setNames(data);
-            setAssignedName(inp)
-            setRecent(names[names.length-1].first_name)
+            setAssignedName(searchName)
+            setRecent(names[names.length-1].last_name + ", " + names[names.length-1].first_name)
             console.log("recent: " + recent)
             // check if data is an eror objec
             if(data.isError) {
@@ -151,44 +151,6 @@ function Edit({ props, setIsEditing, assignedUser }) {
 
             setUpdateMessage(data.errorMsg);
 
-            
-        } catch (err) {
-            //error catching for when fetch fails
-            console.log("err (caught fetch):" + String(err));
-        }
-    }
-
-    // first name, threshold
-    async function handleMore(fn, t) {
-        try {
-
-            // const objToStr = new URLSearchParams(inp).toString();
-            const str = `${process.env.REACT_APP_API_URL}/api/queryGreaterUsers?firstName=${fn}&threshold=${t}`;
-
-            // console log the API fetch call
-            console.log("STR w/ Task OBJ: " + str);
-           
-            // await json response & grab json
-            const res = await fetch(str);
-            const data = await res.json();
-
-            // print data returned from API call
-            console.log("Data returned from API (MORE) call: " + JSON.stringify(data));
-
-
-            setNames(data);
-            setAssignedName(fn)
-            setRecent(names[names.length-1].first_name)
-            // check if data is an eror objec
-            if(data.isError) {
-                setErrorObj(data);
-                console.log("setting error (task) data...");
-            } else {
-                console.log("setting task data...");
-                // clear the previous messages from errors when we successfully insert
-                setErrorObj(emptyData);
-                // setTaskData(data);
-            }
             
         } catch (err) {
             //error catching for when fetch fails
@@ -284,7 +246,7 @@ function Edit({ props, setIsEditing, assignedUser }) {
                                   selectedValue={webUserName} 
                                   handleSelect={handleWebUser}
                                   numItems={numUsers}
-                                  handleMore={handleMore}
+                                  handleMore={handleSearch}
                                   recent={recent}
                                   assignedWebUserID={taskData.assignedWebUserID}
                         />                        
