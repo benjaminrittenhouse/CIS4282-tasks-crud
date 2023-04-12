@@ -6,7 +6,7 @@ function Dropdown({assignedWebUserID, dropdownName, listItems, handleClick, hand
     
     useEffect(() => {
         // handleWebUser();
-        // handleClick();
+        handleClick();
       }, []);
 
     return (
@@ -19,7 +19,7 @@ function Dropdown({assignedWebUserID, dropdownName, listItems, handleClick, hand
 
                 {(assignedWebUserID === null || assignedWebUserID === "") ? (
                     <Alert severity="error" className="alert" style={{position: 'absolute', top: '1.5rem', left: '1rem'}}>
-                       Changes made. Select a user before saving.
+                       Changes made. Select a user before saving. Users: {listItems.length}, Selected: {selectedValue}
                     </Alert>
                 ) : (
                     <></>
@@ -43,8 +43,15 @@ function Dropdown({assignedWebUserID, dropdownName, listItems, handleClick, hand
                             {listItems.length === 10 && numItems > 10 ? (<option onClick={()=>handleMore(selectedValue, recent)}>More...</option>) : (null)}
                         </ul>
                     ) : (
-                       <>
-                       </>
+                        <>
+                        {listItems.length === 0 && assignedWebUserID ? (
+                            null
+                        ) : (
+                            <ul className="names">
+                                <option >No such user</option>
+                            </ul>
+                        )}
+                        </>
                     )}
 
             </td>

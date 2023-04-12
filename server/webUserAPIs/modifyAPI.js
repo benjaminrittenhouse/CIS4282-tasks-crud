@@ -59,6 +59,7 @@ router.get("/insertUser", (req, res) => {
     errorObj.errorMsg = "Please see field level errors.";
     res.send(errorObj);
     console.log("Errors! Sending error object...");
+    console.dir(errorObj)
   }
 
 });
