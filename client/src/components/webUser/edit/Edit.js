@@ -1,4 +1,4 @@
-import React , { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 import DbToObj from "../DbToObj"
@@ -69,149 +69,90 @@ function Edit({ props, setIsEditing }) {
     }
 
     return (
-        <div className="edit">
-            <button type="button" className="xButton" onClick={handleClose}>X</button>
-            <h2>Editing {userData.firstName + " " + userData.lastName}</h2>
-            <table className="insertArea">
-                <tbody>
-                    <tr>
-                        <td className="textTd">Email</td>
-                        <td className="inputTd">
-                            <input value={userData.userEmail} onChange=
-                                {e => setUserData({ ...userData, userEmail: e.target.value })}
-                            />
-                        </td>
-                        <td className="error">
-                            {errorObj.userEmail}
-                        </td>
-                    </tr>
+        <div class="editArea">
+            <h2 className="heading">Add a New User</h2>
+            <div class="row">
+                <span class="prompt">Email:</span>
+                <input placeholder="example@mail.com" value={userData.userEmail} onChange=
+                    {e => setUserData({ ...userData, userEmail: e.target.value })}
+                />
+                <span class="error">{errorObj.userEmail}</span>
+            </div>
+            <div class="row">
+                <span class="prompt">First Name:</span>
+                <input placeholder="Johnny" value={userData.firstName} onChange=
+                    {e => setUserData({ ...userData, firstName: e.target.value })}
+                />
+                <span class="error">{errorObj.firstName}</span>
+            </div>
+            <div class="row">
+                <span class="prompt">Last Name:</span>
+                <input placeholder="Appleseed" value={userData.lastName} onChange=
+                    {e => setUserData({ ...userData, lastName: e.target.value })}
+                />
+                <span class="error">{errorObj.lastName}</span>
+            </div>
+            <div class="row">
+                <span class="prompt">Password:</span>
+                <input type="password" value={userData.userPassword} onChange=
+                    {e => setUserData({ ...userData, userPassword: e.target.value })}
+                />
+                <span class="error">{errorObj.userPassword}</span>
+            </div>
+            <div class="row">
+                <span class="prompt">Confirm Password:</span>
+                <input type="password" value={userData.userPassword2} onChange=
+                    {e => setUserData(setProp(userData, "userPassword2", e.target.value))}
+                />
+                <span class="error">{errorObj.userPassword2}</span>
+            </div>
+            <div class="row">
+                <span class="prompt">Image:</span>
+                <input placeholder="" value={userData.image} onChange=
+                    {e => setUserData(setProp(userData, "image", e.target.value))}
+                />
+                <span class="error">{errorObj.image}</span>
+            </div>
+            <div class="row">
+                <span class="prompt">Birthday:</span>
+                <input placeholder="mm/dd/yyyy" value={userData.birthday} onChange=
+                    {e => setUserData(setProp(userData, "birthday", e.target.value))}
+                />
+                <span class="error">{errorObj.birthday}</span>
+            </div>
+            <div class="row">
+                <span class="prompt">Membership Fee:</span>
+                <input placeholder="$100.00" value={userData.membershipFee} onChange=
+                    {e => setUserData(setProp(userData, "membershipFee", e.target.value))}
+                />
+                <span class="error">{errorObj.membershipFee}</span>
+            </div>
+            <div class="row">
+                <span class="prompt">Room #:</span>
+                <input placeholder="111" value={userData.roomNumber} onChange=
+                    {e => setUserData(setProp(userData, "roomNumber", e.target.value))}
+                />
+                <span class="error">{errorObj.roomNumber}</span>
+            </div>
+            <div class="row">
+                <span class="prompt">Role:</span>
+                <RoleTypes
+                    value={props.userRoleId}
+                    getUserRoleId={(u) => setUserData(setProp(userData, "userRoleId", u))}
+                />
+                <span class="error">{errorObj.userRoleId}</span>
+            </div>
 
-                    <tr>
-                        <td className="textTd">First Name</td>
-                        <td  className="inputTd">
-                            <input value={userData.firstName} onChange=
-                                {e => setUserData({ ...userData, firstName: e.target.value })}
-                            />
-                        </td>
-                        <td className="error">
-                            {errorObj.firstName}
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td className="textTd">Last Name</td>
-                        <td  className="inputTd">
-                            <input value={userData.lastName} onChange=
-                                {e => setUserData({ ...userData, lastName: e.target.value })}
-                            />
-                        </td>
-                        <td className="error">
-                            {errorObj.lastName}
-                        </td>
-                    </tr>
-
-
-                    <tr>
-                        <td className="textTd">Password</td>
-                        <td  className="inputTd">
-                            <input type="password" value={userData.userPassword} onChange=
-                                {e => setUserData({ ...userData, userPassword: e.target.value })}
-                            />
-                        </td>
-                        <td className="error">
-                            {errorObj.userPassword}
-                        </td>
-                    </tr>
-                    <tr>
-                        <td className="textTd">Re-enter Password</td>
-                        <td className="inputTd">
-                            <input type="password" value={userData.userPassword2} onChange=
-                                {e => setUserData(setProp(userData, "userPassword2", e.target.value))}
-                            />
-                        </td>
-                        <td className="error">
-                            {errorObj.userPassword2}
-                        </td>
-                    </tr>
-                    <tr>
-                        <td className="textTd">Image</td>
-                        <td className="inputTd">
-                            <input value={userData.image} onChange=
-                                {e => setUserData(setProp(userData, "image", e.target.value))}
-                            />
-                        </td>
-                        <td className="error">
-                            {errorObj.image}
-                        </td>
-                    </tr>
-                    <tr>
-                        <td className="textTd">Birthday</td>
-                        <td className="inputTd">
-                            <input value={userData.birthday} onChange=
-                                {e => setUserData(setProp(userData, "birthday", e.target.value))}
-                            />
-                        </td>
-                        <td className="error">
-                            {errorObj.birthday}
-                        </td>
-                    </tr>
-                    <tr>
-                        <td className="textTd">Membership Fee</td>
-                        <td className="inputTd">
-                            <input value={userData.membershipFee} onChange=
-                                {e => setUserData(setProp(userData, "membershipFee", e.target.value))}
-                            />
-                        </td>
-                        <td className="error">
-                            {errorObj.membershipFee}
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td className="textTd">Room #</td>
-                        <td className="inputTd">
-                            <input value={userData.roomNumber} onChange=
-                                {e => setUserData(setProp(userData, "roomNumber", e.target.value))}
-                            />
-                        </td>
-                        <td className="error">
-                            {errorObj.roomNumber}
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td className="textTd">Role</td>
-                        <td className="inputTd">
-                            <RoleTypes
-                                value={props.userRoleId}
-                                className="roleTypes"
-                                getUserRoleId={(u) => setUserData(setProp(userData, "userRoleId", u))}
-                            />
-                        </td>
-                        <td className="error">
-                            {errorObj.userRoleId}
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td className="error" colSpan="2">
-                            <br />
-                            {/* TO DO : re-render this so we see record inserted, when we first get an error, and then insert again*/}
-
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+            <br />
             <div className="buttons">
                 <button type="button" className="saveButton" onClick={updateUser}>Save</button>
                 <button type="button" className="cancelButton" onClick={handleClose}>Cancel</button>
-            </div>
-
-            <div>
-                {updateMessage}
+                <span class="recLevelMsg">{updateMessage}</span>
             </div>
 
         </div>
+
+
     )
 }
 

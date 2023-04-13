@@ -169,108 +169,73 @@ function Edit({ props, setIsEditing, assignedUser }) {
 
 
     return (
-        <div className="edit">
+        <div className="editArea">
             <button type="button" className="xButton" onClick={handleClose}>X</button>
             <h2>Editing {taskData.taskName}</h2>
-            <table className="insertArea">
-                <tbody>
-                <tr>
-                        <td className="textTd">Name</td>
-                        <td className="inputTd">
-                            <input placeholder ="Take out trash..." value={taskData.taskName} onChange=
-                                {e => setTaskData({...taskData, taskName: e.target.value})}
-                            />
-                        </td>
-                        <td className="error">
-                            {errorObj.taskName}
-                        </td>
-                    </tr>
-                    <tr>
-                        <td className="textTd">Description</td>
-                        <td className="inputTd">
-                            <textarea placeholder="This task is about..." value={taskData.taskDesc} onChange=
-                                {e => setTaskData({...taskData, taskDesc: e.target.value})}
-                            />
-                        </td>
-                        <td className="error">
-                            {errorObj.taskDesc}
-                        </td>
-                    </tr>
-                    <tr>
-                        <td className="textTd">Points</td>
-                        <td className="inputTd">
-                            <input placeholder ="8" value={taskData.taskPoints} onChange=
-                                {e => setTaskData({...taskData, taskPoints: e.target.value})}
-                            />
-                        </td>
-                        <td className="error">
-                            {errorObj.taskPoints}
-                        </td>
-                    </tr>
-                    <tr>
-                        <td className="textTd">Target Date</td>
-                        <td className="inputTd">
-                            <input placeholder="mm/dd/yyyy" value={taskData.targetDate} onChange=
-                                 {e => setTaskData({...taskData, targetDate: e.target.value})}
-                            />
-                        </td>
-                        <td className="error">
-                            {errorObj.targetDate}
-                        </td>
-                    </tr>
-                    <tr>
-                        <td className="textTd">Completion Date</td>
-                        <td className="inputTd">
-                            <input placeholder="mm/dd/yyyy" value={taskData.completionDate} onChange=
-                                {e => setTaskData({...taskData, completionDate: e.target.value})}
-                            />
-                        </td>
-                        <td className="error">
-                            {errorObj.completionDate}
-                        </td>
-                    </tr>
-                    <tr>
-                        <td className="textTd">Category</td>
-                        <td className="inputTd">
-                            <Categories 
-                                value={taskData.catID}
-                                getUserCategoryId={(u) => setTaskData(setProp(taskData, "catID", u))}
-                            />
-                        </td>
-                    </tr>
-                    <tr>
-                        <Dropdown listItems={names} 
-                                  handleClick={handleClick} 
-                                  handleChange={handleChange} 
-                                  dropdownName={"Assigned User"}
-                                  selectedValue={webUserName} 
-                                  handleSelect={handleWebUser}
-                                  numItems={numUsers}
-                                  handleMore={handleSearch}
-                                  recent={recent}
-                                  assignedWebUserID={taskData.assignedWebUserID}
-                        />                        
-                    </tr>
-
-                    <tr>
-
-                        <td className="error" colSpan="2">
-                            <br />
-                                {/* TO DO : re-render this so we see record inserted, when we first get an error, and then insert again*/}
-                                {insertMessage}
-                            <div>
-                            </div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <div className="buttons">
-                <button type="button" className="saveButton" onClick={updateTask}>Save</button>
-                <button type="button" className="cancelButton" onClick={handleClose}>Cancel</button>
+            <div class="row">
+                <span class="prompt">Name:</span>
+                <input placeholder="Take out trash..." value={taskData.taskName} onChange=
+                    {e => setTaskData({ ...taskData, taskName: e.target.value })}
+                />
+                <span class="error">{errorObj.taskName}</span>
+            </div>
+            <div class="row">
+                <span class="prompt">Description:</span>
+                <textarea placeholder="This task is about..." value={taskData.taskDesc} onChange=
+                    {e => setTaskData({ ...taskData, taskDesc: e.target.value })}
+                />
+                <span class="error">{errorObj.taskDesck}</span>
+            </div>
+            <div class="row">
+                <span class="prompt">Points:</span>
+                <input placeholder="8" value={taskData.taskPoints} onChange=
+                    {e => setTaskData({ ...taskData, taskPoints: e.target.value })}
+                />
+                <span class="error">{errorObj.taskPoints}</span>
+            </div>
+            <div class="row">
+                <span class="prompt">Target Date:</span>
+                <input placeholder="mm/dd/yyyy" value={taskData.targetDate} onChange=
+                    {e => setTaskData({ ...taskData, targetDate: e.target.value })}
+                />
+                <span class="error">{errorObj.targetDate}</span>
+            </div>
+            <div class="row">
+                <span class="prompt">Completion Date:</span>
+                <input placeholder="mm/dd/yyyy" value={taskData.completionDate} onChange=
+                    {e => setTaskData({ ...taskData, completionDate: e.target.value })}
+                />
+                <span class="error">{errorObj.completionDate}</span>
+            </div>
+            <div class="row">
+                <span class="prompt">Category:</span>
+                <Categories
+                    value={taskData.catID}
+                    getUserCategoryId={(u) => setTaskData(setProp(taskData, "catID", u))}
+                />
+                <span class="error">{errorObj.catID}</span>
+            </div>
+            <div class="row">
+                <span class="prompt">Assigned User</span>
+                <Dropdown listItems={names}
+                    handleClick={handleClick}
+                    handleChange={handleChange}
+                    dropdownName={"Assigned User"}
+                    selectedValue={webUserName}
+                    handleSelect={handleWebUser}
+                    numItems={numUsers}
+                    handleMore={handleSearch}
+                    recent={recent}
+                    assignedWebUserID={taskData.assignedWebUserID}
+                />
+                <span class="error">{errorObj.assignedWebUserID}</span>
             </div>
 
-            <div>
-                {updateMessage}
+            <br />
+            <div class="buttonsAndMessage">
+            <button type="button" className="saveButton" onClick={updateTask}>Save</button>
+                <button type="button" className="cancelButton" onClick={handleClose}>Cancel</button>
+                <div class="recLevelMsg">{updateMessage}</div>
             </div>
 
         </div>

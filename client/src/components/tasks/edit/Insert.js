@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import "./edit.css"
+import "../../../style/editArea.css"
 import Dropdown from "./Dropdown"
 import Categories from './Categories';
 
@@ -119,7 +119,7 @@ function Insert(props) {
 
             // console log the API fetch call
             console.log("STR w/ Task OBJ: " + str);
-           
+
             // await json response & grab json
             const res = await fetch(str);
             const data = await res.json();
@@ -130,10 +130,10 @@ function Insert(props) {
 
             setNames(data);
             setAssignedName(searchName)
-            setRecent(names[names.length-1].last_name + ", " + names[names.length-1].first_name)
+            setRecent(names[names.length - 1].last_name + ", " + names[names.length - 1].first_name)
             console.log("recent: " + recent)
             // check if data is an eror objec
-            if(data.isError) {
+            if (data.isError) {
                 setErrorObj(data);
                 console.log("setting error (task) data...");
             } else {
@@ -144,7 +144,7 @@ function Insert(props) {
             }
 
             setInsertMessage(data.errorMsg);
-            
+
         } catch (err) {
             //error catching for when fetch fails
             console.log("err (caught fetch):" + String(err));
@@ -170,119 +170,74 @@ function Insert(props) {
         };
         reader.readAsText(file);
     }
- 
+
     return (
-        <div className="edit">
+        <div class="editArea">
             <h2 className="heading">Create a New Task</h2>
-            <table className="insertArea">
-                <tbody>
-                    <tr>
-                        <td className="textTd">Name</td>
-                        <td className="inputTd">
-                            <input placeholder="Take out trash..." value={taskData.taskName} onChange=
-                                {e => setTaskData({ ...taskData, taskName: e.target.value })}
-                            />
-                            <div className="errorBelow">
-                                {errorObj.taskName}
-                            </div>
-                        </td>
-                        {/*<td className="error">
-                            {errorObj.taskName}
-                        </td>*/}
-                    </tr>
-                    <tr>
-                        <td className="textTd">Description</td>
-                        
-                        <td className="inputTd">
-                            <textarea placeholder="This task is about..." value={taskData.taskDesc} onChange=
-                                {e => setTaskData({ ...taskData, taskDesc: e.target.value })}
-                            />
-                            <div className="errorBelow">
-                                {errorObj.taskDesc}
-                            </div>
-                        </td>
-                        <td className="inputFileTd">
-                            <input type="file" onChange={handleFileUpload} accept=".txt" />
-                        </td>
-                    </tr>
-                    <tr>
-                        <td className="textTd">Points</td>
-                        <td className="inputTd">
-                            <input placeholder="8" value={taskData.taskPoints} onChange=
-                                {e => setTaskData({ ...taskData, taskPoints: e.target.value })}
-                            />
-                            <div className="errorBelow">
-                                {errorObj.taskPoints}
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td className="textTd">Target Date</td>
-                        <td className="inputTd">
-                            <input placeholder="mm/dd/yyyy" value={taskData.targetDate} onChange=
-                                {e => setTaskData({ ...taskData, targetDate: e.target.value })}
-                            />
-                            <div className="errorBelow">
-                                {errorObj.targetDate}
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td className="textTd">Completion Date</td>
-                        <td className="inputTd">
-                            <input placeholder="mm/dd/yyyy" value={taskData.completionDate} onChange=
-                                {e => setTaskData({ ...taskData, completionDate: e.target.value })}
-                            />
-                            <div className="errorBelow">
-                                {errorObj.completionDate}
-                            </div>
-                        </td>
-
-                    </tr>
-
-                    <tr>
-                        <td className="textTd">Category</td>
-                        <td className="inputTd">
-                            <Categories
-                                value={taskData.catID}
-                                getUserCategoryId={(u) => setTaskData(setProp(taskData, "catID", u))}
-                            />
-                            <div className="errorBelow">
-                                {errorObj.catID}
-                            </div>
-                        </td>
-                    </tr>
-
-                    <tr>
-
-                        <Dropdown listItems={names}
-                            handleClick={handleClick}
-                            handleChange={handleChange}
-                            selectedValue={webUserName}
-                            dropdownName={"Assigned User"}
-                            handleSelect={handleWebUser}
-                            recent={recent}
-                            numItems={numUsers}
-                            handleMore={handleSearch}
-                            assignedWebUserID={taskData.assignedWebUserID}
-                        />
-
-
-                        <div className="errorBelow">
-                            {errorObj.assignedWebUserID}
-                        </div>
-
-                    </tr>
-
-
-                </tbody>
-            </table>
-
-            <div className="save">
-                <button type="button" onClick={insertTask}>Save</button>
-                <div className="message">{insertMessage}</div>
+            <div class="row">
+                <span class="prompt">Name:</span>
+                <input placeholder="Take out trash..." value={taskData.taskName} onChange=
+                    {e => setTaskData({ ...taskData, taskName: e.target.value })}
+                />
+                <span class="error">{errorObj.taskName}</span>
+            </div>
+            <div class="row">
+                <span class="prompt">Description:</span>
+                <textarea placeholder="This task is about..." value={taskData.taskDesc} onChange=
+                    {e => setTaskData({ ...taskData, taskDesc: e.target.value })}
+                />
+                <span class="error">{errorObj.taskDesck}</span>
+            </div>
+            <div class="row">
+                <span class="prompt">Points:</span>
+                <input placeholder="8" value={taskData.taskPoints} onChange=
+                    {e => setTaskData({ ...taskData, taskPoints: e.target.value })}
+                />
+                <span class="error">{errorObj.taskPoints}</span>
+            </div>
+            <div class="row">
+                <span class="prompt">Target Date:</span>
+                <input placeholder="mm/dd/yyyy" value={taskData.targetDate} onChange=
+                    {e => setTaskData({ ...taskData, targetDate: e.target.value })}
+                />
+                <span class="error">{errorObj.targetDate}</span>
+            </div>
+            <div class="row">
+                <span class="prompt">Completion Date:</span>
+                <input placeholder="mm/dd/yyyy" value={taskData.completionDate} onChange=
+                    {e => setTaskData({ ...taskData, completionDate: e.target.value })}
+                />
+                <span class="error">{errorObj.completionDate}</span>
+            </div>
+            <div class="row">
+                <span class="prompt">Category:</span>
+                <Categories
+                    value={taskData.catID}
+                    getUserCategoryId={(u) => setTaskData(setProp(taskData, "catID", u))}
+                />
+                <span class="error">{errorObj.catID}</span>
+            </div>
+            <div class="row">
+                <span class="prompt">Assigned User</span>
+                <Dropdown listItems={names}
+                    handleClick={handleClick}
+                    handleChange={handleChange}
+                    dropdownName={"Assigned User"}
+                    selectedValue={webUserName}
+                    handleSelect={handleWebUser}
+                    numItems={numUsers}
+                    handleMore={handleSearch}
+                    recent={recent}
+                    assignedWebUserID={taskData.assignedWebUserID}
+                />
+                <span class="error">{errorObj.assignedWebUserID}</span>
             </div>
 
+            <br />
+            <div class="buttonsAndMessage">
+                <button type="button" onClick={insertTask}>Save</button>
+                <div class="recLevelMsg">{insertMessage}</div>
+            </div>
         </div>
     )
 }

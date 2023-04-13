@@ -11,8 +11,7 @@ function Dropdown({assignedWebUserID, dropdownName, listItems, handleClick, hand
 
     return (
         <>
-            <td className="textTd">{dropdownName}</td>
-            <td className="assignedUserContainerEdit">
+                <div className="searchRow">
                 <input type="text" className="nameInput" name="inputVal" placeholder="Type starting chars and click search..." value={selectedValue}
                     onChange={handleChange}
                 />
@@ -26,6 +25,10 @@ function Dropdown({assignedWebUserID, dropdownName, listItems, handleClick, hand
                 )}
 
                 <button onClick={handleClick}>Search</button>
+
+                </div>
+
+                <div className="namesDiv">
                 {/* list of names below input field */}
                 
                     {listItems.length > 0 ? (
@@ -53,8 +56,7 @@ function Dropdown({assignedWebUserID, dropdownName, listItems, handleClick, hand
                         )}
                         </>
                     )}
-
-            </td>
+                    </div>
         </>
     )
 }

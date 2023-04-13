@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>MakeEditArea</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            body {
+                font-family: sans-serif;
+                font-size: 0.9rem;
+                line-height: 1.5rem;
+            }
+            h4, p {
+                margin-left: 1.5rem;
+            }
+
+            .editArea {
+                width: 90%;
+                margin: auto; /* centers div in it's container */
+                background-color: rgb(200,200,200); /* light grey */
+                padding: 1rem;
+                border-radius: 0.25rem;
+
+                /* up down offset, left right offset, blur, color */
+                box-shadow: 0.25rem 0.25rem 0.25rem #444444;
+                text-align: left;
+            }
+
+            /* count padding as part of width for everything in .editArea */
+            .editArea * {
+                box-sizing: border-box; 
+            }
+
+            .row {
+                /*background-color: rgba(225,225,225,1);*/
+                border-radius: 0.25rem;
+                display: flex; 
+                flex-direction: column; 
+                margin-bottom: 1rem;
+            }
+
+            .prompt {
+                font-weight: bold;
+                width: 98%;
+                margin: 1%;
+                margin-left: 0%;
+            }
+
+            input {
+                border-radius: 0.25rem;
+                width: 96%;
+                margin: 0rem 2%; /* 1st is top/bottom, 2nd is left/right */
+            }
+
+            .error {
+                width: 96%;
+                margin: 0rem 2%; /* 1st is top/bottom, 2nd is left/right */
+                color: maroon;
+            }
+
+            button {
+                margin: 0rem 0.5rem;  /* first is top/bottom, second is left right */
+            }
+
+            .recLevelMsg {
+                font-weight: bold;
+            }
+
+            /* desktop only */
+            @media only screen and (min-width: 40rem) { 
+
+                .row {
+                    flex-direction: row; 
+                    margin-bottom: 0.5rem;
+                }
+
+                .prompt {
+                    width: 23%;
+                }
+
+                input {
+                    width: 31%;
+                    margin-left: 1%;
+                }
+
+                .error {
+                    width: 38%;
+                    margin-left: 1%;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <h3>Possible Styling for User Input Area Validation</h3>
+        <h4 style="margin-bottom:0rem;">"Mobile First" Responsive Styling ==> view wide and narrow to test styling</h4>
+        <ul>
+            <li>
+                This layout was designed "mobile first" meaning that the page was initially 
+                styled assuming a narrow viewport (basically a single column layout).
+            </li>
+            <li>
+                Then a media query with "desktop-only" styling was added. Typically the 
+                "desktop styling" just makes flexboxes "direction row" and lays things out 
+                in multiple columns. 
+            </li>
+        </ul>
+
+        <div class="editArea">
+            <div class="row">
+                <span class="prompt">User Email: </span>
+                <input>
+                <span class="error">This field is required</span>
+            </div>
+            <div class="row">
+                <span class="prompt">User Image (URL): </span>
+                <input>
+                <span class="error">&nbsp;</span>
+            </div>
+            <div class="row">
+                <span class="prompt">Birthday: </span>
+                <input value="13/13/2004">
+                <span class="error">Please enter a date</span>
+            </div>
+            <div class="row">
+                <span class="prompt">Membership Fee: </span>
+                <input>
+                <span class="error">&nbsp;</span>
+            </div>
+            <br>
+            <button>Submit</button>
+            <button>Cancel</button>
+            <span class="recLevelMsg">Please Try Again</span>
+        </div>
+    </body>
+</html>

@@ -6,7 +6,6 @@ import TaskList from "../taskList/TaskList";
 import Edit from "../edit/Edit"
 import "../../../style/navbar.css";
 import "../../../style/style.css"
-import "../../../style/edit.css"
 import DbToObj from "../DbToObj";
 
 function Display(props) {
