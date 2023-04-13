@@ -6,6 +6,8 @@ import Categories from './Categories';
 function Insert(props) {
     const [insertMessage, setInsertMessage] = useState("");
 
+    const [dirtyFlag, setDirtyFlag] = useState(false) 
+
     // assigned user, dirty flag
     const [assignedIsSet, setAssignedIsSet] = useState(false);
 
@@ -105,6 +107,7 @@ function Insert(props) {
 
             setNumUsers(Number(data[0].count))
 
+
         } catch (err) {
             //error catching for when fetch fails
             console.log("err (caught fetch):" + String(err));
@@ -144,6 +147,13 @@ function Insert(props) {
             }
 
             setInsertMessage(data.errorMsg);
+
+            if(numUsers === 0 && taskData.assignedWebUserID !== ""){
+                console.log("task data === string " + taskData.assignedWebUserID !== "" )
+                setDirtyFlag(true)
+            } else {
+                setDirtyFlag(false)
+            }
 
         } catch (err) {
             //error catching for when fetch fails
@@ -229,6 +239,7 @@ function Insert(props) {
                     handleMore={handleSearch}
                     recent={recent}
                     assignedWebUserID={taskData.assignedWebUserID}
+                    dirtyFlag={dirtyFlag}
                 />
                 <span class="error">{errorObj.assignedWebUserID}</span>
             </div>

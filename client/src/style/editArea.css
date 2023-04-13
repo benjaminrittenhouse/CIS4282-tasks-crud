@@ -15,8 +15,8 @@ p {
     /* up down offset, left right offset, blur, color */
     box-shadow: 0.25rem 0.25rem 0.25rem #444444;
     text-align: left;
-    margin-top: 5rem;
-    margin-bottom: 1rem;
+    margin-top: 12rem;
+    margin-bottom: 2rem;
 }
 
 /* count padding as part of width for everything in .editArea */
@@ -87,7 +87,8 @@ p {
     overflow-y: auto;
     font-family: inherit;
     resize: none;
-    margin: 0rem 1%; /* 1st is top/bottom, 2nd is left/right */
+    margin: 0rem 1%;
+    /* 1st is top/bottom, 2nd is left/right */
     padding: 1rem;
     border: 2px solid black
 }
@@ -113,18 +114,38 @@ p {
     flex-direction: row;
 }
 
+.editArea .xButton {
+    float: right;
+}
+
 /* desktop only */
 @media only screen and (min-width: 40rem) {
+    .editArea .row .dropdown .searchRow .nameInput {
+        border-radius: 0.25rem;
+        width: 100%;
+        margin: 0rem 0%;
+        /* 1st is top/bottom, 2nd is left/right */
+        height: 3rem;
+        left: 0;
+        position: relative;
+    }
+
     .editArea .row .searchRow {
+        display: flex;
         flex-direction: row;
         width: 150%;
-        margin-left: 14.5%;
+        justify-content: flex-start;
+        margin-left: 3.5%;
+    }
+
+    .editArea .xButton {
+        display: none;
     }
 
     .editArea .row .namesDiv {
         position: absolute;
-        margin-left: 22.5%;
-        margin-top: 3%;
+        margin-left: 1%;
+        margin-top: 0%;
     }
 
     .editArea .row .namesDiv .names {

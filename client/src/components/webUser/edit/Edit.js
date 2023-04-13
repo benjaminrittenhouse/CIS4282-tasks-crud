@@ -70,7 +70,8 @@ function Edit({ props, setIsEditing }) {
 
     return (
         <div class="editArea">
-            <h2 className="heading">Add a New User</h2>
+            <button type="button" className="xButton" onClick={handleClose}>X</button>
+            <h2 className="heading">Editing {userData.firstName + " " + userData.lastName}</h2>
             <div class="row">
                 <span class="prompt">Email:</span>
                 <input placeholder="example@mail.com" value={userData.userEmail} onChange=

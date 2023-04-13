@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Alert, AlertTitle, listItemSecondaryActionClasses } from "@mui/material";
 
-function Dropdown({assignedWebUserID, dropdownName, listItems, handleClick, handleChange, recent, selectedValue, handleSelect, handleMore, numItems }) {
+function Dropdown({assignedWebUserID, dropdownName, listItems, handleClick, handleChange, recent, selectedValue, handleSelect, handleMore, numItems, dirtyFlag}) {
 
     
     useEffect(() => {
@@ -10,7 +10,7 @@ function Dropdown({assignedWebUserID, dropdownName, listItems, handleClick, hand
       }, []);
 
     return (
-        <>
+        <div className="dropdown">
                 <div className="searchRow">
                 <input type="text" className="nameInput" name="inputVal" placeholder="Type starting chars and click search..." value={selectedValue}
                     onChange={handleChange}
@@ -47,7 +47,7 @@ function Dropdown({assignedWebUserID, dropdownName, listItems, handleClick, hand
                         </ul>
                     ) : (
                         <>
-                        {listItems.length === 0 && assignedWebUserID ? (
+                        {dirtyFlag ? (
                             null
                         ) : (
                             <ul className="names">
@@ -57,7 +57,7 @@ function Dropdown({assignedWebUserID, dropdownName, listItems, handleClick, hand
                         </>
                     )}
                     </div>
-        </>
+        </div>
     )
 }
 
