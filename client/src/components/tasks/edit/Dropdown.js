@@ -6,23 +6,22 @@ function Dropdown({ assignedWebUserID, dropdownName, listItems, handleClick, han
 
     useEffect(() => {
         // handleWebUser();
-        handleClick();
+        // handleClick();
     }, []);
 
     return (
         <div className="dropdown">
-            <div className="searchRow">
-                <input type="text" className="nameInput" name="inputVal" placeholder="Type starting chars and click search..." value={selectedValue}
-                    onChange={handleChange}
-                />
-
-                {(assignedWebUserID === null || assignedWebUserID === "") ? (
-                    <Alert severity="error" className="alert" style={{ position: 'absolute', top: '1.5rem', left: '1rem' }}>
-                        Changes made. Select a user before saving. Users: {listItems.length}, Selected: {selectedValue}
+            {(assignedWebUserID === null || assignedWebUserID === "") ? (
+                    <Alert severity="error" className="alert" >
+                        New changes not saved until a user is selected.
                     </Alert>
                 ) : (
                     <></>
                 )}
+            <div className="searchRow">
+                <input type="text" className="nameInput" name="inputVal" placeholder="Type starting chars and click search..." value={selectedValue}
+                    onChange={handleChange}
+                />
 
                 <button onClick={handleClick}>Search</button>
 

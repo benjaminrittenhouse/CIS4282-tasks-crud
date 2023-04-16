@@ -107,6 +107,12 @@ function Insert(props) {
 
             setNumUsers(Number(data[0].count))
 
+            if(numUsers === 0){
+                console.log("NUM USERS IS THIS " + numUsers);
+
+                setDirtyFlag(true)
+            }
+
 
         } catch (err) {
             //error catching for when fetch fails
@@ -148,12 +154,13 @@ function Insert(props) {
 
             setInsertMessage(data.errorMsg);
 
+            /*
             if(numUsers === 0 && taskData.assignedWebUserID !== ""){
-                console.log("task data === string " + taskData.assignedWebUserID !== "" )
                 setDirtyFlag(true)
             } else {
                 setDirtyFlag(false)
             }
+            */
 
         } catch (err) {
             //error catching for when fetch fails
@@ -168,6 +175,7 @@ function Insert(props) {
         setNames([])
         setWebUserName(name)
         setAssignedIsSet(true)
+        setDirtyFlag(false)
     }
 
     // function to allow a user to upload a .txt file and read the text, store it in a state variable

@@ -19,6 +19,7 @@ function Edit({ props, setIsEditing, assignedUser }) {
 
     const [names, setNames] = useState("");
     const [assignedName, setAssignedName] = useState("");
+    const [dirtyFlag, setDirtyFlag] = useState(false) 
 
 
     const [inputVal, setInputVal] = useState(assignedUser);
@@ -34,6 +35,10 @@ function Edit({ props, setIsEditing, assignedUser }) {
         setButtonVal(webUserName)
         handleSearch(webUserName, "");
         handleNumUsers(webUserName, recent)
+        if(numUsers === 0){
+            setDirtyFlag(true)
+            console.log("DIRTY FLAG IS TRUE")
+        }
     }
 
     const location = useLocation();
@@ -98,7 +103,14 @@ function Edit({ props, setIsEditing, assignedUser }) {
             }
 
             setInsertMessage(data.errorMsg);
-            
+
+            /*
+            if(numUsers === 0 && taskData.assignedWebUserID !== ""){
+                setDirtyFlag(true)
+            } else {
+                setDirtyFlag(false)
+            }
+            */
         } catch (err) {
             //error catching for when fetch fails
             console.log("err (caught fetch):" + String(err));
@@ -122,7 +134,12 @@ function Edit({ props, setIsEditing, assignedUser }) {
             console.log("Data returned from NUMBERS APII call: " + Number(data[0].count));
 
             setNumUsers(Number(data[0].count))
-            console.log("NUM USERS " + numUsers);
+
+            if(numUsers === 0){
+                console.log("NUM USERS IS THIS " + numUsers);
+
+                setDirtyFlag(true)
+            }
             
         } catch (err) {
             //error catching for when fetch fails
@@ -164,6 +181,7 @@ function Edit({ props, setIsEditing, assignedUser }) {
         setInputVal(name)
         setNames([])
         setWebUserName(name)
+        setDirtyFlag(false)
     }
 
 
@@ -227,6 +245,7 @@ function Edit({ props, setIsEditing, assignedUser }) {
                     handleMore={handleSearch}
                     recent={recent}
                     assignedWebUserID={taskData.assignedWebUserID}
+                    dirtyFlag={dirtyFlag}
                 />
                 <span class="error">{errorObj.assignedWebUserID}</span>
             </div>

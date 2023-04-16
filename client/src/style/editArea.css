@@ -51,6 +51,11 @@ p {
     flex-direction: row;
 }
 
+.editArea .row .alert {
+    width: 95%;
+    margin: auto;
+}
+
 .editArea .row .namesDiv {
     position: relative;
 }
@@ -138,6 +143,10 @@ p {
         margin-left: 3.5%;
     }
 
+    .editArea .row .searchRow button {
+        z-index: 1000;
+    }
+
     .editArea .xButton {
         display: none;
     }
@@ -189,6 +198,11 @@ p {
         /* 1st is top/bottom, 2nd is left/right */
         padding: 1rem;
         border: 2px solid black
+    }
+
+    .editArea .row .alert {
+        margin-left: 1rem;
+        width: 100%;
     }
 
 }
