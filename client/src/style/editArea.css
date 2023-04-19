@@ -15,8 +15,29 @@ p {
     /* up down offset, left right offset, blur, color */
     box-shadow: 0.25rem 0.25rem 0.25rem #444444;
     text-align: left;
-    margin-top: 12rem;
     margin-bottom: 2rem;
+}
+
+.editArea.tasks.insert {
+    margin-top: 5rem;
+    margin-left: 0.5rem;
+    margin-right: 2rem;
+}
+
+.editArea.tasks.edit {
+    margin-top: 5rem;
+    margin-left: 2rem;
+    margin-right: 2rem;
+}
+
+.editArea.webUser.edit {
+    margin-top: 12rem;
+    margin-left: 2rem;
+    margin-right: 2rem;
+}
+
+.editArea.webUser.insert {
+    margin-top: 5rem;    
 }
 
 /* count padding as part of width for everything in .editArea */
@@ -39,7 +60,7 @@ p {
 }
 
 .editArea .row {
-    /*background-color: rgba(225,225,225,1);*/
+    background-color: rgba(225,225,225,1);
     border-radius: 0.25rem;
     display: flex;
     flex-direction: column;
@@ -203,6 +224,27 @@ p {
     .editArea .row .alert {
         margin-left: 1rem;
         width: 100%;
+    }
+
+    .editArea .row {
+        background-color: white;
+    }
+
+    .editArea.webUser.edit {
+        margin-top: 2rem;
+    }
+
+    .editArea.webUser.insert {
+        margin-top: 1rem;
+    }
+
+    .editArea.tasks.edit {
+        margin-top: 1rem;
+    }
+
+    .editArea.tasks.insert {
+        margin-top: 2rem;
+        margin-left: 2rem;
     }
 
 }

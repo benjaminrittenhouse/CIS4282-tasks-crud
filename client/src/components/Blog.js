@@ -42,6 +42,12 @@ function Blog() {
                 code, but in this case I am referring to the code at the top of the functional component that is called "handleFileChange".
             </p>
 
+            <h5>MySQL</h5>
+            <p>I am now very familiar with MySQL using MySQL Workbench from 3308 and this past entire year. This familiarity has allowed me to think better about databases in this class and in my other classes,
+                especially with topics like foreign keys and linking tables. Also, I recently learned about alias ability and making "temporary" tables that you can use to make SQL calls more organized and make them more
+                concise without having to re-write things over and over again. 
+            </p>
+
             <h4>Potential Next Steps</h4>
             <p>
             In the next phase of development for this project, goal implementations would be a report writer. This would allow an administrator or someone with the right privileges to grab specific attributes and information about tasks and users and create a report about it. For example, they may like to grab the Names and Descriptions of all tasks, only created by the following users: Sally, Ben, Brad. The report writer would then grab this info and display it nicely in a similar manner to the “detailed view” of users and tasks. An interesting idea would to be able to write multiple reports and compare them side by side. 
@@ -74,8 +80,19 @@ function Blog() {
             </p>
 
             <p>
-                Also 
+                Also, I think I could've implemented reusability in my user lists, task lists, user detail, task detail, etc. As you can see, there is some overlap. The files are called the same thing 
+                in each of their respective folders. I imagine if I had a 3rd table I may have to create Display.js, ____Detail.js, ____List.js, etc etc. again. There is most definetely a way to make this
+                more reusable that I got away from too far and was not able to go back and overhaul things.
             </p>
+
+            <h5>To Do List / Summary</h5>
+                <ul>
+                    <li>Full MUI overhaul</li>
+                    <li>Report writer</li>
+                    <li>Reusability of as many components as possible (Dropdown.js, great example)</li>
+                    <li>More styling clean up (next to MUI, styling could be minimized)</li>
+                    <li>Admin features (user can log in and have more priveleges)</li>
+                </ul>
 
             <h4>Links</h4>
             <div style={{display: 'flex', flexDirection: 'column'}}>

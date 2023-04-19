@@ -187,7 +187,7 @@ function Edit({ props, setIsEditing, assignedUser }) {
 
 
     return (
-        <div className="editArea">
+        <div className="editArea tasks edit">
             <button type="button" className="xButton" onClick={handleClose}>X</button>
             <h2>Editing {taskData.taskName}</h2>
             <div class="row">

@@ -190,7 +190,7 @@ function Insert(props) {
     }
 
     return (
-        <div class="editArea">
+        <div class="editArea tasks insert">
             <h2 className="heading">Create a New Task</h2>
             <div class="row">
                 <span class="prompt">Name:</span>

@@ -12,7 +12,8 @@ const UserList = ({ users, setExpandedUser, setIsEditing, processDelete, setView
   return (
     <List className="userList">
       {users.map((user, index) => (
-          <UserBox index={index} setViewing={setViewing} processDelete={processDelete} userData={user} setExpandedUser={setExpandedUser} setIsEditing={setIsEditing} />
+          <UserBox 
+          index={index} setViewing={setViewing} processDelete={processDelete} userData={user} setExpandedUser={setExpandedUser} setIsEditing={setIsEditing} />
       ))}
     </List>
   );

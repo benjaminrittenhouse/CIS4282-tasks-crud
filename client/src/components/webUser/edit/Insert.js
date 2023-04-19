@@ -99,7 +99,7 @@ function Insert(props) {
 
 
     return (
-        <div class="editArea">
+        <div class="editArea webUser insert">
             <h2 className="heading">Add a New User</h2>
             <div class="row">
                 <span class="prompt">Email:</span>
