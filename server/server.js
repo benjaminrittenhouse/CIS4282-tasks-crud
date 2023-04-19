@@ -27,6 +27,7 @@ const readTasks = require("./taskAPI/readAPI");
 const modifyTasks = require("./taskAPI/modifyAPI");
 const readCategories = require("./categoryAPI/readAPI")
 const queryFk = require("./webUserAPIs/getKeysAPI")
+const upload = require("./webUserAPIs/uploadAPI")
 
 
 app.use("/api", modifyWebUser);
@@ -35,6 +36,7 @@ app.use("/api", readTasks);
 app.use("/api", modifyTasks)
 app.use("/api", readCategories);
 app.use("/api", queryFk);
+app.use("/api", upload);
 
 app.get("/", (req, res) => {
   if(db.state === 'disconnected'){
@@ -185,30 +187,11 @@ app.get("/logout", (req, res) => {
 });
 
 
+// server static images
+app.use("/uploads", express.static('uploads'))
+
 
 // ***** END LOGIN
-
-// FILE WRITING
-// "multer" used as middle man to write files
-
-const multer = require('multer');
-
-const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, 'uploads/');
-  },
-  filename: function (req, file, cb) {
-    // gets type of file user chose, writes to "/uploads" in post request
-    const fileExtension = file.originalname.split('.').pop();
-    cb(null, `${file.fieldname}-${Date.now()}.${fileExtension}`);
-  },
-});
-
-const upload = multer({ storage: storage });
-
-app.post('/upload', upload.single('file'), (req, res) => {
-  res.send('File uploaded successfully!');
-});
 
 app.listen(5001, () => {
   console.log("Listening...");

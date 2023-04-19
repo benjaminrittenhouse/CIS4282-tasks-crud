@@ -2,14 +2,23 @@ import React, { useState, useEffect } from 'react';
 import { Card, CardContent, CardMedia, Typography } from '@mui/material';
 import "./userDetail.css"
 
-const UserDetail = ({userData, setViewing, viewing}) => {
+const UserDetail = ({ userData, setViewing, viewing }) => {
+  // conditionally check 
   const fullName = userData.firstName + " " + userData.lastName;
+  var fullImage = "";
+  if (userData.image) {
+    if (userData.image.includes(userData.userEmail)) {
+      fullImage = `${process.env.REACT_APP_API_URL}/uploads/` + userData.image
+    } else {
+      fullImage = userData.image
+    }
+  }
 
   const [isData, setIsData] = useState(false);
 
-  function handleClose(){
-      setViewing(false)
-      // console.log("viewing: " + )
+  function handleClose() {
+    setViewing(false)
+    // console.log("viewing: " + )
   }
 
   useEffect(() => {
@@ -29,7 +38,7 @@ const UserDetail = ({userData, setViewing, viewing}) => {
             className="userDetail__media"
             component="img"
             height="140"
-            image={userData.image}
+            image={fullImage}
             alt={fullName}
           />
           <Typography className="name" variant="h3" component="div" fontWeight="bold">

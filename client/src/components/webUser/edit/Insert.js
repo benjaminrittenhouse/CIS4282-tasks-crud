@@ -9,7 +9,41 @@ function Insert(props) {
     const [insertMessage, setInsertMessage] = useState("");
     const [userData, setUserData] = useState({});
     const [errorObj, setErrorObj] = useState({})
+    // FILE UPLAOD -------------
+    const [file, setFile] = useState(null);
 
+    const handleFileChange = (event) => {
+        event.preventDefault();
+        setFile(event.target.files[0]);
+
+        const formData = new FormData();
+        const extension = event.target.files[0].name.substring(event.target.files[0].name.lastIndexOf('.') + 1);
+
+        if (userData.userEmail) {
+            if (file) {
+                const blob = new Blob([file], { type: file.type });
+                formData.append('file', blob, `${userData.userEmail}.${extension}`);
+
+                axios.post('http://localhost:5001/api/upload', formData)
+                    .then((response) => {
+                        console.log("response: " + response.data);
+                    })
+                    .catch((error) => {
+                        console.error(error);
+                    });
+
+                setUserData(setProp(userData, "image", `${userData.userEmail}.${extension}`))
+                console.log("user data image: ")
+                console.log(userData.image)
+            } else {
+                console.log("no file choosen")
+            }
+        } else {
+            setErrorObj(setProp(errorObj, "image", "Please enter an email before choosing an image"))
+        }
+
+    };
+    // ---------------------
 
     // used to set error object back to nothing
     const emptyData = {}
@@ -25,19 +59,6 @@ function Insert(props) {
 
     const [sqlMessage, setSqlMessage] = useState("");
 
-    // file submission 
-    const [selectedFile, setSelectedFile] = useState(null);
-
-    const handleFileSelect = (event) => {
-        setSelectedFile(event.target.files[0]);
-    };
-
-    const handleUpload = () => {
-        const formData = new FormData();
-        formData.append('file', selectedFile);
-        axios.post('http://localhost:5001/uploads', formData);
-        console.log("uploaded file ")
-    };
 
     //an asynchronous function that will either return the API data or an error
     async function insertUser() {
@@ -65,7 +86,7 @@ function Insert(props) {
                 // clear the previous messages from errors when we successfully insert
                 setErrorObj(emptyData);
                 // setUserData(data);
-                handleUpload();
+                // handleUpload();
             }
 
             setInsertMessage(data.errorMsg);
@@ -75,7 +96,6 @@ function Insert(props) {
             console.log("err (caught fetch):" + String(err));
         }
     }
-
 
 
     return (
@@ -118,7 +138,7 @@ function Insert(props) {
             </div>
             <div class="row">
                 <span class="prompt">Image:</span>
-                <input type="file" onChange={handleFileSelect} />
+                <input type="file" onChange={handleFileChange} disabled={!userData.userEmail} />
                 <span class="error">{errorObj.image}</span>
             </div>
             <div class="row">
@@ -152,10 +172,10 @@ function Insert(props) {
             </div>
             <br />
             <div class="buttonsAndMessage">
-            <button type="button" onClick={insertUser}>Save</button>
-            <span class="recLevelMsg">{insertMessage}</span>
+                <button type="button" onClick={insertUser}>Save</button>
+                <span class="recLevelMsg">{insertMessage}</span>
             </div>
-    
+
         </div>
     )
 }

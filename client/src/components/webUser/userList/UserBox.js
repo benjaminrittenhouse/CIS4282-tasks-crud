@@ -9,6 +9,16 @@ import ConfirmDeleteModal from '../delete/ConfirmDeleteModal';
 
 function UserBox({userData, setExpandedUser, setIsEditing, processDelete, index, setViewing}) {
 
+  // conditionally check (duct tape method)
+  var fullImage = "";
+  if (userData.image) {
+    if (String(userData.image).includes("@")) {
+      fullImage = `${process.env.REACT_APP_API_URL}/uploads/` + userData.image
+    } else {
+      fullImage = userData.image
+    }
+  }
+
   const userObj = DbToObj(userData);
 
   function handleEdit(){
@@ -43,7 +53,7 @@ function UserBox({userData, setExpandedUser, setIsEditing, processDelete, index,
         <ConfirmDeleteModal  open={isDeleteModal} handleClose={handleClose} handleDelete={handleDelete} name={userObj.firstName + " " + userObj.lastName}/>
 
         <Box display="flex" alignItems="center">
-          <Avatar src={userObj.image} alt={`${userObj.firstName} ${userObj.lastName}'s avatar`} />
+          <Avatar src={fullImage} alt={`${userObj.firstName} ${userObj.lastName}'s avatar`}/>
           <Box ml={2}>
             <Typography variant="h6">{userObj.firstName} {userObj.lastName}</Typography>
           </Box>

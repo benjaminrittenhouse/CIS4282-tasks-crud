@@ -15,8 +15,8 @@ router.get("/queryUsers", (req, res) => {
     var threshold = req.query.threshold
   
     try {
-      const sqlGet = `SELECT web_user_id, first_name, last_name FROM web_user WHERE last_name LIKE \'${searchName}%\'`
-      + ` AND last_name > \'${threshold}\' ORDER BY last_name ASC LIMIT 10`;
+      /*const sqlGet = `SELECT web_user_id, first_name, last_name FROM web_user WHERE last_name LIKE \'${searchName}%\'`
+      + ` AND last_name > \'${threshold}\' ORDER BY last_name ASC LIMIT 10`;*/
   
       //CONCAT_WS(', ', last_name, first_name) AS fullname ? not working
       const sqlGet2 = `SELECT web_user_id, first_name, last_name FROM web_user
