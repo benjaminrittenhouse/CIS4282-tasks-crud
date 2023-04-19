@@ -98,7 +98,6 @@ function SPA() {
                     <div class="links">
                         <Link onClick={handleLink} class="link" to="/">Home</Link>
                         <Link onClick={handleLink} class="link" to="/blog">Blog</Link>
-                        <Link onClick={handleLink} class="link" to="/upload">Upload</Link>
                     </div>
 
                     <div class="dropdown">
