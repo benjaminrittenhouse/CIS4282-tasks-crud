@@ -146,6 +146,7 @@ p {
 
 /* desktop only */
 @media only screen and (min-width: 40rem) {
+
     .editArea .row .dropdown .searchRow .nameInput {
         border-radius: 0.25rem;
         width: 100%;
@@ -243,8 +244,9 @@ p {
     }
 
     .editArea.tasks.insert {
-        margin-top: 2rem;
+        margin-top: 1rem;
         margin-left: 2rem;
+        z-index: 1000;
     }
 
 }

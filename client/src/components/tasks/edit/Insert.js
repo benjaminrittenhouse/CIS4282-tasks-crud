@@ -204,7 +204,7 @@ function Insert(props) {
                 <textarea placeholder="This task is about..." value={taskData.taskDesc} onChange=
                     {e => setTaskData({ ...taskData, taskDesc: e.target.value })}
                 />
-                <span class="error">{errorObj.taskDesck}</span>
+                <span class="error">{errorObj.taskDesc}</span>
             </div>
             <div class="row">
                 <span class="prompt">Points:</span>
