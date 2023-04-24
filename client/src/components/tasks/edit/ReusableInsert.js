@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import "../../../style/editArea.css"
-import Dropdown from "./Dropdown"
+import ReusableDropdown from "./ReusableDropdown"
 import Categories from './Categories';
 
 function Insert(props) {
@@ -237,17 +237,8 @@ function Insert(props) {
             </div>
             <div class="row">
                 <span class="prompt">Assigned User</span>
-                <Dropdown listItems={names}
-                    handleClick={handleClick}
-                    handleChange={handleChange}
-                    dropdownName={"Assigned User"}
-                    selectedValue={webUserName}
-                    handleSelect={handleWebUser}
-                    numItems={numUsers}
-                    handleMore={handleSearch}
-                    recent={recent}
-                    assignedWebUserID={taskData.assignedWebUserID}
-                    dirtyFlag={dirtyFlag}
+                <ReusableDropdown
+                    apiURL={`${process.env.REACT_APP_API_URL}/api/queryUsers`}
                 />
                 <span class="error fk">{errorObj.assignedWebUserID}</span>
             </div>

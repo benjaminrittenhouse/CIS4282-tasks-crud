@@ -19,25 +19,25 @@ p {
 }
 
 .editArea.tasks.insert {
-    margin-top: 5rem;
+    margin-top: 12vh;
     margin-left: 0.5rem;
     margin-right: 2rem;
 }
 
 .editArea.tasks.edit {
-    margin-top: 5rem;
+    margin-top: 27vh;
     margin-left: 2rem;
     margin-right: 2rem;
 }
 
 .editArea.webUser.edit {
-    margin-top: 12rem;
+    margin-top: 25rem;
     margin-left: 2rem;
     margin-right: 2rem;
 }
 
 .editArea.webUser.insert {
-    margin-top: 5rem;    
+    margin-top: 12vh;    
 }
 
 /* count padding as part of width for everything in .editArea */
@@ -65,6 +65,7 @@ p {
     display: flex;
     flex-direction: column;
     margin-bottom: 1rem;
+    padding: 0.5rem;
 }
 
 .editArea .row .searchRow {
@@ -144,6 +145,8 @@ p {
     float: right;
 }
 
+
+
 /* desktop only */
 @media only screen and (min-width: 40rem) {
 
@@ -192,6 +195,7 @@ p {
     .editArea .row {
         flex-direction: row;
         margin-bottom: 0.5rem;
+        padding: 0;
     }
 
     .editArea .prompt {
@@ -249,4 +253,13 @@ p {
         z-index: 1000;
     }
 
+    .editArea .row .error.fk {
+        padding-left: 16vw;
+    }
+
+    .editArea .row .dropdown {
+        padding-left: 0.4rem;
+    }
+
 }
+

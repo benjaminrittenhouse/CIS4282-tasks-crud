@@ -112,6 +112,7 @@ function SPA() {
                         <button className={`dropbtn${tasks}`} onClick={handleTasksClick}>Tasks</button>
                         <div className={`${tasks}`}>
                             <Link onClick={handleLink} class="link" to="tasks">Tasks List</Link>
+                            {/*<Link onClick={handleLink} class="link" to="insertTask">Create Task</Link>*/}
                             <Link onClick={handleLink} class="link" to="insertTask">Create Task</Link>
                         </div>
                     </div>
